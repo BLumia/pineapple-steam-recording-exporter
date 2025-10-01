@@ -1,0 +1,21 @@
+# User files
+*.user
+*.user.*
+
+# Why, macOS, why?
+.DS_Store
+
+# Translation files
+*.qm
+*.mo
+
+# Generic Build Dir
+[Bb]uild/
+cmake-build-*/
+
+# Clangd cache
+.cache/
+
+# IDE/Editor config folders
+.vscode/
+.idea/
