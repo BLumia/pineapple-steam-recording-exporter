@@ -8,6 +8,7 @@ Page {
     
     signal clipSelected(var clip)
     signal backRequested()
+    signal exportedVideosRequested()
     
     title: qsTr("Recording List")
     
@@ -30,6 +31,15 @@ Page {
             }
             
             ToolButton {
+                text: qsTr("Exported Videos")
+                onClicked: root.exportedVideosRequested()
+                
+                ToolTip.visible: hovered
+                ToolTip.text: qsTr("View and manage exported videos")
+            }
+            
+            ToolButton {
+                icon.name: "view-refresh"
                 text: qsTr("Refresh")
                 enabled: recordingManager ? !recordingManager.isScanning : false
                 onClicked: {

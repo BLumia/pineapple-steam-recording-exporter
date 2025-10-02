@@ -89,7 +89,7 @@ private:
     void calculateTotalSize();
     void estimateDuration();
     QDateTime parseRecordingDateTime(const QString &dateStr, const QString &timeStr) const;
-    QString formatFileSize(qint64 bytes) const;
+
     QString formatDuration(int seconds) const;
     
     // Member variables

@@ -201,6 +201,7 @@ Page {
                 enabled: systemChecker ? (systemChecker.steamFound && systemChecker.ffmpegFound && !systemChecker.isChecking) : false
                 highlighted: true
                 onClicked: {
+                    proceedTimer.stop()
                     // Set up the recording manager with Steam path
                     if (systemChecker && recordingManager) {
                         recordingManager.steamPath = systemChecker.steamPath

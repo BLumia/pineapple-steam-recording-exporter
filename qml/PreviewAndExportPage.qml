@@ -51,7 +51,6 @@ Page {
                           qsTr("Segment %1 of %2 • %3").arg(root.segmentIndex + 1).arg(root.clip.segmentCount).arg(root.clip.formattedDate) :
                           root.clip ? root.clip.formattedDate : ""
                     font.pixelSize: 12
-                    color: Material.hintTextColor
                 }
             }
         }
@@ -139,8 +138,7 @@ Page {
                     // Loading/Buffering indicator
                     BusyIndicator {
                         anchors.centerIn: parent
-                        running: mediaPlayer.mediaStatus === MediaPlayer.LoadingMedia || 
-                                mediaPlayer.mediaStatus === MediaPlayer.BufferingMedia
+                        running: mediaPlayer.mediaStatus === MediaPlayer.LoadingMedia
                         visible: running
                     }
                     
@@ -191,9 +189,10 @@ Page {
                 // Media controls
                 RowLayout {
                     Layout.fillWidth: true
-                    
-                    Button {
-                        text: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "⏸" : "▶"
+
+                    ToolButton {
+                        icon.name: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "media-playback-pause" : "media-playback-start"
+                        text: mediaPlayer.playbackState === MediaPlayer.PlayingState ? qsTr("Pause") : qsTr("Play")
                         enabled: root.mediaControlsEnabled
                         onClicked: {
                             if (mediaPlayer.playbackState === MediaPlayer.PlayingState) {
@@ -203,9 +202,10 @@ Page {
                             }
                         }
                     }
-                    
-                    Button {
-                        text: "⏹"
+
+                    ToolButton {
+                        icon.name: "media-playback-stop"
+                        text: qsTr("Stop")
                         enabled: root.mediaControlsEnabled
                         onClicked: mediaPlayer.stop()
                     }
@@ -236,6 +236,20 @@ Page {
                         font.pixelSize: 12
                         color: Material.hintTextColor
                         Layout.minimumWidth: 100
+                    }
+
+                    ToolButton {
+                        icon.name: mediaPlayer.audioOutput.muted ? "audio-volume-muted" : "audio-volume-high"
+                        text: mediaPlayer.audioOutput.muted ? qsTr("Unmute") : qsTr("Mute")
+                        onClicked: mediaPlayer.audioOutput.muted = !mediaPlayer.audioOutput.muted
+                    }
+
+                    Slider {
+                        Layout.preferredWidth: 100
+                        from: 0
+                        to: 1
+                        value: mediaPlayer.audioOutput.volume
+                        onMoved: mediaPlayer.audioOutput.volume = value
                     }
                 }
             }

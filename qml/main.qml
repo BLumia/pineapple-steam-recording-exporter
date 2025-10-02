@@ -23,6 +23,7 @@ ApplicationWindow {
     property string currentPage: "systemCheck"
     property var selectedClip: null
     property int selectedSegmentIndex: -1
+    property var selectedExportedVideo: null
     
     // Page stack for navigation
     StackView {
@@ -62,6 +63,11 @@ ApplicationWindow {
                     pageStack.push(previewAndExportComponent)
                     currentPage = "previewAndExport"
                 }
+            }
+            
+            onExportedVideosRequested: {
+                pageStack.push(exportedVideosComponent)
+                currentPage = "exportedVideos"
             }
             
             onBackRequested: {
@@ -104,7 +110,6 @@ ApplicationWindow {
                     currentPage = "clipSelection"
                 } else {
                     pageStack.pop()
-                    pageStack.pop()
                     currentPage = "recordingList"
                     selectedClip = null
                 }
@@ -114,6 +119,45 @@ ApplicationWindow {
             onExportCompleted: {
                 // Could show a success message or navigate back
                 console.log("Export completed successfully")
+            }
+        }
+    }
+    
+    Component {
+        id: exportedVideosComponent
+        
+        ExportedVideosPage {
+            onVideoSelected: function(video) {
+                selectedExportedVideo = video
+                pageStack.push(videoPreviewComponent)
+                currentPage = "videoPreview"
+            }
+            
+            onBackRequested: {
+                pageStack.pop()
+                currentPage = "recordingList"
+                selectedExportedVideo = null
+            }
+        }
+    }
+    
+    Component {
+        id: videoPreviewComponent
+        
+        VideoPreviewPage {
+            video: selectedExportedVideo
+            
+            onBackRequested: {
+                pageStack.pop()
+                currentPage = "exportedVideos"
+                selectedExportedVideo = null
+            }
+            
+            onVideoDeleted: {
+                // Go back to exported videos list
+                pageStack.pop()
+                currentPage = "exportedVideos"
+                selectedExportedVideo = null
             }
         }
     }
@@ -166,10 +210,20 @@ ApplicationWindow {
             currentPage = "recordingList"
             break
         case 3:
-            currentPage = selectedClip && selectedClip.segmentCount > 1 ? "clipSelection" : "previewAndExport"
+            if (selectedClip && selectedClip.segmentCount > 1) {
+                currentPage = "clipSelection"
+            } else if (selectedClip) {
+                currentPage = "previewAndExport"
+            } else {
+                currentPage = "exportedVideos"
+            }
             break
         case 4:
-            currentPage = "previewAndExport"
+            if (selectedExportedVideo) {
+                currentPage = "videoPreview"
+            } else {
+                currentPage = "previewAndExport"
+            }
             break
         }
     }
@@ -184,6 +238,7 @@ ApplicationWindow {
         currentPage = "recordingList"
         selectedClip = null
         selectedSegmentIndex = -1
+        selectedExportedVideo = null
     }
     
     function goToSystemCheck() {
@@ -193,6 +248,7 @@ ApplicationWindow {
         currentPage = "systemCheck"
         selectedClip = null
         selectedSegmentIndex = -1
+        selectedExportedVideo = null
     }
     
     // Handle window close
@@ -247,6 +303,11 @@ ApplicationWindow {
                         return qsTr("Clip Selection")
                     case "previewAndExport":
                         return qsTr("Preview & Export")
+                    case "exportedVideos":
+                        return qsTr("Exported Videos") + 
+                               (exportedVideoManager ? " (" + exportedVideoManager.videoCount + " videos)" : "")
+                    case "videoPreview":
+                        return selectedExportedVideo ? selectedExportedVideo.displayName : qsTr("Video Preview")
                     default:
                         return ""
                     }
@@ -267,7 +328,8 @@ ApplicationWindow {
             BusyIndicator {
                 visible: (systemChecker && systemChecker.isChecking) ||
                          (recordingManager && recordingManager.isScanning) ||
-                         (videoExporter && videoExporter.isExporting)
+                         (videoExporter && videoExporter.isExporting) ||
+                         (exportedVideoManager && exportedVideoManager.isScanning)
                 running: visible
                 implicitWidth: 20
                 implicitHeight: 20

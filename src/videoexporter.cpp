@@ -10,6 +10,7 @@
 #include <QTimer>
 #include <QDesktopServices>
 #include <QUrl>
+#include <QLocale>
 
 VideoExporter::VideoExporter(QObject *parent)
     : QObject(parent)
@@ -221,8 +222,8 @@ void VideoExporter::openExportLocation(const QString &filePath) const
 
 QString VideoExporter::getDefaultExportDirectory()
 {
-    QString documentsPath = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
-    QString exportPath = QDir(documentsPath).absoluteFilePath("Steam Recording Exports");
+    QString videosPath = QStandardPaths::writableLocation(QStandardPaths::MoviesLocation);
+    QString exportPath = QDir(videosPath).absoluteFilePath("Steam Recording Exports");
     
     QDir().mkpath(exportPath);
     return exportPath;
@@ -272,7 +273,7 @@ void VideoExporter::onProcessFinished(int exitCode, QProcess::ExitStatus exitSta
         if (outputFile.exists()) {
             addToLog(tr("Output file: %1 (%2)")
                 .arg(outputFile.fileName())
-                .arg(this->formatFileSize(outputFile.size())));
+                .arg(QLocale().formattedDataSize(outputFile.size())));
         }
         
         QString outputPath = m_currentOutputPath;
@@ -555,23 +556,3 @@ void VideoExporter::resetState()
     m_progressBuffer.clear();
 }
 
-QString VideoExporter::formatFileSize(qint64 bytes) const
-{
-    if (bytes <= 0) {
-        return tr("0 bytes");
-    }
-
-    const qint64 kb = 1024;
-    const qint64 mb = kb * 1024;
-    const qint64 gb = mb * 1024;
-
-    if (bytes >= gb) {
-        return tr("%1 GB").arg(QString::number(static_cast<double>(bytes) / gb, 'f', 2));
-    } else if (bytes >= mb) {
-        return tr("%1 MB").arg(QString::number(static_cast<double>(bytes) / mb, 'f', 1));
-    } else if (bytes >= kb) {
-        return tr("%1 KB").arg(QString::number(static_cast<double>(bytes) / kb, 'f', 1));
-    } else {
-        return tr("%1 bytes").arg(bytes);
-    }
-}

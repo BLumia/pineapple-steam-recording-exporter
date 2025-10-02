@@ -76,7 +76,7 @@ QString RecordingClip::formattedDate() const
 QString RecordingClip::formattedSize() const
 {
     if (!m_formattedSizeCached) {
-        m_cachedFormattedSize = formatFileSize(m_totalSize);
+        m_cachedFormattedSize = QLocale().formattedDataSize(m_totalSize);
         m_formattedSizeCached = true;
     }
     return m_cachedFormattedSize;
@@ -381,29 +381,7 @@ QDateTime RecordingClip::parseRecordingDateTime(const QString &dateStr, const QS
     return QDateTime();
 }
 
-QString RecordingClip::formatFileSize(qint64 bytes) const
-{
-    if (bytes <= 0) {
-        return tr("0 bytes");
-    }
 
-    const qint64 kb = 1024;
-    const qint64 mb = kb * 1024;
-    const qint64 gb = mb * 1024;
-    const qint64 tb = gb * 1024;
-
-    if (bytes >= tb) {
-        return tr("%1 TB").arg(QString::number(static_cast<double>(bytes) / tb, 'f', 2));
-    } else if (bytes >= gb) {
-        return tr("%1 GB").arg(QString::number(static_cast<double>(bytes) / gb, 'f', 2));
-    } else if (bytes >= mb) {
-        return tr("%1 MB").arg(QString::number(static_cast<double>(bytes) / mb, 'f', 1));
-    } else if (bytes >= kb) {
-        return tr("%1 KB").arg(QString::number(static_cast<double>(bytes) / kb, 'f', 1));
-    } else {
-        return tr("%1 bytes").arg(bytes);
-    }
-}
 
 QString RecordingClip::formatDuration(int seconds) const
 {

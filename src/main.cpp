@@ -5,12 +5,15 @@
 #include <QIcon>
 #include <QDir>
 #include <QStandardPaths>
+#include <QTranslator>
 
 #include "steamrecordingmanager.h"
 #include "systemchecker.h"
 #include "videoexporter.h"
 #include "gameinfo.h"
 #include "recordingclip.h"
+#include "exportedvideomanager.h"
+#include "httpserver.h"
 
 int main(int argc, char *argv[])
 {
@@ -21,11 +24,15 @@ int main(int argc, char *argv[])
     // Set application properties
     app.setApplicationName("Pineapple Steam Recording Exporter");
     app.setApplicationVersion("1.0.0");
-    app.setOrganizationName("Pineapple Tools");
-    app.setOrganizationDomain("pineapple.tools");
 
     // Set application icon
     app.setWindowIcon(QIcon(":/qml/app_icon.png"));
+
+    // Load translations
+    QTranslator translator;
+    if (translator.load(QLocale(), "PineappleSteamRecordingExporter", "_", ":/i18n/")) {
+        app.installTranslator(&translator);
+    }
 
     // Use Material Design style
     QQuickStyle::setStyle("Material");
@@ -39,15 +46,25 @@ int main(int argc, char *argv[])
     qmlRegisterType<VideoExporter>("PineappleSteamRecordingExporter", 1, 0, "VideoExporter");
     qmlRegisterType<GameInfo>("PineappleSteamRecordingExporter", 1, 0, "GameInfo");
     qmlRegisterType<RecordingClip>("PineappleSteamRecordingExporter", 1, 0, "RecordingClip");
+    qmlRegisterType<ExportedVideoManager>("PineappleSteamRecordingExporter", 1, 0, "ExportedVideoManager");
+    qmlRegisterType<ExportedVideo>("PineappleSteamRecordingExporter", 1, 0, "ExportedVideo");
+    qmlRegisterType<HttpServer>("PineappleSteamRecordingExporter", 1, 0, "HttpServer");
 
     // Create and expose global instances to QML
     SystemChecker systemChecker;
     SteamRecordingManager recordingManager;
     VideoExporter videoExporter;
+    ExportedVideoManager exportedVideoManager;
+    HttpServer httpServer;
 
     engine.rootContext()->setContextProperty("systemChecker", &systemChecker);
     engine.rootContext()->setContextProperty("recordingManager", &recordingManager);
     engine.rootContext()->setContextProperty("videoExporter", &videoExporter);
+    engine.rootContext()->setContextProperty("exportedVideoManager", &exportedVideoManager);
+    engine.rootContext()->setContextProperty("httpServer", &httpServer);
+
+    // Connect HTTP server to video manager
+    httpServer.setExportedVideoManager(&exportedVideoManager);
 
     // Set up QML import paths
     engine.addImportPath("qrc:/");

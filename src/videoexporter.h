@@ -95,7 +95,7 @@ private:
     void setIsExporting(bool exporting);
     void setLastError(const QString &error);
     void resetState();
-    QString formatFileSize(qint64 bytes) const;
+
 
     // Member variables
     bool m_isExporting;
