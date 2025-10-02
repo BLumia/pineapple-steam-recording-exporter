@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>net.blumia.pineapple.steam-recording-exporter</id>
+  <name>Pineapple Steam Recording Exporter</name>
+  <name xml:lang="zh-CN">菠萝Steam录制导出工具</name>
+  
+  <summary>Export Steam game recordings to MP4 videos</summary>
+  <summary xml:lang="zh-CN">将Steam游戏录制内容导出为MP4视频</summary>
+  
+  <description>
+    <p>
+      Pineapple Steam Recording Exporter is a Qt6-based application that helps you automatically 
+      identify and export Steam game recordings to MP4 video files. It provides a user-friendly 
+      interface to browse, preview, and convert your Steam game clips without quality loss.
+    </p>
+    <p>Key features:</p>
+    <ul>
+      <li>Automatic detection of Steam game recordings</li>
+      <li>Lossless export to MP4 format using FFmpeg</li>
+      <li>Built-in video preview and playback</li>
+      <li>Management of exported video library</li>
+      <li>Support for multi-segment recordings</li>
+      <li>Game name resolution from Steam metadata</li>
+    </ul>
+    
+    <p xml:lang="zh-CN">
+      菠萝Steam录制导出工具是一个基于Qt6的应用程序，可以帮助您自动识别和导出Steam游戏录制为MP4视频文件。
+      它提供了一个用户友好的界面来浏览、预览和无损转换您的Steam游戏片段。
+    </p>
+    <p xml:lang="zh-CN">主要功能：</p>
+    <ul xml:lang="zh-CN">
+      <li>自动检测Steam游戏录制</li>
+      <li>使用FFmpeg无损导出为MP4格式</li>
+      <li>内置视频预览和播放功能</li>
+      <li>导出视频库管理</li>
+      <li>支持多段录制</li>
+      <li>从Steam元数据解析游戏名称</li>
+    </ul>
+  </description>
+  
+  <launchable type="desktop-id">net.blumia.pineapple.steam-recording-exporter.desktop</launchable>
+  
+  <screenshots>
+    <screenshot type="default">
+      <caption>Main recording list interface</caption>
+      <caption xml:lang="zh-CN">主录制列表界面</caption>
+      <image>https://raw.githubusercontent.com/pineapple-tools/steam-recording-exporter/main/screenshots/main-window.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Video preview and export interface</caption>
+      <caption xml:lang="zh-CN">视频预览和导出界面</caption>
+      <image>https://raw.githubusercontent.com/pineapple-tools/steam-recording-exporter/main/screenshots/preview-window.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Exported videos management</caption>
+      <caption xml:lang="zh-CN">导出视频管理</caption>
+      <image>https://raw.githubusercontent.com/pineapple-tools/steam-recording-exporter/main/screenshots/exported-videos.png</image>
+    </screenshot>
+  </screenshots>
+  
+  <url type="homepage">https://github.com/pineapple-tools/steam-recording-exporter</url>
+  <url type="bugtracker">https://github.com/pineapple-tools/steam-recording-exporter/issues</url>
+  <url type="help">https://github.com/pineapple-tools/steam-recording-exporter/wiki</url>
+  <url type="donation">https://github.com/sponsors/pineapple-tools</url>
+  
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  
+  <developer_name>Pineapple Tools</developer_name>
+  <developer_name xml:lang="zh-CN">菠萝工具</developer_name>
+  
+  <categories>
+    <category>AudioVideo</category>
+    <category>Video</category>
+    <category>Qt</category>
+    <category>Game</category>
+  </categories>
+  
+  <keywords>
+    <keyword>steam</keyword>
+    <keyword>recording</keyword>
+    <keyword>video</keyword>
+    <keyword>export</keyword>
+    <keyword>mp4</keyword>
+    <keyword>game</keyword>
+    <keyword xml:lang="zh-CN">steam</keyword>
+    <keyword xml:lang="zh-CN">录制</keyword>
+    <keyword xml:lang="zh-CN">视频</keyword>
+    <keyword xml:lang="zh-CN">导出</keyword>
+    <keyword xml:lang="zh-CN">mp4</keyword>
+    <keyword xml:lang="zh-CN">游戏</keyword>
+  </keywords>
+  
+  <recommends>
+    <control>pointing</control>
+    <control>keyboard</control>
+  </recommends>
+  
+  <requires>
+    <display_length compare="ge">768</display_length>
+  </requires>
+  
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+  </supports>
+  
+  <releases>
+    <release version="1.0.0" date="2024-01-15">
+      <description>
+        <p>Initial release with core functionality:</p>
+        <ul>
+          <li>Steam recording detection and export</li>
+          <li>Video preview and management</li>
+          <li>Multi-segment recording support</li>
+          <li>Cross-platform compatibility (Windows, Linux)</li>
+        </ul>
+        
+        <p xml:lang="zh-CN">包含核心功能的初始版本：</p>
+        <ul xml:lang="zh-CN">
+          <li>Steam录制检测和导出</li>
+          <li>视频预览和管理</li>
+          <li>多段录制支持</li>
+          <li>跨平台兼容性（Windows、Linux）</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+  
+  <content_rating type="oars-1.1" />
+  
+  <update_contact>opensource@blumia.net</update_contact>
+</component>

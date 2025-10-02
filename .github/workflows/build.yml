@@ -1,0 +1,77 @@
+name: Windows Build
+
+on:
+  push:
+    branches: [ '*' ]
+    tags: [ '*' ]
+  pull_request:
+    branches: [ '*' ]
+  workflow_dispatch:
+
+env:
+  QT_VERSION: '6.9.3'
+  CMAKE_VERSION: '3.27.0'
+  FFMPEG_VERSION: '7.1.1' # MUST match to the version that Qt uses: https://doc.qt.io/qt-6/qtmultimedia-attribution-ffmpeg.html
+
+jobs:
+  build-windows:
+    runs-on: windows-2022
+    strategy:
+      matrix:
+        arch: [x64]
+        build_type: [Release]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Setup MSVC
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: ${{ matrix.arch }}
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: ${{ env.QT_VERSION }}
+        host: windows
+        target: desktop
+        arch: win64_msvc2022_64
+        modules: 'qtmultimedia qthttpserver qtwebsockets'
+        cache: true
+
+    - name: Configure CMake
+      run: |
+        cmake -B build -S . `
+          -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} `
+          -G "Visual Studio 17 2022" -A x64
+
+    - name: Build
+      run: cmake --build build --config ${{ matrix.build_type }} --parallel
+
+    - name: Install
+      run: cmake --install build --prefix $PWD\install --config ${{ matrix.build_type }}
+
+    - name: Deploy Qt
+      run: |
+        & "windeployqt.exe" --qmldir qml install\bin\PineappleSteamRecordingExporter.exe
+
+    - name: Install FFmpeg
+      run: |
+        curl -fsSL -o ffmpeg-shared.7z https://github.com/GyanD/codexffmpeg/releases/download/${{ env.FFMPEG_VERSION }}/ffmpeg-${{ env.FFMPEG_VERSION }}-full_build-shared.7z
+        7z x ffmpeg-shared.7z -y -o"ffmpeg_full"
+        # copy all files under ffmpeg_full/bin to install/bin, replace existing files if exists
+        Get-ChildItem -Path "ffmpeg_full\ffmpeg-${{ env.FFMPEG_VERSION }}-full_build-shared\bin" -Recurse | Copy-Item -Destination "install\bin" -Force
+
+    - name: Package
+      run: |
+        cd install
+        7z a ../PineappleSteamRecordingExporter-Windows-${{ matrix.arch }}.zip *
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: PineappleSteamRecordingExporter-Windows-${{ matrix.arch }}
+        path: PineappleSteamRecordingExporter-Windows-${{ matrix.arch }}.zip

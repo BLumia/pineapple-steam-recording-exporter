@@ -110,14 +110,15 @@ set_target_properties(PineappleSteamRecordingExporter PROPERTIES
 if(WIN32)
     # Windows installation
     install(TARGETS PineappleSteamRecordingExporter
-        RUNTIME DESTINATION .
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     )
 
-    qt_generate_deploy_app_script(
-        TARGET PineappleSteamRecordingExporter
-        OUTPUT_SCRIPT deploy_script
-    )
-    install(SCRIPT ${deploy_script})
+    # FIXME: Figure out why QtMultimedia plugin is not deployed.
+    # qt_generate_deploy_app_script(
+    #     TARGET PineappleSteamRecordingExporter
+    #     OUTPUT_SCRIPT deploy_script
+    # )
+    # install(SCRIPT ${deploy_script})
 else()
     # Linux installation
     install(TARGETS PineappleSteamRecordingExporter

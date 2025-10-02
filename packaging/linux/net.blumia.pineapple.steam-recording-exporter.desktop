@@ -1,0 +1,18 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Pineapple Steam Recording Exporter
+Name[zh_CN]=菠萝Steam录制导出工具
+GenericName=Steam Game Recording Exporter
+GenericName[zh_CN]=Steam游戏录制导出工具
+Comment=Export Steam game recordings to MP4 videos
+Comment[zh_CN]=将Steam游戏录制内容导出为MP4视频
+Exec=PineappleSteamRecordingExporter
+Icon=net.blumia.pineapple.steam-recording-exporter
+Terminal=false
+StartupNotify=true
+Categories=AudioVideo;Video;Qt;Game;
+Keywords=steam;recording;video;export;mp4;game;
+Keywords[zh_CN]=steam;录制;视频;导出;mp4;游戏;
+MimeType=application/dash+xml;
+StartupWMClass=PineappleSteamRecordingExporter
