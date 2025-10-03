@@ -138,7 +138,7 @@
 <context>
     <name>ExportedVideoManager</name>
     <message>
-        <location filename="../src/exportedvideomanager.cpp" line="390"/>
+        <location filename="../src/exportedvideomanager.cpp" line="375"/>
         <source>Export directory does not exist: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -475,37 +475,7 @@ This action cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/recordingclip.cpp" line="387"/>
-        <source>0 bytes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/recordingclip.cpp" line="396"/>
-        <source>%1 TB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/recordingclip.cpp" line="398"/>
-        <source>%1 GB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/recordingclip.cpp" line="400"/>
-        <source>%1 MB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/recordingclip.cpp" line="402"/>
-        <source>%1 KB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/recordingclip.cpp" line="404"/>
-        <source>%1 bytes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/recordingclip.cpp" line="411"/>
+        <location filename="../src/recordingclip.cpp" line="389"/>
         <source>00:00</source>
         <translation type="unfinished"></translation>
     </message>
@@ -513,58 +483,78 @@ This action cannot be undone.</source>
 <context>
     <name>RecordingListPage</name>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="13"/>
+        <location filename="../qml/RecordingListPage.qml" line="14"/>
         <source>Recording List</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="27"/>
+        <location filename="../qml/RecordingListPage.qml" line="28"/>
         <source>Steam Game Recordings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="34"/>
+        <location filename="../qml/RecordingListPage.qml" line="35"/>
         <source>Exported Videos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="38"/>
+        <location filename="../qml/RecordingListPage.qml" line="39"/>
         <source>View and manage exported videos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/RecordingListPage.qml" line="43"/>
-        <location filename="../qml/RecordingListPage.qml" line="240"/>
+        <source>Switch User</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/RecordingListPage.qml" line="49"/>
+        <source>Select different Steam account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/RecordingListPage.qml" line="54"/>
+        <location filename="../qml/RecordingListPage.qml" line="269"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="85"/>
+        <location filename="../qml/RecordingListPage.qml" line="96"/>
         <source>Found Recordings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="102"/>
+        <location filename="../qml/RecordingListPage.qml" line="118"/>
+        <source>Current User: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/RecordingListPage.qml" line="118"/>
+        <source>No user selected</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/RecordingListPage.qml" line="126"/>
         <source>Scanning: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="103"/>
+        <location filename="../qml/RecordingListPage.qml" line="126"/>
         <source>No recordings path configured</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="138"/>
+        <location filename="../qml/RecordingListPage.qml" line="165"/>
         <source>Scanning for recording clips...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="223"/>
+        <location filename="../qml/RecordingListPage.qml" line="252"/>
         <source>No recording clips found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="230"/>
+        <location filename="../qml/RecordingListPage.qml" line="259"/>
         <source>Make sure you have game recordings in Steam.
 Recordings are saved automatically during gameplay
 when Steam&apos;s Game Recording feature is enabled.</source>
@@ -574,58 +564,151 @@ when Steam&apos;s Game Recording feature is enabled.</source>
 <context>
     <name>SteamRecordingManager</name>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="110"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="126"/>
         <source>Scan already in progress...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="115"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="131"/>
         <source>Error: Steam path not set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="120"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="136"/>
         <source>Error: Game recordings path not found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="124"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="140"/>
         <source>Starting scan for recording clips...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="187"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="205"/>
+        <source>User %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/steamrecordingmanager.cpp" line="242"/>
         <source>Scan completed. Found %1 clips.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="206"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="261"/>
         <source>Scanning directory: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="215"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="270"/>
         <source>No recording clips found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="217"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="272"/>
         <source>Found %1 recording clips</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="252"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="307"/>
         <source>Loading game information...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="265"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="320"/>
         <source>Loaded game information for %1 clips</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="267"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="322"/>
         <source>No game information could be loaded</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/steamrecordingmanager.cpp" line="572"/>
+        <source>Found %1 Steam user(s)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/steamrecordingmanager.cpp" line="577"/>
+        <source>  - %1 (ID: %2) %3</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/steamrecordingmanager.cpp" line="577"/>
+        <source>[Has recordings]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/steamrecordingmanager.cpp" line="577"/>
+        <source>[No recordings]</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/steamrecordingmanager.cpp" line="581"/>
+        <source>Auto-selected user: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/steamrecordingmanager.cpp" line="583"/>
+        <source>No user auto-selected - please choose manually</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/steamrecordingmanager.cpp" line="586"/>
+        <source>No Steam users found</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SteamUserSelectionDialog</name>
+    <message>
+        <location filename="../qml/components/SteamUserSelectionDialog.qml" line="12"/>
+        <source>Select Steam Account</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/SteamUserSelectionDialog.qml" line="24"/>
+        <source>Multiple Steam accounts detected. Please select which account&apos;s recordings you want to scan:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/SteamUserSelectionDialog.qml" line="84"/>
+        <source>Steam ID: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/SteamUserSelectionDialog.qml" line="90"/>
+        <source>Has game recordings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/SteamUserSelectionDialog.qml" line="90"/>
+        <source>No recordings found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/SteamUserSelectionDialog.qml" line="97"/>
+        <source>Select</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/SteamUserSelectionDialog.qml" line="129"/>
+        <source>No Steam users found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/SteamUserSelectionDialog.qml" line="135"/>
+        <source>Make sure Steam is properly installed and you have logged in at least once.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/SteamUserSelectionDialog.qml" line="157"/>
+        <source>💡 Tip: You can change this selection later from the recording list page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/SteamUserSelectionDialog.qml" line="165"/>
+        <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -790,155 +873,130 @@ If FFmpeg is not found, please download it from https://ffmpeg.org/download.html
 <context>
     <name>VideoExporter</name>
     <message>
-        <location filename="../src/videoexporter.cpp" line="71"/>
-        <location filename="../src/videoexporter.cpp" line="108"/>
+        <location filename="../src/videoexporter.cpp" line="72"/>
+        <location filename="../src/videoexporter.cpp" line="109"/>
         <source>Invalid recording clip</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="76"/>
+        <location filename="../src/videoexporter.cpp" line="77"/>
         <source>Invalid segment index: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="81"/>
-        <location filename="../src/videoexporter.cpp" line="113"/>
+        <location filename="../src/videoexporter.cpp" line="82"/>
+        <location filename="../src/videoexporter.cpp" line="114"/>
         <source>Export already in progress</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="87"/>
+        <location filename="../src/videoexporter.cpp" line="88"/>
         <source>Cannot find or access segment MPD file</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="98"/>
+        <location filename="../src/videoexporter.cpp" line="99"/>
         <source>Exporting segment %1 of %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="118"/>
+        <location filename="../src/videoexporter.cpp" line="119"/>
         <source>No segments found in recording clip</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="129"/>
+        <location filename="../src/videoexporter.cpp" line="130"/>
         <source>Warning: Multi-segment export not yet implemented. Exporting first segment only.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="139"/>
+        <location filename="../src/videoexporter.cpp" line="140"/>
         <source>Cancelling export...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="258"/>
+        <location filename="../src/videoexporter.cpp" line="259"/>
         <source>FFmpeg process crashed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="269"/>
+        <location filename="../src/videoexporter.cpp" line="270"/>
         <source>Export completed successfully!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="273"/>
+        <location filename="../src/videoexporter.cpp" line="274"/>
         <source>Output file: %1 (%2)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="283"/>
+        <location filename="../src/videoexporter.cpp" line="284"/>
         <source>FFmpeg exited with code %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="298"/>
+        <location filename="../src/videoexporter.cpp" line="299"/>
         <source>Failed to start FFmpeg. Please check that FFmpeg is installed and accessible.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="301"/>
+        <location filename="../src/videoexporter.cpp" line="302"/>
         <source>FFmpeg crashed during export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="304"/>
+        <location filename="../src/videoexporter.cpp" line="305"/>
         <source>FFmpeg process timed out</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="307"/>
+        <location filename="../src/videoexporter.cpp" line="308"/>
         <source>Failed to write to FFmpeg process</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="310"/>
+        <location filename="../src/videoexporter.cpp" line="311"/>
         <source>Failed to read from FFmpeg process</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="314"/>
+        <location filename="../src/videoexporter.cpp" line="315"/>
         <source>Unknown FFmpeg error occurred</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="376"/>
+        <location filename="../src/videoexporter.cpp" line="377"/>
         <source>FFmpeg executable not found or not accessible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="381"/>
+        <location filename="../src/videoexporter.cpp" line="382"/>
         <source>Input file not found or not accessible: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="387"/>
+        <location filename="../src/videoexporter.cpp" line="388"/>
         <source>Cannot create output directory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="401"/>
+        <location filename="../src/videoexporter.cpp" line="402"/>
         <source>Starting export: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="402"/>
+        <location filename="../src/videoexporter.cpp" line="403"/>
         <source>Input: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="403"/>
+        <location filename="../src/videoexporter.cpp" line="404"/>
         <source>Output: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/videoexporter.cpp" line="415"/>
+        <location filename="../src/videoexporter.cpp" line="416"/>
         <source>FFmpeg command: %1 %2</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/videoexporter.cpp" line="561"/>
-        <source>0 bytes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/videoexporter.cpp" line="569"/>
-        <source>%1 GB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/videoexporter.cpp" line="571"/>
-        <source>%1 MB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/videoexporter.cpp" line="573"/>
-        <source>%1 KB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/videoexporter.cpp" line="575"/>
-        <source>%1 bytes</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
