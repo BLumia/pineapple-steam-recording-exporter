@@ -124,8 +124,27 @@ create_appimage() {
         export NO_STRIP=true
     fi
 
+    if [ -w /dev/fuse ]; then
+        linuxdeploy_bin() { "./linuxdeploy-x86_64.AppImage" "$@"; }
+    else
+        linuxdeploy_bin() {
+            print_warning "FUSE device /dev/fuse is NOT available, trying FUSE-less AppImage build."
+            ./linuxdeploy-x86_64.AppImage --appimage-extract
+            mv squashfs-root linuxdeploy-extracted
+            ./linuxdeploy-plugin-qt-x86_64.AppImage --appimage-extract
+            mv squashfs-root linuxdeploy-extracted/plugins/linuxdeploy-plugin-qt
+            cd linuxdeploy-extracted/usr/bin
+            ln -s ../../plugins/linuxdeploy-plugin-qt/AppRun linuxdeploy-plugin-qt
+            cd ../../..
+            mv ./linuxdeploy-plugin-qt-x86_64.AppImage ./linuxdeploy-plug-in-qt-x86_64.AppImage # avoid conflict
+            ./linuxdeploy-extracted/AppRun "$@"
+            mv ./linuxdeploy-plug-in-qt-x86_64.AppImage ./linuxdeploy-plugin-qt-x86_64.AppImage # rename back
+            rm -rf ./linuxdeploy-extracted/
+        }
+    fi
+
     # Run linuxdeploy
-    ./linuxdeploy-x86_64.AppImage \
+    linuxdeploy_bin \
         --appdir "$INSTALL_DIR" \
         --plugin qt \
         --output appimage \
