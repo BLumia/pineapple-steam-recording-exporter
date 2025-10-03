@@ -6,6 +6,8 @@
 #include <QDebug>
 #include <QStandardPaths>
 #include <QTimer>
+#include <QTextStream>
+#include <QRegularExpression>
 // Removed QtConcurrent dependency - not available in this Qt configuration
 // #include <QtConcurrent>
 // #include <QFuture>
@@ -35,6 +37,8 @@ void SteamRecordingManager::setSteamPath(const QString &steamPath)
         m_steamPath = steamPath;
         emit steamPathChanged();
         
+        // Scan for available users first
+        scanForSteamUsers();
         updateGameRecordingsPath();
         clearAllClips();
         clearScanResults();
@@ -102,6 +106,18 @@ QHash<int, QByteArray> SteamRecordingManager::roleNames() const
     roles[FormattedDurationRole] = "formattedDuration";
     roles[ClipPathRole] = "clipPath";
     return roles;
+}
+
+void SteamRecordingManager::setSelectedUserId(const QString &userId)
+{
+    if (m_selectedUserId != userId) {
+        m_selectedUserId = userId;
+        emit selectedUserIdChanged();
+        
+        updateGameRecordingsPath();
+        clearAllClips();
+        clearScanResults();
+    }
 }
 
 void SteamRecordingManager::startScan()
@@ -175,6 +191,27 @@ void SteamRecordingManager::refreshGameInfo()
     
     // Load game info in background
     QTimer::singleShot(0, this, &SteamRecordingManager::loadGameInfoForClips);
+}
+
+QString SteamRecordingManager::getUserDisplayName(const QString &userId) const
+{
+    for (const SteamUser &user : m_steamUsers) {
+        if (user.steamId3 == userId) {
+            if (!user.personaName.isEmpty()) {
+                return user.personaName;
+            } else if (!user.accountName.isEmpty()) {
+                return user.accountName;
+            } else {
+                return tr("User %1").arg(userId);
+            }
+        }
+    }
+    return userId;
+}
+
+void SteamRecordingManager::refreshAvailableUsers()
+{
+    scanForSteamUsers();
 }
 
 void SteamRecordingManager::scanForClips()
@@ -270,7 +307,13 @@ void SteamRecordingManager::loadGameInfoForClips()
 
 void SteamRecordingManager::updateGameRecordingsPath()
 {
-    QString newPath = findGameRecordingsPath(m_steamPath);
+    QString newPath;
+    if (!m_selectedUserId.isEmpty()) {
+        newPath = findGameRecordingsPathForUser(m_steamPath, m_selectedUserId);
+    } else {
+        newPath = findGameRecordingsPath(m_steamPath);
+    }
+    
     if (m_gameRecordingsPath != newPath) {
         m_gameRecordingsPath = newPath;
         emit gameRecordingsPathChanged();
@@ -431,4 +474,179 @@ QString SteamRecordingManager::findGameRecordingsPath(const QString &steamPath) 
     }
 
     return gameRecordingsPath;
+}
+
+QString SteamRecordingManager::findGameRecordingsPathForUser(const QString &steamPath, const QString &userId) const
+{
+    if (!validateSteamPath(steamPath) || userId.isEmpty()) {
+        return QString();
+    }
+
+    QDir steamDir(steamPath);
+    QDir userDataDir = steamDir;
+    
+    if (!userDataDir.cd("userdata")) {
+        qWarning() << "userdata directory not found in Steam path:" << steamPath;
+        return QString();
+    }
+
+    QString gameRecordingsPath = userDataDir.absoluteFilePath(userId + "/gamerecordings");
+    
+    QDir gameRecordingsDir(gameRecordingsPath);
+    if (!gameRecordingsDir.exists()) {
+        qDebug() << "Game recordings directory does not exist for user" << userId << ":" << gameRecordingsPath;
+        return QString();
+    }
+
+    return gameRecordingsPath;
+}
+
+void SteamRecordingManager::scanForSteamUsers()
+{
+    m_steamUsers.clear();
+    m_availableUsers.clear();
+    m_selectedUserId.clear();
+    
+    if (m_steamPath.isEmpty()) {
+        emit availableUsersChanged();
+        emit selectedUserIdChanged();
+        emit hasMultipleUsersChanged();
+        return;
+    }
+
+    m_steamUsers = parseSteamUsers(m_steamPath);
+    
+    // Build available users list for QML
+    for (const SteamUser &user : m_steamUsers) {
+        m_availableUsers.append(user.steamId3);
+    }
+
+    // Auto-select first user if only one exists, or if there are multiple users
+    if (!m_steamUsers.isEmpty()) {
+        m_selectedUserId = m_steamUsers.first().steamId3;
+        addScanResult(tr("Found %1 Steam user(s)").arg(m_steamUsers.size()));
+        
+        for (const SteamUser &user : m_steamUsers) {
+            QString userName = user.personaName.isEmpty() ? user.accountName : user.personaName;
+            if (userName.isEmpty()) userName = user.steamId3;
+            addScanResult(tr("  - %1 (ID: %2) %3").arg(userName, user.steamId3, user.hasRecordings ? tr("[Has recordings]") : tr("[No recordings]")));
+        }
+    } else {
+        addScanResult(tr("No Steam users found"));
+    }
+
+    emit availableUsersChanged();
+    emit selectedUserIdChanged();
+    emit hasMultipleUsersChanged();
+}
+
+QList<SteamUser> SteamRecordingManager::parseSteamUsers(const QString &steamPath) const
+{
+    QList<SteamUser> users;
+    
+    if (!validateSteamPath(steamPath)) {
+        return users;
+    }
+
+    QDir steamDir(steamPath);
+    QDir userDataDir = steamDir;
+    
+    if (!userDataDir.cd("userdata")) {
+        qWarning() << "userdata directory not found in Steam path:" << steamPath;
+        return users;
+    }
+
+    // Parse config.vdf for STEAMID64 mappings
+    QString configSteamId64 = parseSteamConfig(steamPath);
+
+    // Find all user directories
+    QStringList userDirs = userDataDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
+    
+    for (const QString &userDir : userDirs) {
+        // Check if this is a valid Steam user directory (numeric ID)
+        bool isNumeric = false;
+        userDir.toLongLong(&isNumeric);
+        if (!isNumeric) {
+            continue; // Skip non-numeric directories
+        }
+
+        SteamUser user;
+        user.steamId3 = userDir;
+        user.userDataPath = userDataDir.absoluteFilePath(userDir);
+        user.gameRecordingsPath = user.userDataPath + "/gamerecordings";
+        user.hasRecordings = QDir(user.gameRecordingsPath).exists();
+        
+        // If this matches the config STEAMID64, convert it
+        if (!configSteamId64.isEmpty()) {
+            QString calculatedSteamId3 = steamId64ToSteamId3(configSteamId64);
+            if (calculatedSteamId3 == user.steamId3) {
+                user.steamId64 = configSteamId64;
+            }
+        }
+        
+        // Try to get persona name from localconfig.vdf
+        QString localConfigPath = user.userDataPath + "/config/localconfig.vdf";
+        QFile localConfigFile(localConfigPath);
+        if (localConfigFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            QTextStream stream(&localConfigFile);
+            QString content = stream.readAll();
+            
+            // Look for PersonaName
+            QRegularExpression personaRegex("\"PersonaName\"\\s*\"([^\"]*)\"");
+            QRegularExpressionMatch match = personaRegex.match(content);
+            if (match.hasMatch()) {
+                user.personaName = match.captured(1);
+            }
+            
+            // Look for AccountName as fallback
+            QRegularExpression accountRegex("\"AccountName\"\\s*\"([^\"]*)\"");
+            match = accountRegex.match(content);
+            if (match.hasMatch()) {
+                user.accountName = match.captured(1);
+            }
+        }
+        
+        users.append(user);
+    }
+
+    return users;
+}
+
+QString SteamRecordingManager::parseSteamConfig(const QString &steamPath) const
+{
+    QString configPath = steamPath + "/config/config.vdf";
+    QFile configFile(configPath);
+    
+    if (!configFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "Could not open Steam config file:" << configPath;
+        return QString();
+    }
+    
+    QTextStream stream(&configFile);
+    QString content = stream.readAll();
+    
+    // Look for SteamID value
+    QRegularExpression steamIdRegex("\"SteamID\"\\s*\"(\\d+)\"");
+    QRegularExpressionMatch match = steamIdRegex.match(content);
+    
+    if (match.hasMatch()) {
+        return match.captured(1);
+    }
+    
+    return QString();
+}
+
+QString SteamRecordingManager::steamId64ToSteamId3(const QString &steamId64) const
+{
+    bool ok = false;
+    qint64 id64 = steamId64.toLongLong(&ok);
+    
+    if (!ok) {
+        return QString();
+    }
+    
+    // Convert STEAMID64 to SteamID3 by subtracting the fixed offset
+    qint64 id3 = id64 - 76561197960265728LL;
+    
+    return QString::number(id3);
 }

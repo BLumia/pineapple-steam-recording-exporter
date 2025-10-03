@@ -68,6 +68,7 @@ qt_add_qml_module(PineappleSteamRecordingExporter
         qml/components/ClipCard.qml
         qml/components/ExportedVideoCard.qml
         qml/components/HttpServerControl.qml
+        qml/components/SteamUserSelectionDialog.qml
 
 )
 

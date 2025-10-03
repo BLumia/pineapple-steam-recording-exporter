@@ -11,6 +11,19 @@
 class RecordingClip;
 class GameInfo;
 
+// Steam user information structure
+struct SteamUser {
+    QString steamId3;        // SteamID3 for directory name
+    QString steamId64;       // Full STEAMID64
+    QString accountName;     // Account name from config
+    QString personaName;     // Display name
+    QString userDataPath;    // Full path to user data directory
+    QString gameRecordingsPath; // Full path to game recordings directory
+    bool hasRecordings;      // Whether recordings directory exists
+    
+    SteamUser() : hasRecordings(false) {}
+};
+
 class SteamRecordingManager : public QAbstractListModel
 {
     Q_OBJECT
@@ -21,6 +34,9 @@ class SteamRecordingManager : public QAbstractListModel
     Q_PROPERTY(int clipCount READ clipCount NOTIFY clipCountChanged)
     Q_PROPERTY(QStringList scanResults READ scanResults NOTIFY scanResultsChanged)
     Q_PROPERTY(bool hasClips READ hasClips NOTIFY hasClipsChanged)
+    Q_PROPERTY(QStringList availableUsers READ availableUsers NOTIFY availableUsersChanged)
+    Q_PROPERTY(QString selectedUserId READ selectedUserId WRITE setSelectedUserId NOTIFY selectedUserIdChanged)
+    Q_PROPERTY(bool hasMultipleUsers READ hasMultipleUsers NOTIFY hasMultipleUsersChanged)
 
 public:
     enum ClipRoles {
@@ -46,9 +62,13 @@ public:
     int clipCount() const { return m_clips.size(); }
     QStringList scanResults() const { return m_scanResults; }
     bool hasClips() const { return !m_clips.isEmpty(); }
+    QStringList availableUsers() const { return m_availableUsers; }
+    QString selectedUserId() const { return m_selectedUserId; }
+    bool hasMultipleUsers() const { return m_steamUsers.size() > 1; }
 
     // Property setters
     void setSteamPath(const QString &steamPath);
+    void setSelectedUserId(const QString &userId);
 
     // QAbstractListModel implementation
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -63,6 +83,8 @@ public:
     Q_INVOKABLE QStringList getClipsByGame(const QString &appId) const;
     Q_INVOKABLE int getClipIndex(RecordingClip *clip) const;
     Q_INVOKABLE void refreshGameInfo();
+    Q_INVOKABLE QString getUserDisplayName(const QString &userId) const;
+    Q_INVOKABLE void refreshAvailableUsers();
 
 public slots:
     void scanForClips();
@@ -78,6 +100,9 @@ signals:
     void scanCompleted();
     void clipAdded(RecordingClip *clip);
     void clipRemoved(RecordingClip *clip);
+    void availableUsersChanged();
+    void selectedUserIdChanged();
+    void hasMultipleUsersChanged();
 
 private slots:
     void performScan();
@@ -100,6 +125,13 @@ private:
     // Validation helpers
     bool validateSteamPath(const QString &path) const;
     QString findGameRecordingsPath(const QString &steamPath) const;
+    QString findGameRecordingsPathForUser(const QString &steamPath, const QString &userId) const;
+    
+    // User management helpers
+    void scanForSteamUsers();
+    QList<SteamUser> parseSteamUsers(const QString &steamPath) const;
+    QString parseSteamConfig(const QString &steamPath) const;
+    QString steamId64ToSteamId3(const QString &steamId64) const;
 
     // Member variables
     QString m_steamPath;
@@ -108,6 +140,11 @@ private:
     QList<RecordingClip*> m_clips;
     QStringList m_scanResults;
     QTimer *m_scanTimer;
+    
+    // User management
+    QList<SteamUser> m_steamUsers;
+    QStringList m_availableUsers;
+    QString m_selectedUserId;
     
     // Game info cache
     QHash<QString, GameInfo*> m_gameInfoCache;
