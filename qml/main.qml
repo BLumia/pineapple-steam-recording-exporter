@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Window
-import PineappleSteamRecordingExporter
+import net.blumia.pineapple.streamrecordingexporter
 
 ApplicationWindow {
     id: mainWindow

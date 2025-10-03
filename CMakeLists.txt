@@ -51,7 +51,7 @@ qt_add_translations(PineappleSteamRecordingExporter
 
 # Add QML module
 qt_add_qml_module(PineappleSteamRecordingExporter
-    URI PineappleSteamRecordingExporter
+    URI net.blumia.pineapple.streamrecordingexporter
     VERSION 1.0
     QML_FILES
         qml/main.qml
@@ -123,18 +123,19 @@ else()
     # Linux installation
     install(TARGETS PineappleSteamRecordingExporter
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     )
-    
+
     # Install desktop file
     install(FILES packaging/linux/net.blumia.pineapple.steam-recording-exporter.desktop
         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications
     )
-    
+
     # Install AppStream metainfo
     install(FILES packaging/linux/net.blumia.pineapple.steam-recording-exporter.metainfo.xml
         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo
     )
-    
+
     # Install icon (assuming we have one)
     if(EXISTS "${CMAKE_SOURCE_DIR}/qml/app_icon.png")
         # Install multiple icon sizes for better desktop integration
@@ -155,14 +156,14 @@ else()
             RENAME net.blumia.pineapple.steam-recording-exporter.png
         )
     endif()
-    
+
     # # Install documentation
     # if(EXISTS "${CMAKE_SOURCE_DIR}/README.md")
     #     install(FILES README.md
     #         DESTINATION ${CMAKE_INSTALL_DOCDIR}
     #     )
     # endif()
-    
+
     # # Install license
     # if(EXISTS "${CMAKE_SOURCE_DIR}/LICENSE")
     #     install(FILES LICENSE
@@ -193,13 +194,13 @@ if(WIN32)
 else()
     # Linux packaging
     set(CPACK_GENERATOR "DEB;RPM;TGZ")
-    
+
     # DEB package configuration
     set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Gary Wang <opensource@blumia.net>")
     set(CPACK_DEBIAN_PACKAGE_DEPENDS "ffmpeg, libqt6core6, libqt6gui6, libqt6qml6, libqt6quick6, libqt6multimedia6")
     set(CPACK_DEBIAN_PACKAGE_SECTION "video")
     set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "https://github.com/pineapple-tools/steam-recording-exporter")
-    
+
     # RPM package configuration
     set(CPACK_RPM_PACKAGE_GROUP "Applications/Multimedia")
     set(CPACK_RPM_PACKAGE_LICENSE "MIT")

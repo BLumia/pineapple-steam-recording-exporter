@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import PineappleSteamRecordingExporter
+import net.blumia.pineapple.streamrecordingexporter
 
 Page {
     id: root

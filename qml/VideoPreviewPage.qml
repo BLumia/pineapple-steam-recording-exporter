@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtMultimedia
 import QtQuick.Dialogs
-import PineappleSteamRecordingExporter
+import net.blumia.pineapple.streamrecordingexporter
 
 Page {
     id: root

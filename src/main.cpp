@@ -41,14 +41,14 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     // Register C++ types for QML
-    qmlRegisterType<SteamRecordingManager>("PineappleSteamRecordingExporter", 1, 0, "SteamRecordingManager");
-    qmlRegisterType<SystemChecker>("PineappleSteamRecordingExporter", 1, 0, "SystemChecker");
-    qmlRegisterType<VideoExporter>("PineappleSteamRecordingExporter", 1, 0, "VideoExporter");
-    qmlRegisterType<GameInfo>("PineappleSteamRecordingExporter", 1, 0, "GameInfo");
-    qmlRegisterType<RecordingClip>("PineappleSteamRecordingExporter", 1, 0, "RecordingClip");
-    qmlRegisterType<ExportedVideoManager>("PineappleSteamRecordingExporter", 1, 0, "ExportedVideoManager");
-    qmlRegisterType<ExportedVideo>("PineappleSteamRecordingExporter", 1, 0, "ExportedVideo");
-    qmlRegisterType<HttpServer>("PineappleSteamRecordingExporter", 1, 0, "HttpServer");
+    qmlRegisterType<SteamRecordingManager>("net.blumia.pineapple.streamrecordingexporter", 1, 0, "SteamRecordingManager");
+    qmlRegisterType<SystemChecker>("net.blumia.pineapple.streamrecordingexporter", 1, 0, "SystemChecker");
+    qmlRegisterType<VideoExporter>("net.blumia.pineapple.streamrecordingexporter", 1, 0, "VideoExporter");
+    qmlRegisterType<GameInfo>("net.blumia.pineapple.streamrecordingexporter", 1, 0, "GameInfo");
+    qmlRegisterType<RecordingClip>("net.blumia.pineapple.streamrecordingexporter", 1, 0, "RecordingClip");
+    qmlRegisterType<ExportedVideoManager>("net.blumia.pineapple.streamrecordingexporter", 1, 0, "ExportedVideoManager");
+    qmlRegisterType<ExportedVideo>("net.blumia.pineapple.streamrecordingexporter", 1, 0, "ExportedVideo");
+    qmlRegisterType<HttpServer>("net.blumia.pineapple.streamrecordingexporter", 1, 0, "HttpServer");
 
     // Create and expose global instances to QML
     SystemChecker systemChecker;
@@ -70,8 +70,8 @@ int main(int argc, char *argv[])
     engine.addImportPath("qrc:/");
 
     // Load the main QML file
-    const QUrl url(QStringLiteral("qrc:/PineappleSteamRecordingExporter/qml/main.qml"));
-    
+    const QUrl url(QStringLiteral("qrc:/net/blumia/pineapple/streamrecordingexporter/qml/main.qml"));
+
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl) {

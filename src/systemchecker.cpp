@@ -176,6 +176,7 @@ QString SystemChecker::findSteamPathLinux()
     QStringList commonPaths = {
         QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.steam/steam",
         QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.local/share/Steam",
+        QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.var/app/com.valvesoftware.Steam/.local/share/Steam",
         "/usr/share/steam",
         "/opt/steam"
     };
