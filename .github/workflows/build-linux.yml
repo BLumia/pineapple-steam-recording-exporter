@@ -1,0 +1,50 @@
+name: Linux Build
+
+on:
+  push:
+    branches: [ '*' ]
+    tags: [ '*' ]
+  pull_request:
+    branches: [ '*' ]
+  workflow_dispatch:
+
+env:
+  QT_VERSION: '6.9.3'
+
+jobs:
+  build-appimage:
+    runs-on: ubuntu-22.04  # Use older Ubuntu for better compatibility
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          build-essential \
+          cmake \
+          ninja-build \
+          ffmpeg \
+          wget \
+          file
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v4
+      with:
+        version: ${{ env.QT_VERSION }}
+        host: linux
+        target: desktop
+        modules: 'qtmultimedia qthttpserver qtwebsockets'
+        cache: true
+
+    - name: Build AppImage
+      run: |
+        chmod +x packaging/appimage/build-appimage.sh
+        packaging/appimage/build-appimage.sh
+    - name: Upload AppImage
+      uses: actions/upload-artifact@v4
+      with:
+        name: PineappleSteamRecordingExporter-AppImage
+        path: Pineapple*-x86_64.AppImage

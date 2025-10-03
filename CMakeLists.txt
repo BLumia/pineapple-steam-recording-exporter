@@ -10,6 +10,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Find required Qt6 components
 find_package(Qt6 6.8 REQUIRED COMPONENTS Core Widgets Quick QuickControls2 Multimedia HttpServer LinguistTools)
 
+include(GNUInstallDirs)
+
 # Enable Qt tools
 qt_standard_project_setup(I18N_TRANSLATED_LANGUAGES en zh_CN)
 

@@ -11,7 +11,12 @@
 
 # Generic Build Dir
 [Bb]uild/
+build-*/
 cmake-build-*/
+
+# AppImage deployment
+AppDir/
+*.AppImage
 
 # Clangd cache
 .cache/
