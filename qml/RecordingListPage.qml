@@ -283,7 +283,6 @@ Page {
     // Steam user selection dialog
     SteamUserSelectionDialog {
         id: userSelectionDialog
-        recordingManager: root.recordingManager
 
         onUserSelected: function (userId) {
             if (recordingManager) {
@@ -295,12 +294,41 @@ Page {
 
     // Auto-start scanning when page loads
     Component.onCompleted: {
+        console.log("RecordingListPage: Component completed");
         if (recordingManager) {
-            // Check if we need to show user selection dialog
-            if (recordingManager.hasMultipleUsers && !recordingManager.selectedUserId) {
-                userSelectionDialog.open();
-            } else if (!recordingManager.hasClips) {
-                recordingManager.startScan();
+            console.log("RecordingListPage: recordingManager exists");
+            console.log("RecordingListPage: hasMultipleUsers:", recordingManager.hasMultipleUsers);
+            console.log("RecordingListPage: selectedUserId:", recordingManager.selectedUserId);
+            console.log("RecordingListPage: availableUsers count:", recordingManager.availableUsers.length);
+
+            // Force refresh users first to ensure data is up to date
+            recordingManager.refreshAvailableUsers();
+
+            // Use a timer to delay the decision until after property updates
+            startupTimer.start();
+        }
+    }
+
+    // Timer to handle startup logic after properties are updated
+    Timer {
+        id: startupTimer
+        interval: 100
+        repeat: false
+        onTriggered: {
+            if (recordingManager) {
+                console.log("RecordingListPage: Startup timer triggered");
+                console.log("RecordingListPage: hasMultipleUsers:", recordingManager.hasMultipleUsers);
+                console.log("RecordingListPage: selectedUserId:", recordingManager.selectedUserId);
+                console.log("RecordingListPage: availableUsers count:", recordingManager.availableUsers.length);
+
+                // Check if we need to show user selection dialog
+                if (recordingManager.hasMultipleUsers && (!recordingManager.selectedUserId || recordingManager.gameRecordingsPath === "")) {
+                    console.log("RecordingListPage: Opening user selection dialog - no user selected or no recordings path");
+                    userSelectionDialog.open();
+                } else if (!recordingManager.hasClips) {
+                    console.log("RecordingListPage: Starting scan");
+                    recordingManager.startScan();
+                }
             }
         }
     }
@@ -310,7 +338,22 @@ Page {
         target: recordingManager
 
         function onHasMultipleUsersChanged() {
-            if (recordingManager && recordingManager.hasMultipleUsers && !recordingManager.selectedUserId) {
+            console.log("RecordingListPage: onHasMultipleUsersChanged, hasMultipleUsers:", recordingManager ? recordingManager.hasMultipleUsers : false);
+            if (recordingManager && recordingManager.hasMultipleUsers && (!recordingManager.selectedUserId || recordingManager.gameRecordingsPath === "")) {
+                console.log("RecordingListPage: Opening user selection dialog from signal");
+                userSelectionDialog.open();
+            }
+        }
+
+        function onAvailableUsersChanged() {
+            console.log("RecordingListPage: onAvailableUsersChanged, count:", recordingManager ? recordingManager.availableUsers.length : 0);
+        }
+
+        function onSelectedUserIdChanged() {
+            console.log("RecordingListPage: onSelectedUserIdChanged, selectedUserId:", recordingManager ? recordingManager.selectedUserId : "");
+            // If user changed but still has no recordings path, show dialog again
+            if (recordingManager && recordingManager.hasMultipleUsers && recordingManager.selectedUserId && recordingManager.gameRecordingsPath === "") {
+                console.log("RecordingListPage: Selected user has no recordings, reopening dialog");
                 userSelectionDialog.open();
             }
         }

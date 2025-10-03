@@ -85,6 +85,7 @@ public:
     Q_INVOKABLE void refreshGameInfo();
     Q_INVOKABLE QString getUserDisplayName(const QString &userId) const;
     Q_INVOKABLE void refreshAvailableUsers();
+    Q_INVOKABLE bool userHasRecordings(const QString &userId) const;
 
 public slots:
     void scanForClips();

@@ -5,8 +5,6 @@ import QtQuick.Layouts
 Dialog {
     id: root
 
-    property var recordingManager: null
-
     signal userSelected(string userId)
 
     anchors.centerIn: parent
@@ -42,66 +40,65 @@ Dialog {
 
                 delegate: ItemDelegate {
                     width: userListView.width
-                    height: userCard.height
+                    height: 80
 
-                    Rectangle {
+                    background: Rectangle {
                         id: userCard
-                        anchors.fill: parent
                         color: parent.hovered ? Material.color(Material.Grey, Material.Shade200) : Material.backgroundColor
                         border.color: Material.dividerColor
                         border.width: 1
                         radius: 8
+                    }
 
-                        RowLayout {
-                            anchors.fill: parent
-                            anchors.margins: 16
-                            spacing: 12
+                    contentItem: RowLayout {
+                        anchors.fill: parent
+                        anchors.margins: 16
+                        spacing: 12
 
-                            Rectangle {
-                                width: 40
-                                height: 40
-                                radius: 20
-                                color: Material.primary
+                        Rectangle {
+                            width: 40
+                            height: 40
+                            radius: 20
+                            color: Material.primary
 
-                                Label {
-                                    anchors.centerIn: parent
-                                    text: getUserInitials(recordingManager ? recordingManager.getUserDisplayName(modelData) : modelData)
-                                    color: "white"
-                                    font.weight: Font.Bold
-                                    font.pixelSize: 16
-                                }
+                            Label {
+                                anchors.centerIn: parent
+                                text: getUserInitials(recordingManager ? recordingManager.getUserDisplayName(modelData) : modelData)
+                                color: "white"
+                                font.weight: Font.Bold
+                                font.pixelSize: 16
+                            }
+                        }
+
+                        ColumnLayout {
+                            Layout.fillWidth: true
+                            spacing: 4
+
+                            Label {
+                                text: recordingManager ? recordingManager.getUserDisplayName(modelData) : modelData
+                                font.pixelSize: 16
+                                font.weight: Font.Medium
                             }
 
-                            ColumnLayout {
-                                Layout.fillWidth: true
-                                spacing: 4
-
-                                Label {
-                                    text: recordingManager ? recordingManager.getUserDisplayName(modelData) : modelData
-                                    font.pixelSize: 16
-                                    font.weight: Font.Medium
-                                }
-
-                                Label {
-                                    text: qsTr("Steam ID: %1").arg(modelData)
-                                    font.pixelSize: 12
-                                    color: Material.hintTextColor
-                                }
-
-                                Label {
-                                    text: hasRecordings(modelData) ? qsTr("Has game recordings") : qsTr("No recordings found")
-                                    font.pixelSize: 12
-                                    color: hasRecordings(modelData) ? Material.color(Material.Green) : Material.hintTextColor
-                                }
+                            Label {
+                                text: qsTr("Steam ID: %1").arg(modelData)
+                                font.pixelSize: 12
+                                color: Material.hintTextColor
                             }
 
-                            Button {
-                                text: qsTr("Select")
-                                highlighted: true
-                                onClicked: {
-                                    root.userSelected(modelData);
-                                    root.accept();
-                                }
+                            Label {
+                                text: hasRecordings(modelData) ? qsTr("Has game recordings") : qsTr("No recordings found")
+                                font.pixelSize: 12
+                                color: hasRecordings(modelData) ? Material.color(Material.Green) : Material.hintTextColor
+                            }
+                        }
+
+                        Button {
+                            text: qsTr("Select")
+                            highlighted: true
+                            onClicked: {
+                                root.userSelected(modelData);
+                                root.accept();
                             }
                         }
                     }
@@ -109,6 +106,39 @@ Dialog {
                     onClicked: {
                         root.userSelected(modelData);
                         root.accept();
+                    }
+                }
+
+                // Empty state when no users found
+                Rectangle {
+                    visible: userListView.count === 0
+                    anchors.fill: parent
+                    color: "transparent"
+
+                    ColumnLayout {
+                        anchors.centerIn: parent
+                        spacing: 16
+
+                        Label {
+                            text: "👤"
+                            font.pixelSize: 48
+                            Layout.alignment: Qt.AlignHCenter
+                        }
+
+                        Label {
+                            text: qsTr("No Steam users found")
+                            font.pixelSize: 16
+                            Layout.alignment: Qt.AlignHCenter
+                        }
+
+                        Label {
+                            text: qsTr("Make sure Steam is properly installed and you have logged in at least once.")
+                            font.pixelSize: 12
+                            color: Material.hintTextColor
+                            Layout.alignment: Qt.AlignHCenter
+                            wrapMode: Text.WordWrap
+                            Layout.maximumWidth: 300
+                        }
                     }
                 }
             }
@@ -157,8 +187,31 @@ Dialog {
     }
 
     function hasRecordings(userId) {
-        // This is a simplified check - in a real implementation,
-        // you might want to expose this information from the C++ side
-        return true;
+        if (!recordingManager || !userId) {
+            return false;
+        }
+
+        return recordingManager.userHasRecordings(userId);
+    }
+
+    // Remove Connections to avoid signal binding errors
+
+    // Debug information when dialog opens
+    onOpened: {
+        console.log("SteamUserSelectionDialog: Dialog opened");
+        if (recordingManager) {
+            console.log("SteamUserSelectionDialog: recordingManager exists");
+            console.log("SteamUserSelectionDialog: availableUsers count:", recordingManager.availableUsers.length);
+            console.log("SteamUserSelectionDialog: availableUsers:", recordingManager.availableUsers);
+            console.log("SteamUserSelectionDialog: hasMultipleUsers:", recordingManager.hasMultipleUsers);
+
+            // Force refresh users if list is empty
+            if (recordingManager.availableUsers.length === 0) {
+                console.log("SteamUserSelectionDialog: User list is empty, refreshing...");
+                recordingManager.refreshAvailableUsers();
+            }
+        } else {
+            console.log("SteamUserSelectionDialog: recordingManager is null");
+        }
     }
 }

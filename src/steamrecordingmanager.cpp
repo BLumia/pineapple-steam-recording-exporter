@@ -214,6 +214,24 @@ void SteamRecordingManager::refreshAvailableUsers()
     scanForSteamUsers();
 }
 
+bool SteamRecordingManager::userHasRecordings(const QString &userId) const
+{
+    if (userId.isEmpty() || m_steamPath.isEmpty()) {
+        return false;
+    }
+
+    // Find the user in our list
+    for (const SteamUser &user : m_steamUsers) {
+        if (user.steamId3 == userId) {
+            return user.hasRecordings;
+        }
+    }
+
+    // If user not found in our list, check directly
+    QString gameRecordingsPath = findGameRecordingsPathForUser(m_steamPath, userId);
+    return !gameRecordingsPath.isEmpty();
+}
+
 void SteamRecordingManager::scanForClips()
 {
     startScan();
@@ -503,11 +521,14 @@ QString SteamRecordingManager::findGameRecordingsPathForUser(const QString &stea
 
 void SteamRecordingManager::scanForSteamUsers()
 {
+    qDebug() << "SteamRecordingManager::scanForSteamUsers() - Starting scan, steamPath:" << m_steamPath;
+    
     m_steamUsers.clear();
     m_availableUsers.clear();
     m_selectedUserId.clear();
     
     if (m_steamPath.isEmpty()) {
+        qDebug() << "SteamRecordingManager::scanForSteamUsers() - Steam path is empty";
         emit availableUsersChanged();
         emit selectedUserIdChanged();
         emit hasMultipleUsersChanged();
@@ -515,15 +536,39 @@ void SteamRecordingManager::scanForSteamUsers()
     }
 
     m_steamUsers = parseSteamUsers(m_steamPath);
+    qDebug() << "SteamRecordingManager::scanForSteamUsers() - Found" << m_steamUsers.size() << "users";
     
     // Build available users list for QML
     for (const SteamUser &user : m_steamUsers) {
-        m_availableUsers.append(user.steamId3);
+        qDebug() << "SteamRecordingManager::scanForSteamUsers() - Adding user ID:" << user.steamId3;
+        if (!user.steamId3.isEmpty()) {
+            m_availableUsers.append(user.steamId3);
+        } else {
+            qWarning() << "SteamRecordingManager::scanForSteamUsers() - User has empty steamId3";
+        }
     }
+    
+    qDebug() << "SteamRecordingManager::scanForSteamUsers() - Available users list size:" << m_availableUsers.size();
+    qDebug() << "SteamRecordingManager::scanForSteamUsers() - Available users:" << m_availableUsers;
 
-    // Auto-select first user if only one exists, or if there are multiple users
+    // Auto-select best user: prefer users with recordings, then first user
     if (!m_steamUsers.isEmpty()) {
-        m_selectedUserId = m_steamUsers.first().steamId3;
+        // First try to find a user with recordings
+        QString selectedId;
+        for (const SteamUser &user : m_steamUsers) {
+            if (user.hasRecordings) {
+                selectedId = user.steamId3;
+                break;
+            }
+        }
+        
+        // If no user has recordings, don't auto-select (let user choose)
+        if (selectedId.isEmpty() && m_steamUsers.size() == 1) {
+            // Only auto-select if there's just one user
+            selectedId = m_steamUsers.first().steamId3;
+        }
+        
+        m_selectedUserId = selectedId;
         addScanResult(tr("Found %1 Steam user(s)").arg(m_steamUsers.size()));
         
         for (const SteamUser &user : m_steamUsers) {
@@ -531,20 +576,32 @@ void SteamRecordingManager::scanForSteamUsers()
             if (userName.isEmpty()) userName = user.steamId3;
             addScanResult(tr("  - %1 (ID: %2) %3").arg(userName, user.steamId3, user.hasRecordings ? tr("[Has recordings]") : tr("[No recordings]")));
         }
+        
+        if (!selectedId.isEmpty()) {
+            addScanResult(tr("Auto-selected user: %1").arg(selectedId));
+        } else {
+            addScanResult(tr("No user auto-selected - please choose manually"));
+        }
     } else {
         addScanResult(tr("No Steam users found"));
     }
 
+    // Emit signals in the correct order - availableUsers first, then the rest
     emit availableUsersChanged();
     emit selectedUserIdChanged();
     emit hasMultipleUsersChanged();
+    
+    qDebug() << "SteamRecordingManager::scanForSteamUsers() - Finished, hasMultipleUsers:" << hasMultipleUsers();
 }
 
 QList<SteamUser> SteamRecordingManager::parseSteamUsers(const QString &steamPath) const
 {
     QList<SteamUser> users;
     
+    qDebug() << "SteamRecordingManager::parseSteamUsers() - Parsing users from steamPath:" << steamPath;
+    
     if (!validateSteamPath(steamPath)) {
+        qDebug() << "SteamRecordingManager::parseSteamUsers() - Invalid steam path";
         return users;
     }
 
@@ -558,17 +615,22 @@ QList<SteamUser> SteamRecordingManager::parseSteamUsers(const QString &steamPath
 
     // Parse config.vdf for STEAMID64 mappings
     QString configSteamId64 = parseSteamConfig(steamPath);
+    qDebug() << "SteamRecordingManager::parseSteamUsers() - Config SteamID64:" << configSteamId64;
 
     // Find all user directories
     QStringList userDirs = userDataDir.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
+    qDebug() << "SteamRecordingManager::parseSteamUsers() - Found user directories:" << userDirs;
     
     for (const QString &userDir : userDirs) {
         // Check if this is a valid Steam user directory (numeric ID)
         bool isNumeric = false;
         userDir.toLongLong(&isNumeric);
         if (!isNumeric) {
+            qDebug() << "SteamRecordingManager::parseSteamUsers() - Skipping non-numeric directory:" << userDir;
             continue; // Skip non-numeric directories
         }
+
+        qDebug() << "SteamRecordingManager::parseSteamUsers() - Processing user directory:" << userDir;
 
         SteamUser user;
         user.steamId3 = userDir;
@@ -576,11 +638,14 @@ QList<SteamUser> SteamRecordingManager::parseSteamUsers(const QString &steamPath
         user.gameRecordingsPath = user.userDataPath + "/gamerecordings";
         user.hasRecordings = QDir(user.gameRecordingsPath).exists();
         
+        qDebug() << "SteamRecordingManager::parseSteamUsers() - User" << userDir << "has recordings:" << user.hasRecordings;
+        
         // If this matches the config STEAMID64, convert it
         if (!configSteamId64.isEmpty()) {
             QString calculatedSteamId3 = steamId64ToSteamId3(configSteamId64);
             if (calculatedSteamId3 == user.steamId3) {
                 user.steamId64 = configSteamId64;
+                qDebug() << "SteamRecordingManager::parseSteamUsers() - Matched SteamID64 for user" << userDir;
             }
         }
         
@@ -596,6 +661,7 @@ QList<SteamUser> SteamRecordingManager::parseSteamUsers(const QString &steamPath
             QRegularExpressionMatch match = personaRegex.match(content);
             if (match.hasMatch()) {
                 user.personaName = match.captured(1);
+                qDebug() << "SteamRecordingManager::parseSteamUsers() - Found PersonaName for" << userDir << ":" << user.personaName;
             }
             
             // Look for AccountName as fallback
@@ -603,12 +669,16 @@ QList<SteamUser> SteamRecordingManager::parseSteamUsers(const QString &steamPath
             match = accountRegex.match(content);
             if (match.hasMatch()) {
                 user.accountName = match.captured(1);
+                qDebug() << "SteamRecordingManager::parseSteamUsers() - Found AccountName for" << userDir << ":" << user.accountName;
             }
+        } else {
+            qDebug() << "SteamRecordingManager::parseSteamUsers() - Could not open localconfig.vdf for user" << userDir;
         }
         
         users.append(user);
     }
 
+    qDebug() << "SteamRecordingManager::parseSteamUsers() - Returning" << users.size() << "users";
     return users;
 }
 
