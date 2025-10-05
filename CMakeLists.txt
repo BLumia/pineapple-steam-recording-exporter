@@ -88,6 +88,8 @@ target_link_libraries(PineappleSteamRecordingExporter PRIVATE
     Qt6::HttpServer
 )
 
+target_compile_definitions(PineappleSteamRecordingExporter PRIVATE PSRE_VERSION="${PROJECT_VERSION}")
+
 # Include directories
 target_include_directories(PineappleSteamRecordingExporter PRIVATE src)
 

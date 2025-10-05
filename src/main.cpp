@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
     // Set application properties
     app.setApplicationName("Pineapple Steam Recording Exporter");
-    app.setApplicationVersion("1.0.0");
+    app.setApplicationVersion(QStringLiteral(PSRE_VERSION));
 
     // Set application icon
     app.setWindowIcon(QIcon(":/qml/app_icon.png"));
