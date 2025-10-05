@@ -48,3 +48,23 @@ jobs:
       with:
         name: PineappleSteamRecordingExporter-AppImage
         path: Pineapple*-x86_64.AppImage
+
+  build-flatpak:
+    runs-on: ubuntu-24.04
+    container:
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.8
+      options: --privileged
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Build Flatpak
+      uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+      with:
+        bundle: net.blumia.pineapple.steam-recording-exporter.flatpak
+        manifest-path: packaging/flatpak/net.blumia.pineapple.steam-recording-exporter.yml
+        cache-key: flatpak-builder-${{ github.sha }}
+        upload-artifact: true
