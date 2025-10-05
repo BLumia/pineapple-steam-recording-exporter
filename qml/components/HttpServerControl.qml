@@ -24,75 +24,84 @@ Rectangle {
         spacing: 6
         
         // Compact header row
-        RowLayout {
+        Item {
             Layout.fillWidth: true
-            spacing: 8
-            
-            Label {
-                text: qsTr("HTTP Server")
-                font.pixelSize: 13
-                font.weight: Font.Medium
-            }
-            
-            // Status indicator
-            Rectangle {
-                id: httpServerStatusLabel
-                width: 6
-                height: 6
-                radius: 3
-                color: httpServer && httpServer.isRunning ? "#4CAF50" : "#757575"
-                
-                SequentialAnimation {
-                    running: httpServer && httpServer.isRunning
-                    loops: Animation.Infinite
-                    
-                    PropertyAnimation {
-                        target: httpServerStatusLabel
-                        property: "opacity"
-                        to: 0.4
-                        duration: 1000
-                    }
-                    PropertyAnimation {
-                        target: httpServerStatusLabel
-                        property: "opacity"
-                        to: 1.0
-                        duration: 1000
+            height: httpServerHeaderRow.implicitHeight
+            RowLayout {
+                id: httpServerHeaderRow
+                width: parent.width
+                spacing: 8
+
+                Label {
+                    text: qsTr("HTTP Server")
+                    font.pixelSize: 13
+                    font.weight: Font.Medium
+                }
+
+                // Status indicator
+                Rectangle {
+                    id: httpServerStatusLabel
+                    width: 6
+                    height: 6
+                    radius: 3
+                    color: httpServer && httpServer.isRunning ? "#4CAF50" : "#757575"
+
+                    SequentialAnimation {
+                        running: httpServer && httpServer.isRunning
+                        loops: Animation.Infinite
+
+                        PropertyAnimation {
+                            target: httpServerStatusLabel
+                            property: "opacity"
+                            to: 0.4
+                            duration: 1000
+                        }
+                        PropertyAnimation {
+                            target: httpServerStatusLabel
+                            property: "opacity"
+                            to: 1.0
+                            duration: 1000
+                        }
                     }
                 }
-            }
-            
-            Label {
-                text: httpServer && httpServer.isRunning ? qsTr("Running") : qsTr("Stopped")
-                font.pixelSize: 11
-                color: httpServer && httpServer.isRunning ? "#4CAF50" : "#757575"
-                opacity: httpServerStatusLabel.opacity
-            }
-            
-            Item { Layout.fillWidth: true }
-            
-            // Connection count
-            Label {
-                visible: httpServer && httpServer.connectionCount > 0
-                text: httpServer ? httpServer.connectionCount.toString() : "0"
-                font.pixelSize: 11
-                color: Material.accent
-            }
-            
-            // Expand/collapse button
-            ToolButton {
-                id: expandButton
-                
-                property bool expanded: false
-                
-                icon.name: expanded ? "go-up" : "go-down"
 
-                implicitWidth: 24
-                implicitHeight: 24
-                
-                onClicked: expanded = !expanded
-                
-                ToolTip.visible: hovered
-                ToolTip.text: expanded ? qsTr("Hide details") : qsTr("Show details")
+                Label {
+                    text: httpServer && httpServer.isRunning ? qsTr("Running") : qsTr("Stopped")
+                    font.pixelSize: 11
+                    color: httpServer && httpServer.isRunning ? "#4CAF50" : "#757575"
+                    opacity: httpServerStatusLabel.opacity
+                }
+
+                Item { Layout.fillWidth: true }
+
+                // Connection count
+                Label {
+                    visible: httpServer && httpServer.connectionCount > 0
+                    text: httpServer ? httpServer.connectionCount.toString() : "0"
+                    font.pixelSize: 11
+                    color: Material.accent
+                }
+
+                // Expand/collapse button
+                ToolButton {
+                    id: expandButton
+
+                    property bool expanded: false
+
+                    icon.name: expanded ? "go-up" : "go-down"
+
+                    implicitWidth: 24
+                    implicitHeight: 24
+
+                    onClicked: expanded = !expanded
+
+                    ToolTip.visible: hovered
+                    ToolTip.text: expanded ? qsTr("Hide details") : qsTr("Show details")
+                }
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: expandButton.expanded = !expandButton.expanded
             }
         }
         
@@ -128,7 +137,6 @@ Rectangle {
                 
                 Label {
                     text: qsTr("Port:")
-                    font.pixelSize: 11
                 }
                 
                 SpinBox {
@@ -165,9 +173,7 @@ Rectangle {
                 
                 ToolButton {
                     visible: httpServer && httpServer.isRunning
-                    icon.name: "internet-web-browser"
-                    implicitWidth: 32
-                    implicitHeight: 32
+                    icon.name: Qt.platform.os === "windows" ? "insert-link" : "open-link"
                     
                     onClicked: {
                         if (httpServer && httpServer.isRunning) {

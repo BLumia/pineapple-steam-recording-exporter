@@ -12,7 +12,7 @@ ItemDelegate {
     height: 120
     
     background: Rectangle {
-        color: root.hovered ? Material.buttonColor : Material.backgroundColor
+        color: root.hovered ? Material.color(Material.Grey, Material.Shade800) : Material.backgroundColor
         border.color: Material.dividerColor
         border.width: 1
         radius: 8

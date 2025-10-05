@@ -29,17 +29,6 @@ ItemDelegate {
         Behavior on color {
             ColorAnimation { duration: 150 }
         }
-        
-        // Simple shadow effect using rectangle
-        Rectangle {
-            anchors.fill: parent
-            anchors.margins: -2
-            color: "transparent"
-            border.color: "#20000000"
-            border.width: 1
-            radius: 8
-            z: -1
-        }
     }
     
     contentItem: RowLayout {
@@ -142,46 +131,18 @@ ItemDelegate {
             RowLayout {
                 Layout.fillWidth: true
                 spacing: 16
-                
-                // Duration
-                Row {
-                    spacing: 4
-                    
-                    Label {
-                        text: "⏱"
-                        font.pixelSize: 12
-                        color: Material.hintTextColor
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
-                    
-                    Label {
-                        text: root.recordingClip ? root.recordingClip.formattedDuration : "00:00"
-                        font.pixelSize: 12
-                        color: Material.hintTextColor
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
+
+                Label {
+                    text: "⏱" + (root.recordingClip ? root.recordingClip.formattedDuration : "00:00")
+                    font.pixelSize: 12
+                    color: Material.hintTextColor
                 }
-                
-                // File size
-                Row {
-                    spacing: 4
-                    
-                    Label {
-                        text: "💾"
-                        font.pixelSize: 12
-                        color: Material.hintTextColor
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
-                    
-                    Label {
-                        text: root.recordingClip ? root.recordingClip.formattedSize : "0 MB"
-                        font.pixelSize: 12
-                        color: Material.hintTextColor
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
+
+                Label {
+                    text: "💾" + (root.recordingClip ? root.recordingClip.formattedSize : "0 MB")
+                    font.pixelSize: 12
+                    color: Material.hintTextColor
                 }
-                
-                Item { Layout.fillWidth: true }
                 
                 // Segments indicator
                 Label {
@@ -189,7 +150,6 @@ ItemDelegate {
                     text: qsTr("%1 segments").arg(root.recordingClip ? root.recordingClip.segmentCount : 0)
                     font.pixelSize: 12
                     color: Material.primary
-                    font.weight: Font.Medium
                 }
             }
         }
