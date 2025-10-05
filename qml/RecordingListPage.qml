@@ -16,11 +16,10 @@ Page {
     header: ToolBar {
         RowLayout {
             anchors.fill: parent
-            anchors.margins: 8
 
             ToolButton {
-                text: "←"
-                font.pixelSize: 18
+                icon.name: "go-previous"
+                text: qsTr("Back")
                 onClicked: root.backRequested()
             }
 

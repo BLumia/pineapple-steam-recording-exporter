@@ -52,52 +52,52 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ClipSelectionPage.qml" line="34"/>
+        <location filename="../qml/ClipSelectionPage.qml" line="33"/>
         <source>Game ID: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ClipSelectionPage.qml" line="42"/>
+        <location filename="../qml/ClipSelectionPage.qml" line="41"/>
         <source>%1 segments • %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ClipSelectionPage.qml" line="73"/>
+        <location filename="../qml/ClipSelectionPage.qml" line="72"/>
         <source>Multiple Segments Found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ClipSelectionPage.qml" line="79"/>
+        <location filename="../qml/ClipSelectionPage.qml" line="78"/>
         <source>This recording contains multiple segments. Please select which segment you want to preview and export.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ClipSelectionPage.qml" line="148"/>
+        <location filename="../qml/ClipSelectionPage.qml" line="147"/>
         <source>Segment %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ClipSelectionPage.qml" line="159"/>
+        <location filename="../qml/ClipSelectionPage.qml" line="158"/>
         <source>Ready for export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ClipSelectionPage.qml" line="161"/>
+        <location filename="../qml/ClipSelectionPage.qml" line="160"/>
         <source>Unable to locate segment data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ClipSelectionPage.qml" line="255"/>
+        <location filename="../qml/ClipSelectionPage.qml" line="254"/>
         <source>Export All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ClipSelectionPage.qml" line="263"/>
+        <location filename="../qml/ClipSelectionPage.qml" line="262"/>
         <source>Export all segments as separate files (Not yet implemented)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ClipSelectionPage.qml" line="272"/>
+        <location filename="../qml/ClipSelectionPage.qml" line="271"/>
         <source>No recording clip selected</source>
         <translation type="unfinished"></translation>
     </message>
@@ -146,84 +146,84 @@
 <context>
     <name>ExportedVideosPage</name>
     <message>
-        <location filename="../qml/ExportedVideosPage.qml" line="25"/>
+        <location filename="../qml/ExportedVideosPage.qml" line="24"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ExportedVideosPage.qml" line="30"/>
+        <location filename="../qml/ExportedVideosPage.qml" line="29"/>
         <source>Exported Videos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ExportedVideosPage.qml" line="38"/>
+        <location filename="../qml/ExportedVideosPage.qml" line="37"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ExportedVideosPage.qml" line="44"/>
+        <location filename="../qml/ExportedVideosPage.qml" line="43"/>
         <source>Open Folder</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ExportedVideosPage.qml" line="51"/>
+        <location filename="../qml/ExportedVideosPage.qml" line="50"/>
         <source>Sort</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ExportedVideosPage.qml" line="58"/>
+        <location filename="../qml/ExportedVideosPage.qml" line="57"/>
         <source>Sort by Name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ExportedVideosPage.qml" line="63"/>
+        <location filename="../qml/ExportedVideosPage.qml" line="62"/>
         <source>Sort by Date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ExportedVideosPage.qml" line="68"/>
+        <location filename="../qml/ExportedVideosPage.qml" line="67"/>
         <source>Sort by Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ExportedVideosPage.qml" line="76"/>
+        <location filename="../qml/ExportedVideosPage.qml" line="75"/>
         <source>Delete All</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ExportedVideosPage.qml" line="121"/>
+        <location filename="../qml/ExportedVideosPage.qml" line="120"/>
         <source>Videos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ExportedVideosPage.qml" line="151"/>
+        <location filename="../qml/ExportedVideosPage.qml" line="150"/>
         <source>Total Size</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ExportedVideosPage.qml" line="191"/>
+        <location filename="../qml/ExportedVideosPage.qml" line="190"/>
         <source>No exported videos found.
 Export some recordings first!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ExportedVideosPage.qml" line="216"/>
+        <location filename="../qml/ExportedVideosPage.qml" line="215"/>
         <source>Delete Video</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ExportedVideosPage.qml" line="219"/>
+        <location filename="../qml/ExportedVideosPage.qml" line="218"/>
         <source>Are you sure you want to delete &quot;%1&quot;?
 This action cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ExportedVideosPage.qml" line="237"/>
+        <location filename="../qml/ExportedVideosPage.qml" line="236"/>
         <source>Delete All Videos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ExportedVideosPage.qml" line="240"/>
+        <location filename="../qml/ExportedVideosPage.qml" line="239"/>
         <source>Are you sure you want to delete all exported videos?
 This action cannot be undone.</source>
         <translation type="unfinished"></translation>
@@ -329,97 +329,102 @@ This action cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="43"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="31"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/PreviewAndExportPage.qml" line="42"/>
         <source>Game ID: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="51"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="50"/>
         <source>Segment %1 of %2 • %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="66"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="65"/>
         <source>Preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="101"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="100"/>
         <source>Preview Error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="149"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="148"/>
         <source>Unable to load video preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="159"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="158"/>
         <source>No video source available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="195"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="194"/>
         <source>Pause</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="195"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="194"/>
         <source>Play</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="208"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="207"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="243"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="242"/>
         <source>Unmute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="243"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="242"/>
         <source>Mute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="260"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="259"/>
         <source>Export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="303"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="302"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="318"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="317"/>
         <source>Output:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="333"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="332"/>
         <source>Output filename</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="338"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="337"/>
         <source>Will be saved to: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="356"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="355"/>
         <source>Browse...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="364"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="363"/>
         <source>File dialog not yet implemented</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="368"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="367"/>
         <source>Export Segment</source>
         <translation type="unfinished"></translation>
     </message>
@@ -429,27 +434,22 @@ This action cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="441"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="442"/>
         <source>Video has been exported successfully!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="446"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="447"/>
         <source>Saved to: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="461"/>
-        <source>Open Location</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="483"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="477"/>
         <source>Export Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="489"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="483"/>
         <source>An error occurred during export:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -488,73 +488,78 @@ This action cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="28"/>
+        <location filename="../qml/RecordingListPage.qml" line="22"/>
+        <source>Back</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/RecordingListPage.qml" line="27"/>
         <source>Steam Game Recordings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="35"/>
+        <location filename="../qml/RecordingListPage.qml" line="34"/>
         <source>Exported Videos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="39"/>
+        <location filename="../qml/RecordingListPage.qml" line="38"/>
         <source>View and manage exported videos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="43"/>
+        <location filename="../qml/RecordingListPage.qml" line="42"/>
         <source>Switch User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="49"/>
+        <location filename="../qml/RecordingListPage.qml" line="48"/>
         <source>Select different Steam account</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="54"/>
-        <location filename="../qml/RecordingListPage.qml" line="269"/>
+        <location filename="../qml/RecordingListPage.qml" line="53"/>
+        <location filename="../qml/RecordingListPage.qml" line="268"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="96"/>
+        <location filename="../qml/RecordingListPage.qml" line="95"/>
         <source>Found Recordings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="118"/>
+        <location filename="../qml/RecordingListPage.qml" line="117"/>
         <source>Current User: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="118"/>
+        <location filename="../qml/RecordingListPage.qml" line="117"/>
         <source>No user selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="126"/>
+        <location filename="../qml/RecordingListPage.qml" line="125"/>
         <source>Scanning: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="126"/>
+        <location filename="../qml/RecordingListPage.qml" line="125"/>
         <source>No recordings path configured</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="165"/>
+        <location filename="../qml/RecordingListPage.qml" line="164"/>
         <source>Scanning for recording clips...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="252"/>
+        <location filename="../qml/RecordingListPage.qml" line="251"/>
         <source>No recording clips found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="259"/>
+        <location filename="../qml/RecordingListPage.qml" line="258"/>
         <source>Make sure you have game recordings in Steam.
 Recordings are saved automatically during gameplay
 when Steam&apos;s Game Recording feature is enabled.</source>
@@ -725,60 +730,70 @@ when Steam&apos;s Game Recording feature is enabled.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SystemCheckPage.qml" line="38"/>
+        <location filename="../qml/SystemCheckPage.qml" line="39"/>
         <source>Checking system requirements...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SystemCheckPage.qml" line="109"/>
+        <location filename="../qml/SystemCheckPage.qml" line="111"/>
         <source>Steam</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SystemCheckPage.qml" line="117"/>
-        <location filename="../qml/SystemCheckPage.qml" line="151"/>
+        <location filename="../qml/SystemCheckPage.qml" line="119"/>
+        <location filename="../qml/SystemCheckPage.qml" line="153"/>
         <source>Found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SystemCheckPage.qml" line="117"/>
-        <location filename="../qml/SystemCheckPage.qml" line="151"/>
+        <location filename="../qml/SystemCheckPage.qml" line="119"/>
+        <location filename="../qml/SystemCheckPage.qml" line="153"/>
         <source>Not Found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SystemCheckPage.qml" line="143"/>
+        <location filename="../qml/SystemCheckPage.qml" line="145"/>
         <source>FFmpeg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SystemCheckPage.qml" line="166"/>
+        <location filename="../qml/SystemCheckPage.qml" line="168"/>
         <source>Start Check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SystemCheckPage.qml" line="178"/>
+        <location filename="../qml/SystemCheckPage.qml" line="180"/>
         <source>Recheck Steam</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SystemCheckPage.qml" line="189"/>
+        <location filename="../qml/SystemCheckPage.qml" line="191"/>
         <source>Recheck FFmpeg</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SystemCheckPage.qml" line="200"/>
+        <location filename="../qml/SystemCheckPage.qml" line="202"/>
         <source>Continue</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SystemCheckPage.qml" line="221"/>
+        <location filename="../qml/SystemCheckPage.qml" line="223"/>
         <source>This application requires Steam and FFmpeg to be installed on your system.
 
 Steam: Used to locate and read game recording files
 FFmpeg: Used to convert recordings to MP4 format
 
 If FFmpeg is not found, please download it from https://ffmpeg.org/download.html and ensure it&apos;s added to your system PATH.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/SystemCheckPage.qml" line="261"/>
+        <source>All checks passed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/SystemCheckPage.qml" line="265"/>
+        <source>System check not passed</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1003,122 +1018,122 @@ If FFmpeg is not found, please download it from https://ffmpeg.org/download.html
 <context>
     <name>VideoPreviewPage</name>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="31"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="30"/>
         <source>Back</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="36"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="35"/>
         <source>Video Preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="45"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="44"/>
         <source>Show in Explorer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="56"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="55"/>
         <source>Delete</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="73"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="72"/>
         <source>Video Player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="122"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="121"/>
         <source>Error loading video: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="152"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="151"/>
         <source>Pause</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="152"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="151"/>
         <source>Play</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="165"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="164"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="196"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="195"/>
         <source>Unmute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="196"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="195"/>
         <source>Mute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="214"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="213"/>
         <source>Play with Default Player</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="227"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="226"/>
         <source>Loading...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="243"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="242"/>
         <source>Video Information</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="254"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="253"/>
         <source>Display Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="264"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="263"/>
         <source>File Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="275"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="274"/>
         <source>File Size:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="283"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="282"/>
         <source>Created:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="291"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="290"/>
         <source>File Path:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="304"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="303"/>
         <source>Duration:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="314"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="313"/>
         <source>Resolution:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="320"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="319"/>
         <source>%1 × %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="339"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="338"/>
         <source>Delete Video</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/VideoPreviewPage.qml" line="342"/>
+        <location filename="../qml/VideoPreviewPage.qml" line="341"/>
         <source>Are you sure you want to delete &quot;%1&quot;?
 This action cannot be undone.</source>
         <translation type="unfinished"></translation>

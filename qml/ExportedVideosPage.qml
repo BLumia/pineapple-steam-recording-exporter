@@ -18,7 +18,6 @@ Page {
         
         RowLayout {
             anchors.fill: parent
-            anchors.margins: 8
             
             ToolButton {
                 icon.name: "go-previous"

@@ -35,6 +35,7 @@ Page {
                 }
                 
                 Label {
+                    id: checkStatusLabel
                     text: qsTr("Checking system requirements...")
                     font.pixelSize: 16
                     color: Material.foreground
@@ -58,7 +59,7 @@ Page {
         ScrollView {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.minimumHeight: 200
+            Layout.minimumHeight: 150
             
             clip: true
             
@@ -74,6 +75,7 @@ Page {
                 font.pixelSize: 12
                 
                 background: Rectangle {
+                    implicitHeight: Material.textFieldHeight
                     color: Material.backgroundDimColor
                     border.color: Material.dividerColor
                     border.width: 1
@@ -256,15 +258,18 @@ Page {
         function onSystemCheckCompleted() {
             // Auto-proceed if all checks pass
             if (systemChecker.allChecksPass) {
+                checkStatusLabel.text = qsTr("All checks passed")
                 // Small delay to let user see the success
                 proceedTimer.start()
+            } else {
+                checkStatusLabel.text = qsTr("System check not passed")
             }
         }
     }
     
     Timer {
         id: proceedTimer
-        interval: 2000
+        interval: 1000
         repeat: false
         onTriggered: {
             if (systemChecker && systemChecker.allChecksPass) {

@@ -25,11 +25,10 @@ Page {
     header: ToolBar {
         RowLayout {
             anchors.fill: parent
-            anchors.margins: 8
             
             ToolButton {
-                text: "←"
-                font.pixelSize: 18
+                icon.name: "go-previous"
+                text: qsTr("Back")
                 onClicked: root.backRequested()
             }
             
@@ -388,7 +387,7 @@ Page {
                     Layout.preferredHeight: 150
                     visible: videoExporter && videoExporter.exportLog !== ""
                     clip: true
-                    
+
                     TextArea {
                         text: videoExporter ? videoExporter.exportLog : ""
                         readOnly: true
@@ -398,6 +397,7 @@ Page {
                         font.pixelSize: 10
                         
                         background: Rectangle {
+                            implicitHeight: Material.textFieldHeight
                             color: Material.backgroundDimColor
                             border.color: Material.dividerColor
                             border.width: 1
@@ -436,6 +436,7 @@ Page {
         
         ColumnLayout {
             spacing: 16
+            anchors.fill: parent
             
             Label {
                 text: qsTr("Video has been exported successfully!")
@@ -451,24 +452,17 @@ Page {
             }
         }
         
-        standardButtons: Dialog.Ok
+        standardButtons: Dialog.Open | Dialog.Close
         
         onAccepted: {
             root.exportCompleted()
-        }
-        
-        Button {
-            text: qsTr("Open Location")
-            onClicked: {
-                if (videoExporter) {
-                    videoExporter.openExportLocation(exportCompletedDialog.outputPath)
-                }
-                exportCompletedDialog.accept()
+            if (videoExporter) {
+                videoExporter.openExportLocation(exportCompletedDialog.outputPath)
             }
-            anchors.right: parent.right
-            anchors.rightMargin: 120
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 20
+        }
+
+        onRejected: {
+            root.exportCompleted()
         }
     }
     

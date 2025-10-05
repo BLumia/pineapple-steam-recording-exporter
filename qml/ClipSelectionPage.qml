@@ -16,7 +16,6 @@ Page {
     header: ToolBar {
         RowLayout {
             anchors.fill: parent
-            anchors.margins: 8
             
             ToolButton {
                 text: "←"
