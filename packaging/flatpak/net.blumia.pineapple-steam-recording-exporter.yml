@@ -1,0 +1,36 @@
+app-id: net.blumia.pineapple-steam-recording-exporter
+runtime: org.kde.Platform
+runtime-version: '6.9'
+sdk: org.kde.Sdk
+command: PineappleSteamRecordingExporter
+
+finish-args:
+  # X11 and Wayland support
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+
+  # Audio support
+  - --socket=pulseaudio
+ 
+  # File system access
+  - --filesystem=~/.local/share/Steam:ro
+  - --filesystem=~/.var/app/com.valvesoftware.Steam/.local/share/Steam:ro
+  - --filesystem=~/.steam/steam:ro
+  - --filesystem=xdg-videos
+ 
+  # Network access
+  - --share=network
+ 
+  # D-Bus access for desktop integration
+  - --talk-name=org.freedesktop.FileManager1
+
+modules:
+  - name: PineappleSteamRecordingExporter
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    sources:
+      - type: dir
+        path: "../../"
