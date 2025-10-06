@@ -138,35 +138,25 @@ else()
     )
 
     # Install desktop file
-    install(FILES packaging/linux/net.blumia.pineapple.steam-recording-exporter.desktop
+    install(FILES packaging/linux/net.blumia.pineapple-steam-recording-exporter.desktop
         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications
     )
 
     # Install AppStream metainfo
-    install(FILES packaging/linux/net.blumia.pineapple.steam-recording-exporter.metainfo.xml
+    install(FILES packaging/linux/net.blumia.pineapple-steam-recording-exporter.metainfo.xml
         DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo
     )
 
-    # Install icon (assuming we have one)
-    if(EXISTS "${CMAKE_SOURCE_DIR}/qml/app_icon.png")
-        # Install multiple icon sizes for better desktop integration
-        install(FILES qml/app_icon.png
-            DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/256x256/apps
-            RENAME net.blumia.pineapple.steam-recording-exporter.png
-        )
-        install(FILES qml/app_icon.png
-            DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/128x128/apps
-            RENAME net.blumia.pineapple.steam-recording-exporter.png
-        )
-        install(FILES qml/app_icon.png
-            DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/64x64/apps
-            RENAME net.blumia.pineapple.steam-recording-exporter.png
-        )
-        install(FILES qml/app_icon.png
-            DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/48x48/apps
-            RENAME net.blumia.pineapple.steam-recording-exporter.png
-        )
-    endif()
+    # Install icon
+    install(FILES qml/app_icon.png
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/128x128/apps
+        RENAME net.blumia.pineapple-steam-recording-exporter.png
+    )
+    # Install SVG icon in scalable directory according to Freedesktop.org icon theme specification
+    install(FILES qml/app_icon.svg
+        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/scalable/apps
+        RENAME net.blumia.pineapple-steam-recording-exporter.svg
+    )
 
     # # Install documentation
     # if(EXISTS "${CMAKE_SOURCE_DIR}/README.md")

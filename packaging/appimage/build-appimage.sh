@@ -5,9 +5,10 @@ set -e
 
 # Configuration
 APP_NAME="PineappleSteamRecordingExporter"
-APP_ID="net.blumia.pineapple.steam-recording-exporter"
+APP_ID="net.blumia.pineapple-steam-recording-exporter"
 BUILD_DIR="build-appimage"
 INSTALL_DIR="AppDir"
+DESKTOP_FILE_PATH="packaging/linux/net.blumia.pineapple-steam-recording-exporter.desktop"
 
 # Colors for output
 RED='\033[0;31m'
@@ -148,7 +149,7 @@ create_appimage() {
         --appdir "$INSTALL_DIR" \
         --plugin qt \
         --output appimage \
-        --desktop-file="packaging/linux/net.blumia.pineapple.steam-recording-exporter.desktop"
+        --desktop-file="$DESKTOP_FILE_PATH"
 
     # Rename the output AppImage
     if [ -f "${LDAI_OUTPUT}" ]; then
@@ -169,7 +170,6 @@ cleanup() {
 main() {
     print_status "Starting AppImage build process..."
     print_status "App: $APP_NAME"
-    print_status "Version: $VERSION"
     print_status "Build directory: $BUILD_DIR"
     print_status "Install directory: $INSTALL_DIR"
 
