@@ -194,7 +194,6 @@ Rectangle {
                 readOnly: true
                 selectByMouse: true
                 font.family: "monospace"
-                font.pixelSize: 10
                 
                 background: Rectangle {
                     color: "transparent"
