@@ -7,6 +7,10 @@
 #include <QStandardPaths>
 #include <QTranslator>
 
+#ifdef HAVE_KICONTHEME
+#include <KIconTheme>
+#endif // HAVE_KICONTHEME
+
 #include "steamrecordingmanager.h"
 #include "systemchecker.h"
 #include "videoexporter.h"
@@ -17,7 +21,9 @@
 
 int main(int argc, char *argv[])
 {
-    // High DPI scaling is enabled by default in Qt6
+#ifdef HAVE_KICONTHEME
+    KIconTheme::initTheme();
+#endif // HAVE_KICONTHEME
 
     QGuiApplication app(argc, argv);
 
