@@ -214,6 +214,15 @@ Page {
                 
                 Material.background: Material.accent
             }
+
+            Button {
+                text: qsTr("Quit")
+                onClicked: {
+                    Qt.quit()
+                }
+
+                Material.background: Material.primary
+            }
         }
         
         // Help text
