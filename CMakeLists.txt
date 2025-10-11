@@ -14,7 +14,7 @@ find_package(KF6IconThemes)
 include(GNUInstallDirs)
 
 # Enable Qt tools
-qt_standard_project_setup(I18N_TRANSLATED_LANGUAGES en zh_CN)
+qt_standard_project_setup(I18N_TRANSLATED_LANGUAGES en zh_CN de nl pl tr)
 
 # Source files
 set(SOURCES
