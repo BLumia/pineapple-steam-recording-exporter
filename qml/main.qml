@@ -25,6 +25,13 @@ ApplicationWindow {
     property int selectedSegmentIndex: -1
     property var selectedExportedVideo: null
     
+    // Auto-fullscreen in SteamOS game mode
+    Component.onCompleted: {
+        if (systemChecker && systemChecker.isSteamGameMode) {
+            mainWindow.showFullScreen()
+        }
+    }
+    
     // Page stack for navigation
     StackView {
         id: pageStack

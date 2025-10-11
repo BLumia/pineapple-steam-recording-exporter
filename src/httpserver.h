@@ -64,7 +64,7 @@ private:
     void setupRoutes();
     QHttpServerResponse handleRootRequest();
     QHttpServerResponse handleVideoListApi();
-    QHttpServerResponse handleVideoDownload(const QString &fileName);
+    QHttpServerResponse handleVideoDownload(const QString &fileName, const QHttpServerRequest &request);
     QHttpServerResponse handleStaticFiles(const QString &path);
     
     QString generateVideoListHtml();

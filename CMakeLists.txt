@@ -79,6 +79,13 @@ qt_add_resources(PineappleSteamRecordingExporter "icons"
         qml/app_icon.png
 )
 
+# Add web resources
+qt_add_resources(PineappleSteamRecordingExporter "web"
+    PREFIX "/web"
+    FILES
+        web/index.html
+)
+
 # Link Qt libraries
 target_link_libraries(PineappleSteamRecordingExporter PRIVATE
     Qt6::Core

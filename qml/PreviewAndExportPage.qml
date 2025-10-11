@@ -55,75 +55,149 @@ Page {
         }
     }
     
-    ColumnLayout {
+    ScrollView {
         anchors.fill: parent
-        anchors.margins: 16
-        spacing: 16
+        clip: true
+        contentWidth: availableWidth
         
-        // Video preview section
-        GroupBox {
-            title: qsTr("Preview")
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            Layout.minimumHeight: 300
+        ColumnLayout {
+            width: parent.width
+            spacing: 16
+        
+            // Video preview section
+            GroupBox {
+                title: qsTr("Preview")
+                Layout.fillWidth: true
+                Layout.preferredHeight: 400
+                Layout.minimumHeight: 300
+                Layout.margins: 16
             
-            ColumnLayout {
-                anchors.fill: parent
-                spacing: 12
-                
-                // Video player
-                Rectangle {
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    Layout.minimumHeight: 250
-                    
-                    color: "black"
-                    border.color: Material.dividerColor
-                    border.width: 1
-                    radius: 4
-                    
-                    MediaPlayer {
-                        id: mediaPlayer
-                        
-                        source: {
-                            if (root.clip && root.segmentIndex >= 0) {
-                                return root.clip.getSegmentMpdUrl(root.segmentIndex)
+                ColumnLayout {
+                    anchors.fill: parent
+                    spacing: 12
+
+                    // Video player
+                    Rectangle {
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                        Layout.minimumHeight: 250
+
+                        color: "black"
+                        border.color: Material.dividerColor
+                        border.width: 1
+                        radius: 4
+
+                        MediaPlayer {
+                            id: mediaPlayer
+
+                            source: {
+                                if (root.clip && root.segmentIndex >= 0) {
+                                    return root.clip.getSegmentMpdUrl(root.segmentIndex)
+                                }
+                                return ""
                             }
-                            return ""
-                        }
-                        
-                        videoOutput: videoOutput
-                        audioOutput: AudioOutput {}
-                        
-                        onErrorOccurred: function(error, errorString) {
-                            console.log("Media player error:", error, errorString)
-                            errorLabel.text = qsTr("Preview Error: %1").arg(errorString)
-                            errorLabel.visible = true
-                        }
-                        
-                        onMediaStatusChanged: {
-                            console.log("Media status changed:", mediaStatus)
-                            if (mediaStatus === MediaPlayer.LoadedMedia) {
-                                errorLabel.visible = false
+
+                            videoOutput: videoOutput
+                            audioOutput: AudioOutput {}
+
+                            onErrorOccurred: function(error, errorString) {
+                                console.log("Media player error:", error, errorString)
+                                errorLabel.text = qsTr("Preview Error: %1").arg(errorString)
+                                errorLabel.visible = true
+                            }
+
+                            onMediaStatusChanged: {
+                                console.log("Media status changed:", mediaStatus)
+                                if (mediaStatus === MediaPlayer.LoadedMedia) {
+                                    errorLabel.visible = false
+                                }
+                            }
+
+                            onPlaybackStateChanged: {
+                                console.log("Playback state changed:", playbackState)
+                            }
+
+                            onBufferProgressChanged: {
+                                console.log("Buffer progress:", bufferProgress)
                             }
                         }
-                        
-                        onPlaybackStateChanged: {
-                            console.log("Playback state changed:", playbackState)
+
+                        VideoOutput {
+                            id: videoOutput
+                            anchors.fill: parent
+                            anchors.margins: 1
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    if (mediaPlayer.playbackState === MediaPlayer.PlayingState) {
+                                        mediaPlayer.pause()
+                                    } else {
+                                        mediaPlayer.play()
+                                    }
+                                }
+                            }
                         }
-                        
-                        onBufferProgressChanged: {
-                            console.log("Buffer progress:", bufferProgress)
+
+                        // Loading/Buffering indicator
+                        BusyIndicator {
+                            anchors.centerIn: parent
+                            running: mediaPlayer.mediaStatus === MediaPlayer.LoadingMedia
+                            visible: running
+                        }
+
+                        // Error message
+                        Label {
+                            id: errorLabel
+                            anchors.centerIn: parent
+                            text: qsTr("Unable to load video preview")
+                            color: Material.color(Material.Red)
+                            visible: false
+                            wrapMode: Text.WordWrap
+                            horizontalAlignment: Text.AlignHCenter
+                        }
+
+                        // Fallback message when no media
+                        Label {
+                            anchors.centerIn: parent
+                            text: qsTr("No video source available")
+                            color: Material.hintTextColor
+                            visible: !root.clip || mediaPlayer.source === ""
+                            font.pixelSize: 16
+                        }
+
+                        // Play/pause overlay
+                        Rectangle {
+                            anchors.centerIn: parent
+                            width: 80
+                            height: 80
+                            radius: 40
+                            color: "#80000000"
+                            visible: mediaPlayer.mediaStatus === MediaPlayer.LoadedMedia &&
+                                    mediaPlayer.playbackState !== MediaPlayer.PlayingState
+
+                            Label {
+                                anchors.centerIn: parent
+                                text: "▶"
+                                font.pixelSize: 32
+                                color: "white"
+                            }
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: mediaPlayer.play()
+                            }
                         }
                     }
-                    
-                    VideoOutput {
-                        id: videoOutput
-                        anchors.fill: parent
-                        anchors.margins: 1
-                        
-                        MouseArea {
-                            anchors.fill: parent
+
+                    // Media controls
+                    RowLayout {
+                        Layout.fillWidth: true
+
+                        ToolButton {
+                            icon.name: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "media-playback-pause" : "media-playback-start"
+                            text: mediaPlayer.playbackState === MediaPlayer.PlayingState ? qsTr("Pause") : qsTr("Play")
+                            enabled: root.mediaControlsEnabled
                             onClicked: {
                                 if (mediaPlayer.playbackState === MediaPlayer.PlayingState) {
                                     mediaPlayer.pause()
@@ -132,276 +206,211 @@ Page {
                                 }
                             }
                         }
-                    }
-                    
-                    // Loading/Buffering indicator
-                    BusyIndicator {
-                        anchors.centerIn: parent
-                        running: mediaPlayer.mediaStatus === MediaPlayer.LoadingMedia
-                        visible: running
-                    }
-                    
-                    // Error message
-                    Label {
-                        id: errorLabel
-                        anchors.centerIn: parent
-                        text: qsTr("Unable to load video preview")
-                        color: Material.color(Material.Red)
-                        visible: false
-                        wrapMode: Text.WordWrap
-                        horizontalAlignment: Text.AlignHCenter
-                    }
-                    
-                    // Fallback message when no media
-                    Label {
-                        anchors.centerIn: parent
-                        text: qsTr("No video source available")
-                        color: Material.hintTextColor
-                        visible: !root.clip || mediaPlayer.source === ""
-                        font.pixelSize: 16
-                    }
-                    
-                    // Play/pause overlay
-                    Rectangle {
-                        anchors.centerIn: parent
-                        width: 80
-                        height: 80
-                        radius: 40
-                        color: "#80000000"
-                        visible: mediaPlayer.mediaStatus === MediaPlayer.LoadedMedia && 
-                                mediaPlayer.playbackState !== MediaPlayer.PlayingState
-                        
+
+                        ToolButton {
+                            icon.name: "media-playback-stop"
+                            text: qsTr("Stop")
+                            enabled: root.mediaControlsEnabled
+                            onClicked: mediaPlayer.stop()
+                        }
+
+                        Slider {
+                            id: positionSlider
+                            Layout.fillWidth: true
+                            enabled: root.mediaControlsEnabled && mediaPlayer.seekable
+                            from: 0
+                            to: mediaPlayer.duration
+                            value: pressed ? value : mediaPlayer.position
+
+                            onMoved: {
+                                if (mediaPlayer.seekable) {
+                                    mediaPlayer.setPosition(value)
+                                }
+                            }
+
+                            ToolTip {
+                                parent: positionSlider.handle
+                                visible: positionSlider.pressed
+                                text: formatTime(positionSlider.value)
+                            }
+                        }
+
                         Label {
-                            anchors.centerIn: parent
-                            text: "▶"
-                            font.pixelSize: 32
-                            color: "white"
+                            text: formatTime(mediaPlayer.position) + " / " + formatTime(mediaPlayer.duration)
+                            font.pixelSize: 12
+                            color: Material.hintTextColor
+                            Layout.minimumWidth: 100
                         }
-                        
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: mediaPlayer.play()
-                        }
-                    }
-                }
-                
-                // Media controls
-                RowLayout {
-                    Layout.fillWidth: true
 
-                    ToolButton {
-                        icon.name: mediaPlayer.playbackState === MediaPlayer.PlayingState ? "media-playback-pause" : "media-playback-start"
-                        text: mediaPlayer.playbackState === MediaPlayer.PlayingState ? qsTr("Pause") : qsTr("Play")
-                        enabled: root.mediaControlsEnabled
-                        onClicked: {
-                            if (mediaPlayer.playbackState === MediaPlayer.PlayingState) {
-                                mediaPlayer.pause()
-                            } else {
-                                mediaPlayer.play()
-                            }
+                        ToolButton {
+                            icon.name: mediaPlayer.audioOutput.muted ? "audio-volume-muted" : "audio-volume-high"
+                            text: mediaPlayer.audioOutput.muted ? qsTr("Unmute") : qsTr("Mute")
+                            onClicked: mediaPlayer.audioOutput.muted = !mediaPlayer.audioOutput.muted
                         }
-                    }
 
-                    ToolButton {
-                        icon.name: "media-playback-stop"
-                        text: qsTr("Stop")
-                        enabled: root.mediaControlsEnabled
-                        onClicked: mediaPlayer.stop()
-                    }
-                    
-                    Slider {
-                        id: positionSlider
-                        Layout.fillWidth: true
-                        enabled: root.mediaControlsEnabled && mediaPlayer.seekable
-                        from: 0
-                        to: mediaPlayer.duration
-                        value: pressed ? value : mediaPlayer.position
-                        
-                        onMoved: {
-                            if (mediaPlayer.seekable) {
-                                mediaPlayer.setPosition(value)
-                            }
+                        Slider {
+                            Layout.preferredWidth: 100
+                            from: 0
+                            to: 1
+                            value: mediaPlayer.audioOutput.volume
+                            onMoved: mediaPlayer.audioOutput.volume = value
                         }
-                        
-                        ToolTip {
-                            parent: positionSlider.handle
-                            visible: positionSlider.pressed
-                            text: formatTime(positionSlider.value)
-                        }
-                    }
-                    
-                    Label {
-                        text: formatTime(mediaPlayer.position) + " / " + formatTime(mediaPlayer.duration)
-                        font.pixelSize: 12
-                        color: Material.hintTextColor
-                        Layout.minimumWidth: 100
-                    }
-
-                    ToolButton {
-                        icon.name: mediaPlayer.audioOutput.muted ? "audio-volume-muted" : "audio-volume-high"
-                        text: mediaPlayer.audioOutput.muted ? qsTr("Unmute") : qsTr("Mute")
-                        onClicked: mediaPlayer.audioOutput.muted = !mediaPlayer.audioOutput.muted
-                    }
-
-                    Slider {
-                        Layout.preferredWidth: 100
-                        from: 0
-                        to: 1
-                        value: mediaPlayer.audioOutput.volume
-                        onMoved: mediaPlayer.audioOutput.volume = value
                     }
                 }
             }
-        }
         
-        // Export section
-        GroupBox {
-            title: qsTr("Export")
-            Layout.fillWidth: true
-            Layout.preferredHeight: exportColumn.implicitHeight + 32
-            
-            ColumnLayout {
-                id: exportColumn
-                anchors.fill: parent
-                spacing: 12
-                
-                // Export status
-                RowLayout {
-                    Layout.fillWidth: true
-                    visible: videoExporter && videoExporter.isExporting
-                    
-                    BusyIndicator {
-                        running: true
-                        implicitWidth: 24
-                        implicitHeight: 24
-                    }
-                    
-                    ColumnLayout {
-                        Layout.fillWidth: true
-                        spacing: 2
-                        
-                        Label {
-                            text: videoExporter ? videoExporter.currentOperation : ""
-                            font.weight: Font.Medium
-                        }
-                        
-                        ProgressBar {
-                            Layout.fillWidth: true
-                            value: videoExporter ? videoExporter.progress / 100.0 : 0
-                            
-                            Label {
-                                anchors.centerIn: parent
-                                text: videoExporter ? videoExporter.progress + "%" : ""
-                                font.pixelSize: 10
-                                color: Material.foreground
-                            }
-                        }
-                    }
-                    
-                    Button {
-                        text: qsTr("Cancel")
-                        onClicked: {
-                            if (videoExporter) {
-                                videoExporter.cancelExport()
-                            }
-                        }
-                    }
-                }
-                
-                // Export controls
-                RowLayout {
-                    Layout.fillWidth: true
-                    visible: !videoExporter || !videoExporter.isExporting
-                    
-                    Label {
-                        text: qsTr("Output:")
-                        Layout.alignment: Qt.AlignTop
-                        Layout.topMargin: 8
-                    }
-                    
-                    ColumnLayout {
-                        Layout.fillWidth: true
-                        spacing: 8
-                        
-                        TextField {
-                            id: outputPathField
-                            Layout.fillWidth: true
-                            text: videoExporter && root.clip ? 
-                                  videoExporter.generateOutputFilename(root.clip, root.segmentIndex) : 
-                                  "recording.mp4"
-                            placeholderText: qsTr("Output filename")
-                        }
-                        
-                        Label {
-                            text: videoExporter ? 
-                                  qsTr("Will be saved to: %1").arg(videoExporter.defaultExportPath) : 
-                                  ""
-                            font.pixelSize: 11
-                            color: Material.hintTextColor
-                            wrapMode: Text.WordWrap
-                            Layout.fillWidth: true
-                        }
-                    }
-                }
-                
-                // Export buttons
-                RowLayout {
-                    Layout.fillWidth: true
-                    visible: !videoExporter || !videoExporter.isExporting
-                    
-                    Item { Layout.fillWidth: true }
-                    
-                    Button {
-                        text: qsTr("Browse...")
-                        onClicked: {
-                            // TODO: Open file dialog
-                            console.log("File dialog not yet implemented")
-                        }
-                        enabled: false
-                        
-                        ToolTip.visible: hovered
-                        ToolTip.text: qsTr("File dialog not yet implemented")
-                    }
-                    
-                    Button {
-                        text: qsTr("Export Segment")
-                        highlighted: true
-                        enabled: root.clip && root.segmentIndex >= 0 && 
-                                (!videoExporter || !videoExporter.isExporting)
-                        
-                        onClicked: {
-                            if (videoExporter && root.clip) {
-                                var outputPath = ""
-                                if (outputPathField.text.trim() !== "") {
-                                    outputPath = videoExporter.defaultExportPath + "/" + outputPathField.text.trim()
-                                }
-                                videoExporter.exportClipSegment(root.clip, root.segmentIndex, outputPath)
-                            }
-                        }
-                    }
-                }
-                
-                // Export log
-                ScrollView {
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: 150
-                    visible: videoExporter && videoExporter.exportLog !== ""
-                    clip: true
+            // Export section
+            GroupBox {
+                title: qsTr("Export")
+                Layout.fillWidth: true
+                Layout.preferredHeight: exportColumn.implicitHeight + 32
+                Layout.margins: 16
 
-                    TextArea {
-                        text: videoExporter ? videoExporter.exportLog : ""
-                        readOnly: true
-                        selectByMouse: true
-                        wrapMode: Text.WordWrap
-                        font.family: "Consolas, Monaco, monospace"
-                        font.pixelSize: 10
-                        
-                        background: Rectangle {
-                            implicitHeight: Material.textFieldHeight
-                            color: Material.backgroundDimColor
-                            border.color: Material.dividerColor
-                            border.width: 1
-                            radius: 4
+                ColumnLayout {
+                    id: exportColumn
+                    anchors.fill: parent
+                    spacing: 12
+
+                    // Export status
+                    RowLayout {
+                        Layout.fillWidth: true
+                        visible: videoExporter && videoExporter.isExporting
+
+                        BusyIndicator {
+                            running: true
+                            implicitWidth: 24
+                            implicitHeight: 24
+                        }
+
+                        ColumnLayout {
+                            Layout.fillWidth: true
+                            spacing: 2
+
+                            Label {
+                                text: videoExporter ? videoExporter.currentOperation : ""
+                                font.weight: Font.Medium
+                            }
+
+                            ProgressBar {
+                                Layout.fillWidth: true
+                                value: videoExporter ? videoExporter.progress / 100.0 : 0
+
+                                Label {
+                                    anchors.centerIn: parent
+                                    text: videoExporter ? videoExporter.progress + "%" : ""
+                                    font.pixelSize: 10
+                                    color: Material.foreground
+                                }
+                            }
+                        }
+
+                        Button {
+                            text: qsTr("Cancel")
+                            onClicked: {
+                                if (videoExporter) {
+                                    videoExporter.cancelExport()
+                                }
+                            }
+                        }
+                    }
+
+                    // Export controls
+                    RowLayout {
+                        Layout.fillWidth: true
+                        visible: !videoExporter || !videoExporter.isExporting
+
+                        Label {
+                            text: qsTr("Output:")
+                            Layout.alignment: Qt.AlignTop
+                            Layout.topMargin: 8
+                        }
+
+                        ColumnLayout {
+                            Layout.fillWidth: true
+                            spacing: 8
+
+                            TextField {
+                                id: outputPathField
+                                Layout.fillWidth: true
+                                text: videoExporter && root.clip ?
+                                      videoExporter.generateOutputFilename(root.clip, root.segmentIndex) :
+                                      "recording.mp4"
+                                placeholderText: qsTr("Output filename")
+
+
+                            }
+
+                            Label {
+                                text: videoExporter ?
+                                      qsTr("Will be saved to: %1").arg(videoExporter.defaultExportPath) :
+                                      ""
+                                font.pixelSize: 11
+                                color: Material.hintTextColor
+                                wrapMode: Text.WordWrap
+                                Layout.fillWidth: true
+                            }
+                        }
+                    }
+
+                    // Export buttons
+                    RowLayout {
+                        Layout.fillWidth: true
+                        visible: !videoExporter || !videoExporter.isExporting
+
+                        Item { Layout.fillWidth: true }
+
+                        Button {
+                            text: qsTr("Browse...")
+                            onClicked: {
+                                // TODO: Open file dialog
+                                console.log("File dialog not yet implemented")
+                            }
+                            enabled: false
+
+                            ToolTip.visible: hovered
+                            ToolTip.text: qsTr("File dialog not yet implemented")
+                        }
+
+                        Button {
+                            text: qsTr("Export Segment")
+                            highlighted: true
+                            enabled: root.clip && root.segmentIndex >= 0 &&
+                                    (!videoExporter || !videoExporter.isExporting)
+
+                            onClicked: {
+                                if (videoExporter && root.clip) {
+                                    var outputPath = ""
+                                    if (outputPathField.text.trim() !== "") {
+                                        outputPath = videoExporter.defaultExportPath + "/" + outputPathField.text.trim()
+                                    }
+                                    videoExporter.exportClipSegment(root.clip, root.segmentIndex, outputPath)
+                                }
+                            }
+                        }
+                    }
+
+                    // Export log
+                    ScrollView {
+                        Layout.fillWidth: true
+                        Layout.preferredHeight: 150
+                        visible: videoExporter && videoExporter.exportLog !== ""
+                        clip: true
+
+                        TextArea {
+                            text: videoExporter ? videoExporter.exportLog : ""
+                            readOnly: true
+                            selectByMouse: true
+                            wrapMode: Text.WordWrap
+                            font.family: "Consolas, Monaco, monospace"
+                            font.pixelSize: 10
+
+                            background: Rectangle {
+                                implicitHeight: Material.textFieldHeight
+                                color: Material.backgroundDimColor
+                                border.color: Material.dividerColor
+                                border.width: 1
+                                radius: 4
+                            }
                         }
                     }
                 }

@@ -217,6 +217,7 @@ Page {
 
             Button {
                 text: qsTr("Quit")
+                visible: systemChecker ? systemChecker.isSteamGameMode : false
                 onClicked: {
                     Qt.quit()
                 }

@@ -17,6 +17,7 @@ class SystemChecker : public QObject
     Q_PROPERTY(QString ffmpegPath READ ffmpegPath NOTIFY ffmpegPathChanged)
     Q_PROPERTY(QStringList checkResults READ checkResults NOTIFY checkResultsChanged)
     Q_PROPERTY(bool allChecksPass READ allChecksPass NOTIFY allChecksPassChanged)
+    Q_PROPERTY(bool isSteamGameMode READ isSteamGameMode CONSTANT)
 
 public:
     explicit SystemChecker(QObject *parent = nullptr);
@@ -29,6 +30,7 @@ public:
     QString ffmpegPath() const { return m_ffmpegPath; }
     QStringList checkResults() const { return m_checkResults; }
     bool allChecksPass() const { return m_steamFound && m_ffmpegFound; }
+    bool isSteamGameMode() const { return m_isSteamGameMode; }
 
 public slots:
     void startSystemCheck();
@@ -77,6 +79,7 @@ private:
     QString m_gameRecordingsPath;
     QStringList m_checkResults;
     QTimer *m_checkTimer;
+    bool m_isSteamGameMode;
 };
 
 #endif // SYSTEMCHECKER_H

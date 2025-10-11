@@ -18,9 +18,14 @@ SystemChecker::SystemChecker(QObject *parent)
     , m_steamFound(false)
     , m_ffmpegFound(false)
     , m_checkTimer(new QTimer(this))
+    , m_isSteamGameMode(false)
 {
     m_checkTimer->setSingleShot(true);
     connect(m_checkTimer, &QTimer::timeout, this, &SystemChecker::performChecks);
+    
+    // Check if running in SteamOS game mode
+    QString steamDeckEnv = qEnvironmentVariable("SteamDeck");
+    m_isSteamGameMode = (steamDeckEnv == "1");
 }
 
 void SystemChecker::startSystemCheck()
@@ -347,3 +352,5 @@ void SystemChecker::setFfmpegPath(const QString &path)
         emit ffmpegPathChanged();
     }
 }
+
+

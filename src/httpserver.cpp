@@ -153,9 +153,9 @@ void HttpServer::setupRoutes()
     });
     
     // Download route - serve video files
-    m_server->route("/download/<arg>", [this](const QString &fileName) {
+    m_server->route("/download/<arg>", [this](const QString &fileName, const QHttpServerRequest &request) {
         incrementConnectionCount();
-        auto response = handleVideoDownload(fileName);
+        auto response = handleVideoDownload(fileName, request);
         decrementConnectionCount();
         return response;
     });
@@ -171,6 +171,21 @@ void HttpServer::setupRoutes()
 
 QHttpServerResponse HttpServer::handleRootRequest()
 {
+    // Try to serve from resources
+    QFile resourceFile(":/web/index.html");
+    if (resourceFile.open(QIODevice::ReadOnly)) {
+        QByteArray content = resourceFile.readAll();
+        QHttpServerResponse response(content);
+        
+        // Set content type header
+        QHttpHeaders headers = response.headers();
+        headers.append(QHttpHeaders::WellKnownHeader::ContentType, "text/html; charset=utf-8");
+        response.setHeaders(std::move(headers));
+        
+        return response;
+    }
+    
+    // Fallback to generated HTML if static file not found
     if (!m_videoManager) {
         return QHttpServerResponse(generateErrorHtml("Video manager not available").toUtf8(),
                                  QHttpServerResponse::StatusCode::InternalServerError);
@@ -209,10 +224,8 @@ QHttpServerResponse HttpServer::handleVideoListApi()
             QJsonObject videoObj;
             videoObj["fileName"] = video->fileName();
             videoObj["displayName"] = video->displayName();
-            videoObj["fileSize"] = video->fileSize();
-            videoObj["fileSizeString"] = video->fileSizeString();
-            videoObj["creationTime"] = video->creationTime().toString(Qt::ISODate);
-            videoObj["creationTimeString"] = video->creationTimeString();
+            videoObj["fileSize"] = video->fileSizeString();
+            videoObj["creationTime"] = video->creationTimeString();
             videoObj["downloadUrl"] = QString("/download/%1").arg(video->fileName());
             videos.append(videoObj);
         }
@@ -220,9 +233,8 @@ QHttpServerResponse HttpServer::handleVideoListApi()
     
     QJsonObject response;
     response["videos"] = videos;
-    response["totalCount"] = videos.size();
-    response["totalSize"] = m_videoManager->totalSize();
-    response["totalSizeString"] = m_videoManager->totalSizeString();
+    response["count"] = videos.size();
+    response["totalSize"] = m_videoManager->totalSizeString();
     
     QHttpServerResponse httpResponse(QJsonDocument(response).toJson());
     
@@ -233,7 +245,7 @@ QHttpServerResponse HttpServer::handleVideoListApi()
     return httpResponse;
 }
 
-QHttpServerResponse HttpServer::handleVideoDownload(const QString &fileName)
+QHttpServerResponse HttpServer::handleVideoDownload(const QString &fileName, const QHttpServerRequest &request)
 {
     if (!m_videoManager) {
         return QHttpServerResponse(generateErrorHtml("Video manager not available").toUtf8(),
@@ -262,20 +274,81 @@ QHttpServerResponse HttpServer::handleVideoDownload(const QString &fileName)
                                  QHttpServerResponse::StatusCode::NotFound);
     }
     
-    // Read file content
+    // Open file
     QFile file(targetVideo->filePath());
     if (!file.open(QIODevice::ReadOnly)) {
         return QHttpServerResponse(generateErrorHtml("Failed to read file").toUtf8(),
                                  QHttpServerResponse::StatusCode::InternalServerError);
     }
     
+    qint64 fileSize = fileInfo.size();
+    
+    // Check for Range request
+    QString rangeHeader = QString::fromLatin1(request.value("Range"));
+    
+    if (!rangeHeader.isEmpty() && rangeHeader.startsWith("bytes=")) {
+        // Parse range header
+        QString rangeSpec = rangeHeader.mid(6); // Remove "bytes="
+        QStringList ranges = rangeSpec.split(',');
+        
+        if (!ranges.isEmpty()) {
+            QString firstRange = ranges.first().trimmed();
+            QStringList rangeParts = firstRange.split('-');
+            
+            if (rangeParts.size() == 2) {
+                qint64 rangeStart = 0;
+                qint64 rangeEnd = fileSize - 1;
+                
+                // Parse start position
+                if (!rangeParts[0].isEmpty()) {
+                    rangeStart = rangeParts[0].toLongLong();
+                }
+                
+                // Parse end position
+                if (!rangeParts[1].isEmpty()) {
+                    rangeEnd = rangeParts[1].toLongLong();
+                }
+                
+                // Validate range
+                if (rangeStart >= 0 && rangeStart < fileSize && rangeEnd >= rangeStart && rangeEnd < fileSize) {
+                    // Seek to start position
+                    file.seek(rangeStart);
+                    
+                    // Read the requested range
+                    qint64 contentLength = rangeEnd - rangeStart + 1;
+                    QByteArray rangeContent = file.read(contentLength);
+                    file.close();
+                    
+                    // Update statistics
+                    m_totalDownloads++;
+                    m_totalBytesServed += rangeContent.size();
+                    emit fileDownloaded(fileName, "unknown");
+                    
+                    // Create partial content response
+                    QHttpServerResponse response(rangeContent, QHttpServerResponse::StatusCode::PartialContent);
+                    
+                    // Set headers for range response
+                    QHttpHeaders headers = response.headers();
+                    headers.append(QHttpHeaders::WellKnownHeader::ContentType, getContentType(targetVideo->filePath()).toUtf8());
+                    headers.append("Content-Range", QString("bytes %1-%2/%3").arg(rangeStart).arg(rangeEnd).arg(fileSize).toUtf8());
+                    headers.append(QHttpHeaders::WellKnownHeader::ContentLength, QString::number(contentLength).toUtf8());
+                    headers.append("Accept-Ranges", "bytes");
+                    response.setHeaders(std::move(headers));
+                    
+                    return response;
+                }
+            }
+        }
+    }
+    
+    // No range request or invalid range - serve full file
     QByteArray fileContent = file.readAll();
     file.close();
     
     // Update statistics
     m_totalDownloads++;
     m_totalBytesServed += fileContent.size();
-    emit fileDownloaded(fileName, "unknown"); // TODO: Get actual client IP
+    emit fileDownloaded(fileName, "unknown");
     
     // Determine content type
     QString contentType = getContentType(targetVideo->filePath());
@@ -283,13 +356,16 @@ QHttpServerResponse HttpServer::handleVideoDownload(const QString &fileName)
     // Create response with file content
     QHttpServerResponse response(fileContent);
     
-    // Set proper headers using Qt 6.8+ API
+    // Set proper headers
     QHttpHeaders headers = response.headers();
     headers.append(QHttpHeaders::WellKnownHeader::ContentType, contentType.toUtf8());
-    headers.append(QHttpHeaders::WellKnownHeader::ContentDisposition,
-                  QString("attachment; filename=\"%1\"").arg(fileName).toUtf8());
-    headers.append(QHttpHeaders::WellKnownHeader::ContentLength,
-                  QString::number(fileContent.size()).toUtf8());
+    headers.append(QHttpHeaders::WellKnownHeader::ContentLength, QString::number(fileContent.size()).toUtf8());
+    headers.append("Accept-Ranges", "bytes");
+    // Remove attachment disposition for video preview
+    if (!contentType.startsWith("video/")) {
+        headers.append(QHttpHeaders::WellKnownHeader::ContentDisposition,
+                      QString("attachment; filename=\"%1\"").arg(fileName).toUtf8());
+    }
     response.setHeaders(std::move(headers));
     
     return response;
@@ -305,7 +381,7 @@ QHttpServerResponse HttpServer::handleStaticFiles(const QString &path)
 
 QString HttpServer::generateVideoListHtml()
 {
-    QString html = R"(
+    QString html = R"html(
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -389,19 +465,80 @@ QString HttpServer::generateVideoListHtml()
             font-size: 0.9em;
             margin: 5px 0;
         }
-        .download-btn {
+        .video-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .btn {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-decoration: none;
             padding: 12px 24px;
             border-radius: 6px;
-            margin-top: 15px;
             transition: opacity 0.2s;
             font-weight: 500;
+            text-align: center;
+            flex: 1;
+            cursor: pointer;
+            border: none;
         }
-        .download-btn:hover {
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .preview-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+        .btn:hover {
             opacity: 0.9;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+        }
+        .modal-content {
+            position: relative;
+            margin: 50px auto;
+            width: 90%;
+            max-width: 800px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .modal-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-header h2 {
+            margin: 0;
+        }
+        .close {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .close:hover {
+            opacity: 0.7;
+        }
+        .modal-body {
+            padding: 0;
+        }
+        .modal video {
+            width: 100%;
+            height: auto;
+            display: block;
         }
         .empty-state {
             text-align: center;
@@ -434,9 +571,60 @@ QString HttpServer::generateVideoListHtml()
             %3
         </div>
     </div>
+    
+    <!-- Video Preview Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Video Preview</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <video id="modalVideo" controls>
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function openPreview(filename, title) {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            modalTitle.textContent = title;
+            video.src = '/download/' + filename;
+            modal.style.display = 'block';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            
+            video.pause();
+            video.src = '';
+            modal.style.display = 'none';
+        }
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
-)";
+)html";
 
     if (!m_videoManager || m_videoManager->videoCount() == 0) {
         QString emptyContent = R"(
@@ -453,22 +641,26 @@ QString HttpServer::generateVideoListHtml()
     for (int i = 0; i < m_videoManager->videoCount(); ++i) {
         ExportedVideo *video = m_videoManager->getVideo(i);
         if (video) {
-            QString card = R"(
+            QString card = R"html(
                 <div class="video-card">
                     <div class="video-info">
                         <h3 class="video-title">%1</h3>
                         <div class="video-details">📁 %2</div>
                         <div class="video-details">📏 %3</div>
                         <div class="video-details">📅 %4</div>
-                        <a href="/download/%5" class="download-btn">⬇️ Download</a>
+                        <div class="video-actions">
+                            <button class="btn preview-btn" onclick="openPreview('%5', '%6')">👁️ Preview</button>
+                            <a href="/download/%5" class="btn download-btn">⬇️ Download</a>
+                        </div>
                     </div>
                 </div>
-            )";
+            )html";
             videoCards += card.arg(video->displayName())
                              .arg(video->fileName())
                              .arg(video->fileSizeString())
                              .arg(video->creationTimeString())
-                             .arg(video->fileName());
+                             .arg(video->fileName())
+                             .arg(video->displayName().replace("'", "\\'"));
         }
     }
     videoCards += "</div>";

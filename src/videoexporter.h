@@ -23,6 +23,7 @@ class VideoExporter : public QObject
     Q_PROPERTY(QString ffmpegPath READ ffmpegPath WRITE setFfmpegPath NOTIFY ffmpegPathChanged)
 
 public:
+    
     explicit VideoExporter(QObject *parent = nullptr);
     ~VideoExporter() override;
 

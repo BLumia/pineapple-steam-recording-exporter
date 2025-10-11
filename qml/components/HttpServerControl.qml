@@ -228,7 +228,6 @@ Rectangle {
                     anchors.fill: parent
                     anchors.margins: 6
                     text: qsTr("💡 Start the server to share your videos over the network")
-                    font.pixelSize: 10
                     wrapMode: Text.WordWrap
                     color: Material.color(Material.Blue, Material.Shade800)
                 }

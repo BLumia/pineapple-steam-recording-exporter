@@ -31,6 +31,7 @@ Page {
             }
 
             ToolButton {
+                icon.name: "folder-videos-symbolic"
                 text: qsTr("Exported Videos")
                 onClicked: root.exportedVideosRequested()
 

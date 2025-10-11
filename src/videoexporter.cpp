@@ -426,8 +426,13 @@ QStringList VideoExporter::buildFfmpegArguments(const QString &inputMpdPath, con
     // Input file
     args << "-i" << inputMpdPath;
     
-    // Copy streams without re-encoding for faster, lossless conversion
+    // Fast copy mode - direct stream copy with optimizations
     args << "-c" << "copy";
+    
+    // Fix timestamps and seeking issues without re-encoding
+    args << "-avoid_negative_ts" << "make_zero";   // Fix negative timestamps
+    args << "-fflags" << "+genpts";                // Generate presentation timestamps for better seeking
+    args << "-movflags" << "+faststart";           // Move moov atom to beginning for streaming/seeking
     
     // Overwrite output file without prompting
     args << "-y";
