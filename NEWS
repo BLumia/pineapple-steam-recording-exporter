@@ -1,0 +1,25 @@
+Version 0.2.0
+~~~~~~~~~~~~~
+Released: 2025-10-12
+
+Features:
+ * Ensure having icons under SteamOS game mode
+ * Add a Quit button for running in game mode
+ * Local HTTP server for sharing exported videos now support preview as well
+ * Update translations
+
+Contributors:
+ Vistaus
+
+Version 0.1.0
+~~~~~~~~~~~~~
+Released: 2025-10-06
+
+Note:
+ Initial release with core functionality
+
+Features:
+ * Steam recording detection and export
+ * Video preview and management
+ * Multi-segment recording support
+ * Cross-platform compatibility (Windows, Linux)

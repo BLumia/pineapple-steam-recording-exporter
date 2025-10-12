@@ -8,9 +8,15 @@ This tool is designed to be used on Steam Deck, but also works on other Linux di
 
 ## Get it!
 
-We are not ready for stable release yet, the goal is to put release binary on Flathub for everyone to download, and also on GitHub Release for other users (e.g. Windows users). I'll update this section once we have a proper release.
+For Linux users, the Flatpak version on Flathub is suggested to be used:
 
-Meanwhile you can check out the nightly builds, which might have some known issues but already usable. See info below.
+<a href='https://flathub.org/apps/net.blumia.pineapple-steam-recording-exporter'>
+<img width='240' alt='Get it on Flathub' src='https://flathub.org/api/badge?locale=en'/>
+</a>
+
+If using Flatpak version is not an option, you can get other builds at [GitHub Release](https://github.com/BLumia/pineapple-steam-recording-exporter/releases) page (e.g. Windows version, AppImage version), but be aware non-flatpak version might have known issues.
+
+You can also check out the nightly builds if preferred, see info below.
 
 <details>
 <summary>CI builds:</summary>

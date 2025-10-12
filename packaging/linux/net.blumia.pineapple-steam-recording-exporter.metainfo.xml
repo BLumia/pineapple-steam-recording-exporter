@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <component type="desktop-application">
   <id>net.blumia.pineapple-steam-recording-exporter</id>
   <name>Pineapple Steam Recording Exporter</name>
   <name xml:lang="zh-CN">菠萝Steam录制导出工具</name>
-
   <summary>Export Steam game recordings to MP4 videos</summary>
   <summary xml:lang="zh-CN">将Steam游戏录制内容导出为MP4视频</summary>
-
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
   <description>
     <p>
       Pineapple Steam Recording Exporter is a Qt6-based application that helps you automatically
@@ -36,46 +36,44 @@
       <li xml:lang="zh-CN">内置 HTTP 服务器以供用于分享导出的视频到局域网设备</li>
     </ul>
   </description>
-
-  <launchable type="desktop-id">net.blumia.pineapple-steam-recording-exporter.desktop</launchable>
-
-  <screenshots>
-    <screenshot type="default">
-      <caption>Main recording list interface</caption>
-      <caption xml:lang="zh-CN">主录制列表界面</caption>
-      <image>https://pineapple-steam-rec-exporter.sourceforge.io/psre-recordings-page.png</image>
-    </screenshot>
-    <screenshot>
-      <caption>Video preview and export interface</caption>
-      <caption xml:lang="zh-CN">视频预览和导出界面</caption>
-      <image>https://pineapple-steam-rec-exporter.sourceforge.io/psre-export-preview-page.png</image>
-    </screenshot>
-    <screenshot>
-      <caption>Exported videos management</caption>
-      <caption xml:lang="zh-CN">导出视频管理</caption>
-      <image>https://pineapple-steam-rec-exporter.sourceforge.io/psre-exported-management-page.png</image>
-    </screenshot>
-  </screenshots>
-
-  <url type="homepage">https://github.com/BLumia/pineapple-steam-recording-exporter</url>
-  <url type="bugtracker">https://github.com/BLumia/pineapple-steam-recording-exporter/issues</url>
-  <url type="translate">https://translate.codeberg.org/projects/pineapple-apps/pineapple-steam-recording-exporter/</url>
-  <url type="donation">https://ko-fi.com/blumia</url>
-
-  <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GPL-3.0</project_license>
-
   <developer id="net.blumia">
     <name>Gary (BLumia) Wang</name>
   </developer>
-
+  <requires>
+    <display_length>768</display_length>
+  </requires>
+  <recommends>
+    <control>pointing</control>
+    <control>keyboard</control>
+  </recommends>
+  <launchable type="desktop-id">net.blumia.pineapple-steam-recording-exporter.desktop</launchable>
+  <url type="homepage">https://github.com/BLumia/pineapple-steam-recording-exporter</url>
+  <url type="bugtracker">https://github.com/BLumia/pineapple-steam-recording-exporter/issues</url>
+  <url type="donation">https://ko-fi.com/blumia</url>
+  <url type="translate">https://translate.codeberg.org/projects/pineapple-apps/pineapple-steam-recording-exporter/</url>
   <categories>
     <category>AudioVideo</category>
     <category>Video</category>
     <category>Qt</category>
     <category>Game</category>
   </categories>
-
+  <screenshots>
+    <screenshot type="default">
+      <caption>Main recording list interface</caption>
+      <caption xml:lang="zh-CN">主录制列表界面</caption>
+      <image type="source">https://pineapple-steam-rec-exporter.sourceforge.io/psre-recordings-page.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Video preview and export interface</caption>
+      <caption xml:lang="zh-CN">视频预览和导出界面</caption>
+      <image type="source">https://pineapple-steam-rec-exporter.sourceforge.io/psre-export-preview-page.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Exported videos management</caption>
+      <caption xml:lang="zh-CN">导出视频管理</caption>
+      <image type="source">https://pineapple-steam-rec-exporter.sourceforge.io/psre-exported-management-page.png</image>
+    </screenshot>
+  </screenshots>
   <keywords>
     <keyword>steam</keyword>
     <keyword>recording</keyword>
@@ -90,36 +88,33 @@
     <keyword xml:lang="zh-CN">mp4</keyword>
     <keyword xml:lang="zh-CN">游戏</keyword>
   </keywords>
-
-  <recommends>
-    <control>pointing</control>
-    <control>keyboard</control>
-  </recommends>
-
-  <requires>
-    <display_length compare="ge">768</display_length>
-  </requires>
-
   <releases>
-    <release version="0.1.0" date="2025-10-06">
+    <release type="stable" version="0.2.0" date="2025-10-12T00:00:00Z">
       <description>
-        <p>Initial release with core functionality:</p>
-        <p xml:lang="zh-CN">包含核心功能的初始版本：</p>
+        <p>This release adds the following features:</p>
+        <ul>
+          <li>Ensure having icons under SteamOS game mode</li>
+          <li>Add a Quit button for running in game mode</li>
+          <li>Local HTTP server for sharing exported videos now support preview as well</li>
+          <li>Update translations</li>
+        </ul>
+        <p>With contributions from:</p>
+        <p>Vistaus</p>
+      </description>
+    </release>
+    <release type="stable" version="0.1.0" date="2025-10-06T00:00:00Z">
+      <description>
+        <p>Initial release with core functionality</p>
+        <p>This release adds the following features:</p>
         <ul>
           <li>Steam recording detection and export</li>
-          <li xml:lang="zh-CN">Steam录制检测和导出</li>
           <li>Video preview and management</li>
-          <li xml:lang="zh-CN">视频预览和管理</li>
           <li>Multi-segment recording support</li>
-          <li xml:lang="zh-CN">多段录制支持</li>
           <li>Cross-platform compatibility (Windows, Linux)</li>
-          <li xml:lang="zh-CN">跨平台兼容性（Windows、Linux）</li>
         </ul>
       </description>
     </release>
   </releases>
-
-  <content_rating type="oars-1.1" />
-
+  <content_rating type="oars-1.1"/>
   <update_contact>opensource@blumia.net</update_contact>
 </component>
