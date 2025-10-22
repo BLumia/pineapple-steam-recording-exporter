@@ -819,137 +819,137 @@ Als FFmpeg niet is aangetroffen, download het dan via de site (https://ffmpeg.or
     <message>
         <location filename="../src/videoexporter.cpp" line="87"/>
         <source>Cannot find or access segment MPD file</source>
-        <translation type="unfinished"></translation>
+        <translation>Het segmentbestand kan niet worden gevonden of is ontoegankelijk</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="98"/>
         <source>Exporting segment %1 of %2</source>
-        <translation type="unfinished"></translation>
+        <translation>Bezig met exporteren van segment %1 van %2…</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="118"/>
         <source>No segments found in recording clip</source>
-        <translation type="unfinished"></translation>
+        <translation>Er zijn geen segmenten aangetroffen in deze opname</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="129"/>
         <source>Warning: Multi-segment export not yet implemented. Exporting first segment only.</source>
-        <translation type="unfinished"></translation>
+        <translation>Waarschuwing: het exporteren van meerdere segmenten wordt nog niet ondersteund. Alleen het eerste wordt geëxporteerd.</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="139"/>
         <source>Cancelling export...</source>
-        <translation type="unfinished"></translation>
+        <translation>Bezig met afbreken…</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="258"/>
         <source>FFmpeg process crashed</source>
-        <translation type="unfinished"></translation>
+        <translation>Het FFmpeg-proces is gecrasht</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="269"/>
         <source>Export completed successfully!</source>
-        <translation type="unfinished"></translation>
+        <translation>Het exporteren is voltooid!</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="273"/>
         <source>Output file: %1 (%2)</source>
-        <translation type="unfinished"></translation>
+        <translation>Resultaatbestand: %1 (%2)</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="283"/>
         <source>FFmpeg exited with code %1</source>
-        <translation type="unfinished"></translation>
+        <translation>FFmpeg is afgesloten met foutcode %1</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="298"/>
         <source>Failed to start FFmpeg. Please check that FFmpeg is installed and accessible.</source>
-        <translation type="unfinished"></translation>
+        <translation>FFmpeg kan niet worden gestart. Controleer of FFmpeg geïnstalleerd is en geopend mag worden.</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="301"/>
         <source>FFmpeg crashed during export</source>
-        <translation type="unfinished"></translation>
+        <translation>FFmpeg is tijdens het exporteren gecrasht</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="304"/>
         <source>FFmpeg process timed out</source>
-        <translation type="unfinished"></translation>
+        <translation>De FFmpeg-procestijd is verstreken</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="307"/>
         <source>Failed to write to FFmpeg process</source>
-        <translation type="unfinished"></translation>
+        <translation>Het FFmpeg-proces kan niet worden gestart</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="310"/>
         <source>Failed to read from FFmpeg process</source>
-        <translation type="unfinished"></translation>
+        <translation>Het FFmpeg-proces kan niet worden ingezien</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="314"/>
         <source>Unknown FFmpeg error occurred</source>
-        <translation type="unfinished"></translation>
+        <translation>Er is een onbekende FFmpeg-fout opgetreden</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="376"/>
         <source>FFmpeg executable not found or not accessible</source>
-        <translation type="unfinished"></translation>
+        <translation>Het uitvoerbare FFmpeg-bestand bestaat niet of is ontoegankelijk</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="381"/>
         <source>Input file not found or not accessible: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Het invoerbestand bestaat niet of is ontoegankelijk: %1</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="387"/>
         <source>Cannot create output directory</source>
-        <translation type="unfinished"></translation>
+        <translation>De resultaatmap kan niet worden aangemaakt</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="401"/>
         <source>Starting export: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Het exporteren wordt gestart: %1</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="402"/>
         <source>Input: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Invoer: %1</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="403"/>
         <source>Output: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Resultaat: %1</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="415"/>
         <source>FFmpeg command: %1 %2</source>
-        <translation type="unfinished"></translation>
+        <translation>FFmpeg-opdracht: %1 %2</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="561"/>
         <source>0 bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>0 bytes</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="569"/>
         <source>%1 GB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 GB</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="571"/>
         <source>%1 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 MB</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="573"/>
         <source>%1 KB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 KB</translation>
     </message>
     <message>
         <location filename="../src/videoexporter.cpp" line="575"/>
         <source>%1 bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 bytes</translation>
     </message>
 </context>
 <context>
@@ -957,123 +957,124 @@ Als FFmpeg niet is aangetroffen, download het dan via de site (https://ffmpeg.or
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="31"/>
         <source>Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Terug</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="36"/>
         <source>Video Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Videovoortoning</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="45"/>
         <source>Show in Explorer</source>
-        <translation type="unfinished"></translation>
+        <translation>Tonen in bestandsbeheerder</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="56"/>
         <source>Delete</source>
-        <translation type="unfinished"></translation>
+        <translation>Verwijderen</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="73"/>
         <source>Video Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Videospeler</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="122"/>
         <source>Error loading video: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>De video kan niet worden gestart: %1</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="152"/>
         <source>Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Pauzeren</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="152"/>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>Afspelen</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="165"/>
         <source>Stop</source>
-        <translation type="unfinished"></translation>
+        <translation>Stoppen</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="196"/>
         <source>Unmute</source>
-        <translation type="unfinished"></translation>
+        <translation>Ontdempen</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="196"/>
         <source>Mute</source>
-        <translation type="unfinished"></translation>
+        <translation>Dempen</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="214"/>
         <source>Play with Default Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Bekijken in standaard videospeler</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="227"/>
         <source>Loading...</source>
-        <translation type="unfinished"></translation>
+        <translation>Bezig met laden…</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="243"/>
         <source>Video Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Video-informatie</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="254"/>
         <source>Display Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Getoonde naam:</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="264"/>
         <source>File Name:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandsnaam:</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="275"/>
         <source>File Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandsgrootte:</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="283"/>
         <source>Created:</source>
-        <translation type="unfinished"></translation>
+        <translation>Aangemaakt op:</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="291"/>
         <source>File Path:</source>
-        <translation type="unfinished"></translation>
+        <translation>Bestandslocatie:</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="304"/>
         <source>Duration:</source>
-        <translation type="unfinished"></translation>
+        <translation>Duur:</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="314"/>
         <source>Resolution:</source>
-        <translation type="unfinished"></translation>
+        <translation>Resolutie:</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="320"/>
         <source>%1 × %2</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 × %2</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="339"/>
         <source>Delete Video</source>
-        <translation type="unfinished"></translation>
+        <translation>Video verwijderen</translation>
     </message>
     <message>
         <location filename="../qml/VideoPreviewPage.qml" line="342"/>
         <source>Are you sure you want to delete &quot;%1&quot;?
 This action cannot be undone.</source>
-        <translation type="unfinished"></translation>
+        <translation>Weet je zeker dat je “%1” wilt verwijderen?
+Deze actie is onomkeerbaar.</translation>
     </message>
 </context>
 <context>
@@ -1081,47 +1082,47 @@ This action cannot be undone.</source>
     <message>
         <location filename="../qml/main.qml" line="16"/>
         <source>Pineapple Steam Recording Exporter</source>
-        <translation type="unfinished"></translation>
+        <translation>Pineapple Steam-opnames exporteren</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="269"/>
         <source>Export in Progress</source>
-        <translation type="unfinished"></translation>
+        <translation>Aan het exporteren</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="272"/>
         <source>An export operation is currently in progress. Are you sure you want to exit?</source>
-        <translation type="unfinished"></translation>
+        <translation>Er wordt een video geëxporteerd. Weet je zeker dat je wilt afsluiten?</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="298"/>
         <source>System Check</source>
-        <translation type="unfinished"></translation>
+        <translation>Systeemcontrole</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="300"/>
         <source>Recording List</source>
-        <translation type="unfinished"></translation>
+        <translation>Opnamelijst</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="303"/>
         <source>Clip Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Clipkeuze</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="305"/>
         <source>Preview &amp; Export</source>
-        <translation type="unfinished"></translation>
+        <translation>Voorvertonen en exporteren</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="307"/>
         <source>Exported Videos</source>
-        <translation type="unfinished"></translation>
+        <translation>Geëxporteerde video&apos;s</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="310"/>
         <source>Video Preview</source>
-        <translation type="unfinished"></translation>
+        <translation>Videovoorvertoning</translation>
     </message>
 </context>
 </TS>
