@@ -68,8 +68,6 @@ Page {
             GroupBox {
                 title: qsTr("Preview")
                 Layout.fillWidth: true
-                Layout.preferredHeight: 400
-                Layout.minimumHeight: 300
                 Layout.margins: 16
             
                 ColumnLayout {
@@ -79,7 +77,7 @@ Page {
                     // Video player
                     Rectangle {
                         Layout.fillWidth: true
-                        Layout.fillHeight: true
+                        Layout.preferredHeight: Math.min(width * 9/16, 400)
                         Layout.minimumHeight: 250
 
                         color: "black"

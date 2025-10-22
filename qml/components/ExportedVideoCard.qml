@@ -29,8 +29,8 @@ ItemDelegate {
         
         // Video thumbnail placeholder
         Rectangle {
-            Layout.preferredWidth: 120
-            Layout.preferredHeight: 68
+            Layout.preferredWidth: 140
+            Layout.preferredHeight: 88
             Layout.alignment: Qt.AlignVCenter
             
             color: Material.backgroundDimColor

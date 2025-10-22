@@ -38,7 +38,7 @@ ItemDelegate {
         
         // Thumbnail
         Rectangle {
-            Layout.preferredWidth: 88
+            Layout.preferredWidth: 140
             Layout.preferredHeight: 88
             Layout.alignment: Qt.AlignTop
             
