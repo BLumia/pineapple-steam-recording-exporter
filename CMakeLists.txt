@@ -26,6 +26,7 @@ set(SOURCES
     src/videoexporter.cpp
     src/exportedvideomanager.cpp
     src/httpserver.cpp
+    src/qvdfparser.cpp
 )
 
 # Header files
@@ -37,6 +38,7 @@ set(HEADERS
     src/videoexporter.h
     src/exportedvideomanager.h
     src/httpserver.h
+    src/qvdfparser.h
 )
 
 # Create the executable

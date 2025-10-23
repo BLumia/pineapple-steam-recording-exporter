@@ -40,6 +40,7 @@ Page {
             }
 
             ToolButton {
+                icon.name: "system-switch-user"
                 text: qsTr("Switch User")
                 enabled: recordingManager ? (!recordingManager.isScanning && recordingManager.hasMultipleUsers) : false
                 visible: recordingManager ? recordingManager.hasMultipleUsers : false

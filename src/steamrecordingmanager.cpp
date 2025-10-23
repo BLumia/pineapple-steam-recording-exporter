@@ -1,6 +1,7 @@
 #include "steamrecordingmanager.h"
 #include "recordingclip.h"
 #include "gameinfo.h"
+#include "qvdfparser.h"
 #include <QDir>
 #include <QFileInfo>
 #include <QDebug>
@@ -578,7 +579,8 @@ void SteamRecordingManager::scanForSteamUsers()
         }
         
         if (!selectedId.isEmpty()) {
-            addScanResult(tr("Auto-selected user: %1").arg(selectedId));
+            QString displayName = getUserDisplayName(selectedId);
+            addScanResult(tr("Auto-selected user: %1").arg(displayName));
         } else {
             addScanResult(tr("No user auto-selected - please choose manually"));
         }
@@ -651,28 +653,18 @@ QList<SteamUser> SteamRecordingManager::parseSteamUsers(const QString &steamPath
         
         // Try to get persona name from localconfig.vdf
         QString localConfigPath = user.userDataPath + "/config/localconfig.vdf";
-        QFile localConfigFile(localConfigPath);
-        if (localConfigFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-            QTextStream stream(&localConfigFile);
-            QString content = stream.readAll();
+        
+        QVdfParser parser;
+        auto localConfigRoot = parser.parseFile(localConfigPath);
+        
+        if (localConfigRoot) {
+            // Get PersonaName from friends section at root level
+            user.personaName = localConfigRoot->childByPath("friends")->stringAttribute("PersonaName");
             
-            // Look for PersonaName
-            QRegularExpression personaRegex("\"PersonaName\"\\s*\"([^\"]*)\"");
-            QRegularExpressionMatch match = personaRegex.match(content);
-            if (match.hasMatch()) {
-                user.personaName = match.captured(1);
-                qDebug() << "SteamRecordingManager::parseSteamUsers() - Found PersonaName for" << userDir << ":" << user.personaName;
+            // Try to get AccountName from UserLocalConfigStore
+            if (auto userLocalConfigStore = localConfigRoot->child("UserLocalConfigStore")) {
+                user.accountName = userLocalConfigStore->stringAttribute("AccountName");
             }
-            
-            // Look for AccountName as fallback
-            QRegularExpression accountRegex("\"AccountName\"\\s*\"([^\"]*)\"");
-            match = accountRegex.match(content);
-            if (match.hasMatch()) {
-                user.accountName = match.captured(1);
-                qDebug() << "SteamRecordingManager::parseSteamUsers() - Found AccountName for" << userDir << ":" << user.accountName;
-            }
-        } else {
-            qDebug() << "SteamRecordingManager::parseSteamUsers() - Could not open localconfig.vdf for user" << userDir;
         }
         
         users.append(user);
@@ -685,25 +677,36 @@ QList<SteamUser> SteamRecordingManager::parseSteamUsers(const QString &steamPath
 QString SteamRecordingManager::parseSteamConfig(const QString &steamPath) const
 {
     QString configPath = steamPath + "/config/config.vdf";
-    QFile configFile(configPath);
     
-    if (!configFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "Could not open Steam config file:" << configPath;
+    QVdfParser parser;
+    auto root = parser.parseFile(configPath);
+    
+    if (!root) {
+        qDebug() << "Could not parse Steam config file:" << configPath;
+        qDebug() << "Parser error:" << parser.lastError();
         return QString();
     }
     
-    QTextStream stream(&configFile);
-    QString content = stream.readAll();
+    QString steamId;
     
-    // Look for SteamID value
-    QRegularExpression steamIdRegex("\"SteamID\"\\s*\"(\\d+)\"");
-    QRegularExpressionMatch match = steamIdRegex.match(content);
-    
-    if (match.hasMatch()) {
-        return match.captured(1);
+    // Navigate to InstallConfigStore > Software > Valve > Steam > Accounts using path access
+    if (auto accounts = root->childByPath("InstallConfigStore/Software/Valve/Steam/Accounts")) {
+        // Get the first account (there might be multiple users)
+        QList<QVdfParser::VdfObject*> accountList = accounts->children();
+        if (!accountList.isEmpty()) {
+            QVdfParser::VdfObject *firstAccount = accountList.first();
+            if (firstAccount) {
+                steamId = firstAccount->stringAttribute("SteamID");
+                qDebug() << "Found SteamID for account" << firstAccount->name() << ":" << steamId;
+            }
+        }
     }
     
-    return QString();
+    if (steamId.isEmpty()) {
+        qDebug() << "Could not find SteamID in config.vdf at expected path";
+    }
+    
+    return steamId;
 }
 
 QString SteamRecordingManager::steamId64ToSteamId3(const QString &steamId64) const

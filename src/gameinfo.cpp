@@ -1,4 +1,5 @@
 #include "gameinfo.h"
+#include "qvdfparser.h"
 #include <QFile>
 #include <QTextStream>
 #include <QRegularExpression>
@@ -136,29 +137,23 @@ QString GameInfo::formattedLastUpdated() const
 
 bool GameInfo::loadFromAcf(const QString &acfFilePath)
 {
-    QFile file(acfFilePath);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qWarning() << "Failed to open ACF file:" << acfFilePath;
+    QVdfParser parser;
+    auto root = parser.parseFile(acfFilePath);
+    
+    if (!root) {
+        qWarning() << "Failed to parse ACF file:" << acfFilePath;
+        qWarning() << "Parser error:" << parser.lastError();
         return false;
     }
 
-    QTextStream in(&file);
-    QString content = in.readAll();
-    file.close();
-
-    if (content.isEmpty()) {
-        qWarning() << "ACF file is empty:" << acfFilePath;
-        return false;
-    }
-
-    // Parse the ACF content
-    QString appId = parseAcfValue(content, "appid");
-    QString name = parseAcfValue(content, "name");
-    QString installDir = parseAcfValue(content, "installdir");
-    QString developer = parseAcfValue(content, "developer");
-    QString publisher = parseAcfValue(content, "publisher");
-    QString lastUpdatedStr = parseAcfValue(content, "LastUpdated");
-    QString sizeOnDiskStr = parseAcfValue(content, "SizeOnDisk");
+    // Parse the ACF content using VDF parser
+    QString appId = root->stringAttribute("appid");
+    QString name = root->stringAttribute("name");
+    QString installDir = root->stringAttribute("installdir");
+    QString developer = root->stringAttribute("developer");
+    QString publisher = root->stringAttribute("publisher");
+    QString lastUpdatedStr = root->stringAttribute("LastUpdated");
+    QString sizeOnDiskStr = root->stringAttribute("SizeOnDisk");
 
     // Validate required fields
     if (appId.isEmpty() || name.isEmpty()) {
