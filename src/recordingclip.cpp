@@ -275,8 +275,10 @@ void RecordingClip::scanSegments()
         QDir videoDir = clipDir;
         
         if (videoDir.cd("video")) {
-            // Find all segment directories (should start with "fg_")
-            QStringList segmentDirs = videoDir.entryList(QStringList() << "fg_*", QDir::Dirs | QDir::NoDotAndDotDot);
+            // Find all segment directories. Recording directories should start with:
+            // - "fg_" for foreground/manual recording, or
+            // - "bg_" for background recording (user need to manually save them to Steam to make it shows up)
+            QStringList segmentDirs = videoDir.entryList(QStringList{"fg_*", "bg_*"}, QDir::Dirs | QDir::NoDotAndDotDot);
             
             for (const QString &segmentDirName : segmentDirs) {
                 QString segmentPath = videoDir.absoluteFilePath(segmentDirName);
