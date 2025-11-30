@@ -89,6 +89,22 @@
     <keyword xml:lang="zh-CN">游戏</keyword>
   </keywords>
   <releases>
+    <release type="stable" version="0.3.0" date="2025-11-30T00:00:00Z">
+      <description>
+        <p>This release fixes the following bug:</p>
+        <ul>
+          <li>Background recordings show 00:00 and 0 bytes (GitHub: BLumia/pineapple-steam-recording-exporter#1)</li>
+        </ul>
+        <p>This release includes the following changes:</p>
+        <ul>
+          <li>Tweak preview and thumbnail size</li>
+          <li>Introduce QVdfParser for better Vdf parsing</li>
+          <li>Update translations</li>
+        </ul>
+        <p>With contributions from:</p>
+        <p>Atalanttore, Dirk, Vistaus, Trent McPheron</p>
+      </description>
+    </release>
     <release type="stable" version="0.2.0" date="2025-10-12T00:00:00Z">
       <description>
         <p>This release adds the following features:</p>
@@ -116,5 +132,4 @@
     </release>
   </releases>
   <content_rating type="oars-1.1"/>
-  <update_contact>opensource@blumia.net</update_contact>
 </component>

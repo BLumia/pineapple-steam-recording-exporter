@@ -1,3 +1,18 @@
+Version 0.3.0
+~~~~~~~~~~~~~
+Released: 2025-11-30
+
+Bugfixes:
+ * Background recordings show 00:00 and 0 bytes (GitHub: BLumia/pineapple-steam-recording-exporter#1)
+
+Miscellaneous:
+ * Tweak preview and thumbnail size
+ * Introduce QVdfParser for better Vdf parsing
+ * Update translations
+
+Contributors:
+ Atalanttore, Dirk, Vistaus, Trent McPheron
+
 Version 0.2.0
 ~~~~~~~~~~~~~
 Released: 2025-10-12
