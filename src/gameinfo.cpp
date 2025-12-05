@@ -243,19 +243,54 @@ QString GameInfo::findAcfFilePath(const QString &appId, const QString &steamPath
         return QString();
     }
 
-    QDir steamAppsDir(steamPath + "/steamapps");
-    if (!steamAppsDir.exists()) {
-        qWarning() << "Steamapps directory does not exist:" << steamAppsDir.absolutePath();
-        return QString();
+    // Prefer reading libraryfolders.vdf to enumerate all Steam libraries
+    const QString libraryFoldersPath = steamPath + "/config/libraryfolders.vdf";
+    QVdfParser parser;
+    auto root = parser.parseFile(libraryFoldersPath);
+
+    const QString acfFileName = QString("appmanifest_%1.acf").arg(appId);
+
+    if (root) {
+        if (auto libraries = root->child("libraryfolders")) {
+            const auto libraryEntries = libraries->children();
+            for (const auto *entry : libraryEntries) {
+                if (!entry) continue;
+                const QString libraryPath = entry->stringAttribute("path");
+                if (libraryPath.isEmpty()) continue;
+
+                const QString normalizedLibraryPath = QDir::fromNativeSeparators(libraryPath);
+                QDir steamAppsDir(normalizedLibraryPath + "/steamapps");
+                const QString acfFilePath = steamAppsDir.absoluteFilePath(acfFileName);
+
+                if (QFileInfo::exists(acfFilePath)) {
+                    return acfFilePath;
+                }
+
+                // Optional: if apps list indicates presence, still try path
+                if (auto apps = entry->child("apps")) {
+                    if (apps->hasAttribute(appId)) {
+                        if (QFileInfo::exists(acfFilePath)) {
+                            return acfFilePath;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        qWarning() << "Failed to parse libraryfolders.vdf:" << libraryFoldersPath << "error:" << parser.lastError();
     }
 
-    QString acfFileName = QString("appmanifest_%1.acf").arg(appId);
-    QString acfFilePath = steamAppsDir.absoluteFilePath(acfFileName);
-    
-    if (QFileInfo::exists(acfFilePath)) {
-        return acfFilePath;
+    // Fallback: check default steamapps under steamPath
+    QDir defaultSteamAppsDir(steamPath + "/steamapps");
+    if (defaultSteamAppsDir.exists()) {
+        const QString fallbackAcfPath = defaultSteamAppsDir.absoluteFilePath(acfFileName);
+        if (QFileInfo::exists(fallbackAcfPath)) {
+            return fallbackAcfPath;
+        }
+    } else {
+        qWarning() << "Default Steamapps directory does not exist:" << defaultSteamAppsDir.absolutePath();
     }
 
-    qWarning() << "ACF file not found for AppID" << appId << "at:" << acfFilePath;
+    qWarning() << "ACF file not found for AppID" << appId << "in any library defined in" << libraryFoldersPath;
     return QString();
 }
