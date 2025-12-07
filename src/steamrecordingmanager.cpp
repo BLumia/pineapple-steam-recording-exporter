@@ -509,7 +509,24 @@ QString SteamRecordingManager::findGameRecordingsPathForUser(const QString &stea
         return QString();
     }
 
+    // Default game recording location
     QString gameRecordingsPath = userDataDir.absoluteFilePath(userId + "/gamerecordings");
+
+    // Read user's localconfig.vdf to check if they have a custom recording location
+    QString localConfigPath = userDataDir.absoluteFilePath(userId + "/config/localconfig.vdf");
+    if (QFile::exists(localConfigPath)) {
+        QVdfParser parser;
+        auto localConfigRoot = parser.parseFile(localConfigPath);
+        if (localConfigRoot) {
+            // Check if they have a custom recording location set in localconfig.vdf
+            // It can be empty or the key might not exist at all, if that's the case, use default, otherwise use the custom path
+            QString gameRecordingsPathNode = localConfigRoot->childByPath("GameRecording")->stringAttribute("BackgroundRecordPath");
+            if (!gameRecordingsPathNode.isEmpty() && QFileInfo::exists(gameRecordingsPathNode)) {
+                qDebug() << "Using user's custom BackgroundRecordPath" << gameRecordingsPathNode;
+                gameRecordingsPath = gameRecordingsPathNode;
+            }
+        }
+    }
     
     QDir gameRecordingsDir(gameRecordingsPath);
     if (!gameRecordingsDir.exists()) {
