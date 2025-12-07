@@ -9,8 +9,7 @@ on:
   workflow_dispatch:
 
 env:
-  QT_VERSION: '6.9.3'
-  CMAKE_VERSION: '3.27.0'
+  QT_VERSION: '6.10.1'
   FFMPEG_VERSION: '7.1.1' # MUST match to the version that Qt uses: https://doc.qt.io/qt-6/qtmultimedia-attribution-ffmpeg.html
 
 jobs:
@@ -56,7 +55,7 @@ jobs:
 
     - name: Deploy Qt
       run: |
-        & "windeployqt.exe" --qmldir qml install\bin\PineappleSteamRecordingExporter.exe
+        & "windeployqt.exe" --no-compiler-runtime --qmldir qml install\bin\PineappleSteamRecordingExporter.exe
 
     - name: Install FFmpeg
       run: |
