@@ -232,28 +232,28 @@ This action cannot be undone.</source>
 <context>
     <name>GameInfo</name>
     <message>
-        <location filename="../src/gameinfo.cpp" line="109"/>
-        <location filename="../src/gameinfo.cpp" line="130"/>
+        <location filename="../src/gameinfo.cpp" line="110"/>
+        <location filename="../src/gameinfo.cpp" line="131"/>
         <source>Unknown</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gameinfo.cpp" line="117"/>
+        <location filename="../src/gameinfo.cpp" line="118"/>
         <source>%1 GB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gameinfo.cpp" line="119"/>
+        <location filename="../src/gameinfo.cpp" line="120"/>
         <source>%1 MB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gameinfo.cpp" line="121"/>
+        <location filename="../src/gameinfo.cpp" line="122"/>
         <source>%1 KB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gameinfo.cpp" line="123"/>
+        <location filename="../src/gameinfo.cpp" line="124"/>
         <source>%1 bytes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -261,62 +261,62 @@ This action cannot be undone.</source>
 <context>
     <name>HttpServerControl</name>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="32"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="36"/>
         <source>HTTP Server</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="65"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="69"/>
         <source>Running</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="65"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="69"/>
         <source>Stopped</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="95"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="99"/>
         <source>Hide details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="95"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="99"/>
         <source>Show details</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="112"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="121"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="112"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="121"/>
         <source>Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="130"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="139"/>
         <source>Port:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="163"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="171"/>
         <source>Copy server URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="179"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="185"/>
         <source>Open in browser</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="225"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="230"/>
         <source>💡 Start the server to share your videos over the network</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="247"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="251"/>
         <source>Copied!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -344,112 +344,112 @@ This action cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="65"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="69"/>
         <source>Preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="100"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="103"/>
         <source>Preview Error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="148"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="151"/>
         <source>Unable to load video preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="158"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="161"/>
         <source>No video source available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="194"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="197"/>
         <source>Pause</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="194"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="197"/>
         <source>Play</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="207"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="210"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="242"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="245"/>
         <source>Unmute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="242"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="245"/>
         <source>Mute</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="259"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="262"/>
         <source>Export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="302"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="306"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="317"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="321"/>
         <source>Output:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="332"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="336"/>
         <source>Output filename</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="337"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="343"/>
         <source>Will be saved to: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="355"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="361"/>
         <source>Browse...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="363"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="369"/>
         <source>File dialog not yet implemented</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="367"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="373"/>
         <source>Export Segment</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="435"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="442"/>
         <source>Export Completed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="442"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="449"/>
         <source>Video has been exported successfully!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="447"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="454"/>
         <source>Saved to: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="477"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="484"/>
         <source>Export Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="483"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="490"/>
         <source>An error occurred during export:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -457,12 +457,12 @@ This action cannot be undone.</source>
 <context>
     <name>RecordingCard</name>
     <message>
-        <location filename="../qml/components/RecordingCard.qml" line="121"/>
+        <location filename="../qml/components/RecordingCard.qml" line="110"/>
         <source>Game ID: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/components/RecordingCard.qml" line="189"/>
+        <location filename="../qml/components/RecordingCard.qml" line="150"/>
         <source>%1 segments</source>
         <translation type="unfinished"></translation>
     </message>
@@ -475,7 +475,7 @@ This action cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/recordingclip.cpp" line="389"/>
+        <location filename="../src/recordingclip.cpp" line="391"/>
         <source>00:00</source>
         <translation type="unfinished"></translation>
     </message>
@@ -498,68 +498,68 @@ This action cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="34"/>
+        <location filename="../qml/RecordingListPage.qml" line="35"/>
         <source>Exported Videos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="38"/>
+        <location filename="../qml/RecordingListPage.qml" line="39"/>
         <source>View and manage exported videos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="42"/>
+        <location filename="../qml/RecordingListPage.qml" line="44"/>
         <source>Switch User</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="48"/>
+        <location filename="../qml/RecordingListPage.qml" line="50"/>
         <source>Select different Steam account</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="53"/>
-        <location filename="../qml/RecordingListPage.qml" line="268"/>
+        <location filename="../qml/RecordingListPage.qml" line="55"/>
+        <location filename="../qml/RecordingListPage.qml" line="270"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="95"/>
+        <location filename="../qml/RecordingListPage.qml" line="97"/>
         <source>Found Recordings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="117"/>
+        <location filename="../qml/RecordingListPage.qml" line="119"/>
         <source>Current User: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="117"/>
+        <location filename="../qml/RecordingListPage.qml" line="119"/>
         <source>No user selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="125"/>
+        <location filename="../qml/RecordingListPage.qml" line="127"/>
         <source>Scanning: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="125"/>
+        <location filename="../qml/RecordingListPage.qml" line="127"/>
         <source>No recordings path configured</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="164"/>
+        <location filename="../qml/RecordingListPage.qml" line="166"/>
         <source>Scanning for recording clips...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="251"/>
+        <location filename="../qml/RecordingListPage.qml" line="253"/>
         <source>No recording clips found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="258"/>
+        <location filename="../qml/RecordingListPage.qml" line="260"/>
         <source>Make sure you have game recordings in Steam.
 Recordings are saved automatically during gameplay
 when Steam&apos;s Game Recording feature is enabled.</source>
@@ -569,97 +569,97 @@ when Steam&apos;s Game Recording feature is enabled.</source>
 <context>
     <name>SteamRecordingManager</name>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="126"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="123"/>
         <source>Scan already in progress...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="131"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="128"/>
         <source>Error: Steam path not set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="136"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="133"/>
         <source>Error: Game recordings path not found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="140"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="137"/>
         <source>Starting scan for recording clips...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="205"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="202"/>
         <source>User %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="242"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="239"/>
         <source>Scan completed. Found %1 clips.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="261"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="258"/>
         <source>Scanning directory: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="270"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="267"/>
         <source>No recording clips found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="272"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="269"/>
         <source>Found %1 recording clips</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="307"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="304"/>
         <source>Loading game information...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="320"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="317"/>
         <source>Loaded game information for %1 clips</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="322"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="319"/>
         <source>No game information could be loaded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="572"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="586"/>
         <source>Found %1 Steam user(s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="577"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="591"/>
         <source>  - %1 (ID: %2) %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="577"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="591"/>
         <source>[Has recordings]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="577"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="591"/>
         <source>[No recordings]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="581"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="596"/>
         <source>Auto-selected user: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="583"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="598"/>
         <source>No user auto-selected - please choose manually</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="586"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="601"/>
         <source>No Steam users found</source>
         <translation type="unfinished"></translation>
     </message>
@@ -777,7 +777,17 @@ when Steam&apos;s Game Recording feature is enabled.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SystemCheckPage.qml" line="223"/>
+        <location filename="../qml/SystemCheckPage.qml" line="219"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/SystemCheckPage.qml" line="228"/>
+        <source>Quit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/SystemCheckPage.qml" line="242"/>
         <source>This application requires Steam and FFmpeg to be installed on your system.
 
 Steam: Used to locate and read game recording files
@@ -787,12 +797,12 @@ If FFmpeg is not found, please download it from https://ffmpeg.org/download.html
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SystemCheckPage.qml" line="261"/>
+        <location filename="../qml/SystemCheckPage.qml" line="280"/>
         <source>All checks passed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SystemCheckPage.qml" line="265"/>
+        <location filename="../qml/SystemCheckPage.qml" line="284"/>
         <source>System check not passed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -800,87 +810,87 @@ If FFmpeg is not found, please download it from https://ffmpeg.org/download.html
 <context>
     <name>SystemChecker</name>
     <message>
-        <location filename="../src/systemchecker.cpp" line="34"/>
+        <location filename="../src/systemchecker.cpp" line="39"/>
         <source>Starting system check...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="42"/>
+        <location filename="../src/systemchecker.cpp" line="47"/>
         <source>Rechecking Steam installation...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="55"/>
-        <location filename="../src/systemchecker.cpp" line="102"/>
+        <location filename="../src/systemchecker.cpp" line="60"/>
+        <location filename="../src/systemchecker.cpp" line="107"/>
         <source>✓ Steam found at: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="56"/>
-        <location filename="../src/systemchecker.cpp" line="103"/>
+        <location filename="../src/systemchecker.cpp" line="61"/>
+        <location filename="../src/systemchecker.cpp" line="108"/>
         <source>✓ Game recordings path: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="60"/>
+        <location filename="../src/systemchecker.cpp" line="65"/>
         <source>✗ Steam installation not found or invalid</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="68"/>
+        <location filename="../src/systemchecker.cpp" line="73"/>
         <source>Rechecking FFmpeg...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="75"/>
-        <location filename="../src/systemchecker.cpp" line="118"/>
+        <location filename="../src/systemchecker.cpp" line="80"/>
+        <location filename="../src/systemchecker.cpp" line="123"/>
         <source>✓ FFmpeg found at: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="79"/>
-        <location filename="../src/systemchecker.cpp" line="121"/>
+        <location filename="../src/systemchecker.cpp" line="84"/>
+        <location filename="../src/systemchecker.cpp" line="126"/>
         <source>✗ FFmpeg not found in PATH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="80"/>
-        <location filename="../src/systemchecker.cpp" line="122"/>
+        <location filename="../src/systemchecker.cpp" line="85"/>
+        <location filename="../src/systemchecker.cpp" line="127"/>
         <source>Please install FFmpeg and add it to your system PATH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="88"/>
+        <location filename="../src/systemchecker.cpp" line="93"/>
         <source>Checking Steam installation...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="106"/>
+        <location filename="../src/systemchecker.cpp" line="111"/>
         <source>✗ Steam installation not found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="107"/>
+        <location filename="../src/systemchecker.cpp" line="112"/>
         <source>Please ensure Steam is installed and try again</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="110"/>
+        <location filename="../src/systemchecker.cpp" line="115"/>
         <source>Checking FFmpeg...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="123"/>
+        <location filename="../src/systemchecker.cpp" line="128"/>
         <source>You can download FFmpeg from: https://ffmpeg.org/download.html</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="128"/>
+        <location filename="../src/systemchecker.cpp" line="133"/>
         <source>✓ All system checks passed! Ready to proceed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="130"/>
+        <location filename="../src/systemchecker.cpp" line="135"/>
         <source>⚠ Some checks failed. Please address the issues above.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1147,42 +1157,52 @@ This action cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="269"/>
+        <location filename="../qml/main.qml" line="276"/>
         <source>Export in Progress</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="272"/>
+        <location filename="../qml/main.qml" line="279"/>
         <source>An export operation is currently in progress. Are you sure you want to exit?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="298"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="317"/>
+        <source>Donate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="338"/>
         <source>System Check</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="300"/>
+        <location filename="../qml/main.qml" line="340"/>
         <source>Recording List</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="303"/>
+        <location filename="../qml/main.qml" line="343"/>
         <source>Clip Selection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="305"/>
+        <location filename="../qml/main.qml" line="345"/>
         <source>Preview &amp; Export</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="307"/>
+        <location filename="../qml/main.qml" line="347"/>
         <source>Exported Videos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="310"/>
+        <location filename="../qml/main.qml" line="350"/>
         <source>Video Preview</source>
         <translation type="unfinished"></translation>
     </message>

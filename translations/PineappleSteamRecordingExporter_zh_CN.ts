@@ -173,17 +173,17 @@
     <message>
         <location filename="../qml/ExportedVideosPage.qml" line="57"/>
         <source>Sort by Name</source>
-        <translation type="unfinished"></translation>
+        <translation>按名称排序</translation>
     </message>
     <message>
         <location filename="../qml/ExportedVideosPage.qml" line="62"/>
         <source>Sort by Date</source>
-        <translation type="unfinished"></translation>
+        <translation>按日期排序</translation>
     </message>
     <message>
         <location filename="../qml/ExportedVideosPage.qml" line="67"/>
         <source>Sort by Size</source>
-        <translation type="unfinished"></translation>
+        <translation>按大小排序</translation>
     </message>
     <message>
         <location filename="../qml/ExportedVideosPage.qml" line="75"/>
@@ -220,7 +220,7 @@ This action cannot be undone.</source>
     <message>
         <location filename="../qml/ExportedVideosPage.qml" line="236"/>
         <source>Delete All Videos</source>
-        <translation type="unfinished"></translation>
+        <translation>删除所有视频</translation>
     </message>
     <message>
         <location filename="../qml/ExportedVideosPage.qml" line="239"/>
@@ -232,28 +232,28 @@ This action cannot be undone.</source>
 <context>
     <name>GameInfo</name>
     <message>
-        <location filename="../src/gameinfo.cpp" line="109"/>
-        <location filename="../src/gameinfo.cpp" line="130"/>
+        <location filename="../src/gameinfo.cpp" line="110"/>
+        <location filename="../src/gameinfo.cpp" line="131"/>
         <source>Unknown</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gameinfo.cpp" line="117"/>
+        <location filename="../src/gameinfo.cpp" line="118"/>
         <source>%1 GB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gameinfo.cpp" line="119"/>
+        <location filename="../src/gameinfo.cpp" line="120"/>
         <source>%1 MB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gameinfo.cpp" line="121"/>
+        <location filename="../src/gameinfo.cpp" line="122"/>
         <source>%1 KB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gameinfo.cpp" line="123"/>
+        <location filename="../src/gameinfo.cpp" line="124"/>
         <source>%1 bytes</source>
         <translation type="unfinished"></translation>
     </message>
@@ -261,62 +261,62 @@ This action cannot be undone.</source>
 <context>
     <name>HttpServerControl</name>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="32"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="36"/>
         <source>HTTP Server</source>
         <translation>HTTP 服务器</translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="65"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="69"/>
         <source>Running</source>
         <translation>运行中</translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="65"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="69"/>
         <source>Stopped</source>
         <translation>已停止</translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="95"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="99"/>
         <source>Hide details</source>
         <translation>隐藏详情</translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="95"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="99"/>
         <source>Show details</source>
         <translation>显示详情</translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="112"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="121"/>
         <source>Stop</source>
         <translation>停止</translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="112"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="121"/>
         <source>Start</source>
         <translation>启动</translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="130"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="139"/>
         <source>Port:</source>
         <translation>端口:</translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="163"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="171"/>
         <source>Copy server URL</source>
         <translation>复制服务器 URL</translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="179"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="185"/>
         <source>Open in browser</source>
         <translation>在浏览器中打开</translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="225"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="230"/>
         <source>💡 Start the server to share your videos over the network</source>
         <translation>💡 启动服务器以通过网络分享你的视频</translation>
     </message>
     <message>
-        <location filename="../qml/components/HttpServerControl.qml" line="247"/>
+        <location filename="../qml/components/HttpServerControl.qml" line="251"/>
         <source>Copied!</source>
         <translation>已复制!</translation>
     </message>
@@ -336,7 +336,7 @@ This action cannot be undone.</source>
     <message>
         <location filename="../qml/PreviewAndExportPage.qml" line="42"/>
         <source>Game ID: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">游戏 ID: %1</translation>
     </message>
     <message>
         <location filename="../qml/PreviewAndExportPage.qml" line="50"/>
@@ -344,102 +344,102 @@ This action cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="65"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="69"/>
         <source>Preview</source>
         <translation>预览</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="100"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="103"/>
         <source>Preview Error: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="148"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="151"/>
         <source>Unable to load video preview</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="158"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="161"/>
         <source>No video source available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="194"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="197"/>
         <source>Pause</source>
         <translation>暂停</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="194"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="197"/>
         <source>Play</source>
         <translation>播放</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="207"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="210"/>
         <source>Stop</source>
         <translation>停止</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="242"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="245"/>
         <source>Unmute</source>
         <translation>取消静音</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="242"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="245"/>
         <source>Mute</source>
         <translation>静音</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="259"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="262"/>
         <source>Export</source>
         <translation>导出</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="302"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="306"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="317"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="321"/>
         <source>Output:</source>
         <translation>输出:</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="332"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="336"/>
         <source>Output filename</source>
         <translation>输出文件名</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="337"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="343"/>
         <source>Will be saved to: %1</source>
         <translation>将被保存到: %1</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="355"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="361"/>
         <source>Browse...</source>
         <translation>浏览...</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="363"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="369"/>
         <source>File dialog not yet implemented</source>
         <translation>文件对话框还没写好</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="367"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="373"/>
         <source>Export Segment</source>
         <translation>导出片段</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="435"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="442"/>
         <source>Export Completed</source>
         <translation>导出完成</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="442"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="449"/>
         <source>Video has been exported successfully!</source>
         <translation>视频导出成功！</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="447"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="454"/>
         <source>Saved to: %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -448,12 +448,12 @@ This action cannot be undone.</source>
         <translation type="vanished">打开所在位置</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="477"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="484"/>
         <source>Export Failed</source>
         <translation>导出失败</translation>
     </message>
     <message>
-        <location filename="../qml/PreviewAndExportPage.qml" line="483"/>
+        <location filename="../qml/PreviewAndExportPage.qml" line="490"/>
         <source>An error occurred during export:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -461,12 +461,12 @@ This action cannot be undone.</source>
 <context>
     <name>RecordingCard</name>
     <message>
-        <location filename="../qml/components/RecordingCard.qml" line="121"/>
+        <location filename="../qml/components/RecordingCard.qml" line="110"/>
         <source>Game ID: %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">游戏 ID: %1</translation>
     </message>
     <message>
-        <location filename="../qml/components/RecordingCard.qml" line="189"/>
+        <location filename="../qml/components/RecordingCard.qml" line="150"/>
         <source>%1 segments</source>
         <translation type="unfinished"></translation>
     </message>
@@ -479,7 +479,7 @@ This action cannot be undone.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/recordingclip.cpp" line="389"/>
+        <location filename="../src/recordingclip.cpp" line="391"/>
         <source>00:00</source>
         <translation type="unfinished"></translation>
     </message>
@@ -502,68 +502,68 @@ This action cannot be undone.</source>
         <translation>Steam 游戏录制列表</translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="34"/>
+        <location filename="../qml/RecordingListPage.qml" line="35"/>
         <source>Exported Videos</source>
         <translation>已导出的视频</translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="38"/>
+        <location filename="../qml/RecordingListPage.qml" line="39"/>
         <source>View and manage exported videos</source>
         <translation>查看和管理已导出的视频</translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="42"/>
+        <location filename="../qml/RecordingListPage.qml" line="44"/>
         <source>Switch User</source>
         <translation>切换用户</translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="48"/>
+        <location filename="../qml/RecordingListPage.qml" line="50"/>
         <source>Select different Steam account</source>
         <translation>选择不同的 Steam 账号</translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="53"/>
-        <location filename="../qml/RecordingListPage.qml" line="268"/>
+        <location filename="../qml/RecordingListPage.qml" line="55"/>
+        <location filename="../qml/RecordingListPage.qml" line="270"/>
         <source>Refresh</source>
         <translation>刷新</translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="95"/>
+        <location filename="../qml/RecordingListPage.qml" line="97"/>
         <source>Found Recordings</source>
         <translation>已找到的录制</translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="117"/>
+        <location filename="../qml/RecordingListPage.qml" line="119"/>
         <source>Current User: %1</source>
         <translation>当前用户: %1</translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="117"/>
+        <location filename="../qml/RecordingListPage.qml" line="119"/>
         <source>No user selected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="125"/>
+        <location filename="../qml/RecordingListPage.qml" line="127"/>
         <source>Scanning: %1</source>
         <translation>正在扫描: %1</translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="125"/>
+        <location filename="../qml/RecordingListPage.qml" line="127"/>
         <source>No recordings path configured</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="164"/>
+        <location filename="../qml/RecordingListPage.qml" line="166"/>
         <source>Scanning for recording clips...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="251"/>
+        <location filename="../qml/RecordingListPage.qml" line="253"/>
         <source>No recording clips found</source>
         <translation>未找到游戏录制片段</translation>
     </message>
     <message>
-        <location filename="../qml/RecordingListPage.qml" line="258"/>
+        <location filename="../qml/RecordingListPage.qml" line="260"/>
         <source>Make sure you have game recordings in Steam.
 Recordings are saved automatically during gameplay
 when Steam&apos;s Game Recording feature is enabled.</source>
@@ -573,97 +573,97 @@ when Steam&apos;s Game Recording feature is enabled.</source>
 <context>
     <name>SteamRecordingManager</name>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="126"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="123"/>
         <source>Scan already in progress...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="131"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="128"/>
         <source>Error: Steam path not set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="136"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="133"/>
         <source>Error: Game recordings path not found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="140"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="137"/>
         <source>Starting scan for recording clips...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="205"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="202"/>
         <source>User %1</source>
         <translation>用户 %1</translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="242"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="239"/>
         <source>Scan completed. Found %1 clips.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="261"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="258"/>
         <source>Scanning directory: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="270"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="267"/>
         <source>No recording clips found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="272"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="269"/>
         <source>Found %1 recording clips</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="307"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="304"/>
         <source>Loading game information...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="320"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="317"/>
         <source>Loaded game information for %1 clips</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="322"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="319"/>
         <source>No game information could be loaded</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="572"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="586"/>
         <source>Found %1 Steam user(s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="577"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="591"/>
         <source>  - %1 (ID: %2) %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="577"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="591"/>
         <source>[Has recordings]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="577"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="591"/>
         <source>[No recordings]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="581"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="596"/>
         <source>Auto-selected user: %1</source>
         <translation>自动选择用户: %1</translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="583"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="598"/>
         <source>No user auto-selected - please choose manually</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/steamrecordingmanager.cpp" line="586"/>
+        <location filename="../src/steamrecordingmanager.cpp" line="601"/>
         <source>No Steam users found</source>
         <translation type="unfinished">未找到 Steam 用户</translation>
     </message>
@@ -781,7 +781,17 @@ when Steam&apos;s Game Recording feature is enabled.</source>
         <translation>继续</translation>
     </message>
     <message>
-        <location filename="../qml/SystemCheckPage.qml" line="223"/>
+        <location filename="../qml/SystemCheckPage.qml" line="219"/>
+        <source>About</source>
+        <translation>关于</translation>
+    </message>
+    <message>
+        <location filename="../qml/SystemCheckPage.qml" line="228"/>
+        <source>Quit</source>
+        <translation>退出</translation>
+    </message>
+    <message>
+        <location filename="../qml/SystemCheckPage.qml" line="242"/>
         <source>This application requires Steam and FFmpeg to be installed on your system.
 
 Steam: Used to locate and read game recording files
@@ -796,12 +806,12 @@ FFmpeg: 用于将游戏录制无损转换为 MP4 文件
 如果还没有安装 FFmpeg，请在 https://ffmpeg.org/download.html 获取并确保其已被添加到了你的系统环境变量 PATH 中。</translation>
     </message>
     <message>
-        <location filename="../qml/SystemCheckPage.qml" line="261"/>
+        <location filename="../qml/SystemCheckPage.qml" line="280"/>
         <source>All checks passed</source>
         <translation>所有检查均已通过</translation>
     </message>
     <message>
-        <location filename="../qml/SystemCheckPage.qml" line="265"/>
+        <location filename="../qml/SystemCheckPage.qml" line="284"/>
         <source>System check not passed</source>
         <translation>系统检查未通过</translation>
     </message>
@@ -809,87 +819,87 @@ FFmpeg: 用于将游戏录制无损转换为 MP4 文件
 <context>
     <name>SystemChecker</name>
     <message>
-        <location filename="../src/systemchecker.cpp" line="34"/>
+        <location filename="../src/systemchecker.cpp" line="39"/>
         <source>Starting system check...</source>
         <translation>开始系统检查...</translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="42"/>
+        <location filename="../src/systemchecker.cpp" line="47"/>
         <source>Rechecking Steam installation...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="55"/>
-        <location filename="../src/systemchecker.cpp" line="102"/>
+        <location filename="../src/systemchecker.cpp" line="60"/>
+        <location filename="../src/systemchecker.cpp" line="107"/>
         <source>✓ Steam found at: %1</source>
         <translation>✓ 已找到位于此路径的 Steam: %1</translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="56"/>
-        <location filename="../src/systemchecker.cpp" line="103"/>
+        <location filename="../src/systemchecker.cpp" line="61"/>
+        <location filename="../src/systemchecker.cpp" line="108"/>
         <source>✓ Game recordings path: %1</source>
         <translation>✓ 游戏录制路径: %1</translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="60"/>
+        <location filename="../src/systemchecker.cpp" line="65"/>
         <source>✗ Steam installation not found or invalid</source>
         <translation>✗ 未安装 Steam 或无法识别 Steam 安装位置</translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="68"/>
+        <location filename="../src/systemchecker.cpp" line="73"/>
         <source>Rechecking FFmpeg...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="75"/>
-        <location filename="../src/systemchecker.cpp" line="118"/>
+        <location filename="../src/systemchecker.cpp" line="80"/>
+        <location filename="../src/systemchecker.cpp" line="123"/>
         <source>✓ FFmpeg found at: %1</source>
         <translation>✓ 已发现 FFmpeg: %1</translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="79"/>
-        <location filename="../src/systemchecker.cpp" line="121"/>
+        <location filename="../src/systemchecker.cpp" line="84"/>
+        <location filename="../src/systemchecker.cpp" line="126"/>
         <source>✗ FFmpeg not found in PATH</source>
         <translation>✗ 系统 PATH 环境变量中未能找到 FFmpeg</translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="80"/>
-        <location filename="../src/systemchecker.cpp" line="122"/>
+        <location filename="../src/systemchecker.cpp" line="85"/>
+        <location filename="../src/systemchecker.cpp" line="127"/>
         <source>Please install FFmpeg and add it to your system PATH</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="88"/>
+        <location filename="../src/systemchecker.cpp" line="93"/>
         <source>Checking Steam installation...</source>
         <translation>检查 Steam 安装路径中...</translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="106"/>
+        <location filename="../src/systemchecker.cpp" line="111"/>
         <source>✗ Steam installation not found</source>
         <translation>✗ 未能找到 Steam</translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="107"/>
+        <location filename="../src/systemchecker.cpp" line="112"/>
         <source>Please ensure Steam is installed and try again</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="110"/>
+        <location filename="../src/systemchecker.cpp" line="115"/>
         <source>Checking FFmpeg...</source>
         <translation>检查 FFmpeg 中...</translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="123"/>
+        <location filename="../src/systemchecker.cpp" line="128"/>
         <source>You can download FFmpeg from: https://ffmpeg.org/download.html</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="128"/>
+        <location filename="../src/systemchecker.cpp" line="133"/>
         <source>✓ All system checks passed! Ready to proceed.</source>
         <translation>✓ 所有检查均已通过! 已就绪.</translation>
     </message>
     <message>
-        <location filename="../src/systemchecker.cpp" line="130"/>
+        <location filename="../src/systemchecker.cpp" line="135"/>
         <source>⚠ Some checks failed. Please address the issues above.</source>
         <translation>⚠ 一些检查未通过。请解决上方的问题。</translation>
     </message>
@@ -1156,42 +1166,52 @@ This action cannot be undone.</source>
         <translation>菠萝 Steam 录制导出工具</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="269"/>
+        <location filename="../qml/main.qml" line="276"/>
         <source>Export in Progress</source>
         <translation>导出中</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="272"/>
+        <location filename="../qml/main.qml" line="279"/>
         <source>An export operation is currently in progress. Are you sure you want to exit?</source>
-        <translation type="unfinished"></translation>
+        <translation>一项导出操作尚在进行中，真的要退出吗？</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="298"/>
+        <source>About</source>
+        <translation>关于</translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="317"/>
+        <source>Donate</source>
+        <translation>捐款</translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="338"/>
         <source>System Check</source>
         <translation>系统环境检查</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="300"/>
+        <location filename="../qml/main.qml" line="340"/>
         <source>Recording List</source>
         <translation>游戏录制列表</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="303"/>
+        <location filename="../qml/main.qml" line="343"/>
         <source>Clip Selection</source>
         <translation>片段选择</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="305"/>
+        <location filename="../qml/main.qml" line="345"/>
         <source>Preview &amp; Export</source>
         <translation>预览和导出</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="307"/>
+        <location filename="../qml/main.qml" line="347"/>
         <source>Exported Videos</source>
         <translation>已导出的视频</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="310"/>
+        <location filename="../qml/main.qml" line="350"/>
         <source>Video Preview</source>
         <translation>视频预览</translation>
     </message>

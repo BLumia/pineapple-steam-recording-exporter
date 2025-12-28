@@ -216,6 +216,15 @@ Page {
             }
 
             Button {
+                text: qsTr("About")
+                onClicked: {
+                    aboutDialog.open()
+                }
+
+                Material.background: Material.primary
+            }
+
+            Button {
                 text: qsTr("Quit")
                 visible: systemChecker ? systemChecker.isSteamGameMode : false
                 onClicked: {

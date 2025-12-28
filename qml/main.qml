@@ -289,6 +289,39 @@ ApplicationWindow {
             Qt.quit()
         }
     }
+
+    Dialog {
+        id: aboutDialog
+
+        anchors.centerIn: parent
+        modal: true
+        title: qsTr("About")
+
+        Label {
+            text: `
+- Source Code: [GitHub](https://github.com/BLumia/pineapple-steam-recording-exporter)
+- Copyright: 2026 [Gary "BLumia" Wang](https://github.com/BLumia/)
+- License: [GPL-3.0-only](https://spdx.org/licenses/GPL-3.0-only.html)
+- Donate: [Ko-fi](https://ko-fi.com/blumia)
+`
+            textFormat: TextEdit.MarkdownText
+            onLinkActivated: {
+                Qt.openUrlExternally(link)
+            }
+        }
+
+        standardButtons: Dialog.Ok
+        footer: DialogButtonBox {
+            Button {
+                flat: true
+                text: qsTr("Donate")
+                DialogButtonBox.buttonRole: DialogButtonBox.Open
+                onClicked: {
+                    Qt.openUrlExternally("https://ko-fi.com/blumia")
+                }
+            }
+        }
+    }
     
     // Status bar
     footer: ToolBar {
