@@ -55,7 +55,7 @@ jobs:
 
     - name: Deploy Qt
       run: |
-        & "windeployqt.exe" --no-compiler-runtime --qmldir qml install\bin\PineappleSteamRecordingExporter.exe
+        & "windeployqt.exe" --no-compiler-runtime --no-opengl-sw --qmldir qml install\bin\PineappleSteamRecordingExporter.exe
 
     - name: Install FFmpeg
       run: |
