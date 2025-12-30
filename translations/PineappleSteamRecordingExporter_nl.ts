@@ -334,7 +334,7 @@ Deze actie is onomkeerbaar.</translation>
     <message>
         <location filename="../qml/PreviewAndExportPage.qml" line="31"/>
         <source>Back</source>
-        <translation type="unfinished">Terug</translation>
+        <translation>Terug</translation>
     </message>
     <message>
         <location filename="../qml/PreviewAndExportPage.qml" line="42"/>
@@ -521,7 +521,7 @@ Deze actie is onomkeerbaar.</translation>
     <message>
         <location filename="../qml/RecordingListPage.qml" line="22"/>
         <source>Back</source>
-        <translation type="unfinished">Terug</translation>
+        <translation>Terug</translation>
     </message>
     <message>
         <location filename="../qml/RecordingListPage.qml" line="27"/>
@@ -541,12 +541,12 @@ Deze actie is onomkeerbaar.</translation>
     <message>
         <location filename="../qml/RecordingListPage.qml" line="44"/>
         <source>Switch User</source>
-        <translation type="unfinished"></translation>
+        <translation>Andere gebruiker</translation>
     </message>
     <message>
         <location filename="../qml/RecordingListPage.qml" line="50"/>
         <source>Select different Steam account</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies een ander Steam-account</translation>
     </message>
     <message>
         <location filename="../qml/RecordingListPage.qml" line="55"/>
@@ -562,12 +562,12 @@ Deze actie is onomkeerbaar.</translation>
     <message>
         <location filename="../qml/RecordingListPage.qml" line="119"/>
         <source>Current User: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Huidige gebruiker: %1</translation>
     </message>
     <message>
         <location filename="../qml/RecordingListPage.qml" line="119"/>
         <source>No user selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen gebruiker gekozen</translation>
     </message>
     <message>
         <location filename="../qml/RecordingListPage.qml" line="127"/>
@@ -624,7 +624,7 @@ als deze functie is ingeschakeld.</translation>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="202"/>
         <source>User %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Gebruiker %1</translation>
     </message>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="239"/>
@@ -664,37 +664,37 @@ als deze functie is ingeschakeld.</translation>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="586"/>
         <source>Found %1 Steam user(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Steam-gebruiker(s) aangetroffen</translation>
     </message>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="591"/>
         <source>  - %1 (ID: %2) %3</source>
-        <translation type="unfinished"></translation>
+        <translation>  - %1 (id: %2) %3</translation>
     </message>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="591"/>
         <source>[Has recordings]</source>
-        <translation type="unfinished"></translation>
+        <translation>[heeft opnames]</translation>
     </message>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="591"/>
         <source>[No recordings]</source>
-        <translation type="unfinished"></translation>
+        <translation>[geen opnames]</translation>
     </message>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="596"/>
         <source>Auto-selected user: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch gekozen: %1</translation>
     </message>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="598"/>
         <source>No user auto-selected - please choose manually</source>
-        <translation type="unfinished"></translation>
+        <translation>Er is geen automatische keuze gemaakt — kies handmatig</translation>
     </message>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="601"/>
         <source>No Steam users found</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen Steam-gebruikers aangetroffen</translation>
     </message>
 </context>
 <context>
@@ -702,52 +702,52 @@ als deze functie is ingeschakeld.</translation>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="12"/>
         <source>Select Steam Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Kies een Steam-account</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="24"/>
         <source>Multiple Steam accounts detected. Please select which account&apos;s recordings you want to scan:</source>
-        <translation type="unfinished"></translation>
+        <translation>Er zijn meerdere Steam-accounts aangetroffen. Kies het account met de te doorzoeken opnames:</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="84"/>
         <source>Steam ID: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Steam-id: %1</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="90"/>
         <source>Has game recordings</source>
-        <translation type="unfinished"></translation>
+        <translation>Heeft gameopnames</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="90"/>
         <source>No recordings found</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen opnames aangetroffen</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="97"/>
         <source>Select</source>
-        <translation type="unfinished"></translation>
+        <translation>Kiezen</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="129"/>
         <source>No Steam users found</source>
-        <translation type="unfinished"></translation>
+        <translation>Geen Steam-gebruikers aangetroffen</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="135"/>
         <source>Make sure Steam is properly installed and you have logged in at least once.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zorg dat Steam geïnstalleerd is en je minimaal één keer bent ingelogd.</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="157"/>
         <source>💡 Tip: You can change this selection later from the recording list page</source>
-        <translation type="unfinished"></translation>
+        <translation>💡 Tip: je kunt je keuze te allen tijde aanpassen op de opnamelijstpagina</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="165"/>
         <source>Refresh</source>
-        <translation type="unfinished">Herladen</translation>
+        <translation>Herladen</translation>
     </message>
 </context>
 <context>
@@ -812,12 +812,12 @@ als deze functie is ingeschakeld.</translation>
     <message>
         <location filename="../qml/SystemCheckPage.qml" line="219"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Over</translation>
     </message>
     <message>
         <location filename="../qml/SystemCheckPage.qml" line="228"/>
         <source>Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>Afsluiten</translation>
     </message>
     <message>
         <location filename="../qml/SystemCheckPage.qml" line="242"/>
@@ -837,12 +837,12 @@ Als FFmpeg niet is aangetroffen, download het dan via de site (https://ffmpeg.or
     <message>
         <location filename="../qml/SystemCheckPage.qml" line="280"/>
         <source>All checks passed</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle controles doorlopen</translation>
     </message>
     <message>
         <location filename="../qml/SystemCheckPage.qml" line="284"/>
         <source>System check not passed</source>
-        <translation type="unfinished"></translation>
+        <translation>Systeemcontrole niet doorlopen</translation>
     </message>
 </context>
 <context>
@@ -1228,12 +1228,12 @@ Deze actie is onomkeerbaar.</translation>
     <message>
         <location filename="../qml/main.qml" line="298"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Over</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="317"/>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
+        <translation>Doneren</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="338"/>
