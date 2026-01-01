@@ -1,3 +1,21 @@
+Version 0.4.0
+~~~~~~~~~~~~~
+Released: 2026-01-01
+
+Features:
+ * Support custom steam gamerecordings location
+
+Bugfixes:
+ * Not load game titles from non-default libraries (GitHub: BLumia/pineapple-steam-recording-exporter#2)
+
+Miscellaneous:
+ * Adds an About dialog
+ * Tweak Windows CI build to use newer Qt and avoid shipping OpenGL SW runtime
+ * Update translations
+
+Contributors:
+ Vistaus
+
 Version 0.3.0
 ~~~~~~~~~~~~~
 Released: 2025-11-30

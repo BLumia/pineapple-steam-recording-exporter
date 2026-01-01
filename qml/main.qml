@@ -317,7 +317,7 @@ ApplicationWindow {
                 text: qsTr("Donate")
                 DialogButtonBox.buttonRole: DialogButtonBox.Open
                 onClicked: {
-                    Qt.openUrlExternally("https://ko-fi.com/blumia")
+                    Qt.openUrlExternally("https://link.blumia.net/pineapple-apps-donate")
                 }
             }
         }
