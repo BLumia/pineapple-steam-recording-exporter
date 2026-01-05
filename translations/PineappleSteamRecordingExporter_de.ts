@@ -334,7 +334,7 @@ Diese Aktion kann nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../qml/PreviewAndExportPage.qml" line="31"/>
         <source>Back</source>
-        <translation type="unfinished">Zurück</translation>
+        <translation>Zurück</translation>
     </message>
     <message>
         <location filename="../qml/PreviewAndExportPage.qml" line="42"/>
@@ -521,7 +521,7 @@ Diese Aktion kann nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../qml/RecordingListPage.qml" line="22"/>
         <source>Back</source>
-        <translation type="unfinished">Zurück</translation>
+        <translation>Zurück</translation>
     </message>
     <message>
         <location filename="../qml/RecordingListPage.qml" line="27"/>
@@ -541,12 +541,12 @@ Diese Aktion kann nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../qml/RecordingListPage.qml" line="44"/>
         <source>Switch User</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzer wechseln</translation>
     </message>
     <message>
         <location filename="../qml/RecordingListPage.qml" line="50"/>
         <source>Select different Steam account</source>
-        <translation type="unfinished"></translation>
+        <translation>Anderes Steam-Konto auswählen</translation>
     </message>
     <message>
         <location filename="../qml/RecordingListPage.qml" line="55"/>
@@ -562,12 +562,12 @@ Diese Aktion kann nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../qml/RecordingListPage.qml" line="119"/>
         <source>Current User: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktueller Benutzer: %1</translation>
     </message>
     <message>
         <location filename="../qml/RecordingListPage.qml" line="119"/>
         <source>No user selected</source>
-        <translation type="unfinished"></translation>
+        <translation>Kein Benutzer ausgewählt</translation>
     </message>
     <message>
         <location filename="../qml/RecordingListPage.qml" line="127"/>
@@ -624,7 +624,7 @@ wenn Steams Spieleaufzeichnungsfunktion aktiviert ist.</translation>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="202"/>
         <source>User %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Benutzer %1</translation>
     </message>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="239"/>
@@ -664,37 +664,37 @@ wenn Steams Spieleaufzeichnungsfunktion aktiviert ist.</translation>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="586"/>
         <source>Found %1 Steam user(s)</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Steam-Benutzer gefunden</translation>
     </message>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="591"/>
         <source>  - %1 (ID: %2) %3</source>
-        <translation type="unfinished"></translation>
+        <translation>  - %1 (ID: %2) %3</translation>
     </message>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="591"/>
         <source>[Has recordings]</source>
-        <translation type="unfinished"></translation>
+        <translation>[Verfügt über Aufzeichnungen]</translation>
     </message>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="591"/>
         <source>[No recordings]</source>
-        <translation type="unfinished"></translation>
+        <translation>[Keine Aufzeichnungen]</translation>
     </message>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="596"/>
         <source>Auto-selected user: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisch ausgewählter Benutzer: %1</translation>
     </message>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="598"/>
         <source>No user auto-selected - please choose manually</source>
-        <translation type="unfinished"></translation>
+        <translation>Kein Benutzer automatisch ausgewählt - bitte manuell auswählen</translation>
     </message>
     <message>
         <location filename="../src/steamrecordingmanager.cpp" line="601"/>
         <source>No Steam users found</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Steam-Benutzer gefunden</translation>
     </message>
 </context>
 <context>
@@ -702,52 +702,52 @@ wenn Steams Spieleaufzeichnungsfunktion aktiviert ist.</translation>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="12"/>
         <source>Select Steam Account</source>
-        <translation type="unfinished"></translation>
+        <translation>Steam-Konto auswählen</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="24"/>
         <source>Multiple Steam accounts detected. Please select which account&apos;s recordings you want to scan:</source>
-        <translation type="unfinished"></translation>
+        <translation>Es wurden mehrere Steam-Konten erkannt. Bitte wähle aus, welche Aufzeichnungen du scannen möchtest:</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="84"/>
         <source>Steam ID: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Steam ID: %1</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="90"/>
         <source>Has game recordings</source>
-        <translation type="unfinished"></translation>
+        <translation>Verfügt über Spielaufzeichnungen</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="90"/>
         <source>No recordings found</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Aufzeichnungen gefunden</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="97"/>
         <source>Select</source>
-        <translation type="unfinished"></translation>
+        <translation>Auswählen</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="129"/>
         <source>No Steam users found</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Steam-Benutzer gefunden</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="135"/>
         <source>Make sure Steam is properly installed and you have logged in at least once.</source>
-        <translation type="unfinished"></translation>
+        <translation>Stelle sicher, dass Steam ordnungsgemäß installiert ist und du dich mindestens einmal angemeldet hast.</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="157"/>
         <source>💡 Tip: You can change this selection later from the recording list page</source>
-        <translation type="unfinished"></translation>
+        <translation>💡 Tipp: Du kannst diese Auswahl später auf der Seite mit der Aufzeichnungsliste ändern</translation>
     </message>
     <message>
         <location filename="../qml/components/SteamUserSelectionDialog.qml" line="165"/>
         <source>Refresh</source>
-        <translation type="unfinished">Aktualisieren</translation>
+        <translation>Auffrischen</translation>
     </message>
 </context>
 <context>
@@ -812,12 +812,12 @@ wenn Steams Spieleaufzeichnungsfunktion aktiviert ist.</translation>
     <message>
         <location filename="../qml/SystemCheckPage.qml" line="219"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Über</translation>
     </message>
     <message>
         <location filename="../qml/SystemCheckPage.qml" line="228"/>
         <source>Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>Beenden</translation>
     </message>
     <message>
         <location filename="../qml/SystemCheckPage.qml" line="242"/>
@@ -837,12 +837,12 @@ Wenn FFmpeg nicht gefunden wird, bitte von https://ffmpeg.org/download.html heru
     <message>
         <location filename="../qml/SystemCheckPage.qml" line="280"/>
         <source>All checks passed</source>
-        <translation type="unfinished"></translation>
+        <translation>Alle Überprüfungen bestanden</translation>
     </message>
     <message>
         <location filename="../qml/SystemCheckPage.qml" line="284"/>
         <source>System check not passed</source>
-        <translation type="unfinished"></translation>
+        <translation>Systemüberprüfung nicht bestanden</translation>
     </message>
 </context>
 <context>
@@ -1228,12 +1228,12 @@ Diese Aktion kann nicht rückgängig gemacht werden.</translation>
     <message>
         <location filename="../qml/main.qml" line="298"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Über</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="317"/>
         <source>Donate</source>
-        <translation type="unfinished"></translation>
+        <translation>Spenden</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="338"/>
