@@ -131,7 +131,7 @@ bool QVdfParser::VdfObject::boolAttribute(const QString &key, bool defaultValue)
     }
     
     // Handle string representations of boolean values
-    if (value.type() == QVariant::String) {
+    if (value.typeId() == QVariant::String) {
         QString str = value.toString().toLower();
         return str == "1" || str == "true" || str == "yes";
     }
