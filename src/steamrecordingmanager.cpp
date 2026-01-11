@@ -9,10 +9,6 @@
 #include <QTimer>
 #include <QTextStream>
 #include <QRegularExpression>
-// Removed QtConcurrent dependency - not available in this Qt configuration
-// #include <QtConcurrent>
-// #include <QFuture>
-// #include <QFutureWatcher>
 
 SteamRecordingManager::SteamRecordingManager(QObject *parent)
     : QAbstractListModel(parent)
