@@ -52,12 +52,6 @@
   <url type="donation">https://link.blumia.net/pineapple-apps-donate</url>
   <url type="translate">https://translate.codeberg.org/projects/pineapple-apps/pineapple-steam-recording-exporter/</url>
   <url type="vcs-browser">https://github.com/BLumia/pineapple-steam-recording-exporter</url>
-  <categories>
-    <category>AudioVideo</category>
-    <category>Video</category>
-    <category>Qt</category>
-    <category>Game</category>
-  </categories>
   <screenshots>
     <screenshot type="default">
       <caption>Main recording list interface</caption>
