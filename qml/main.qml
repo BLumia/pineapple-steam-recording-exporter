@@ -291,6 +291,36 @@ ApplicationWindow {
     }
 
     Dialog {
+        id: languageDialog
+
+        contentWidth: 220
+        anchors.centerIn: parent
+        modal: true
+        title: qsTr("Language")
+
+        ColumnLayout {
+            anchors.fill: parent
+
+            ComboBox {
+                Layout.fillWidth: true
+                id: languageComboBox
+                model: languageManager.availableLanguages
+                currentIndex: languageManager.availableLanguages.indexOf(languageManager.currentLanguage)
+                displayText: Qt.locale(currentText).nativeLanguageName
+                delegate: ItemDelegate {
+                    width: languageComboBox.width
+                    text: Qt.locale(modelData).nativeLanguageName
+                }
+                onCurrentIndexChanged: {
+                    languageManager.setLanguage(valueAt(currentIndex))
+                }
+            }
+        }
+        
+        standardButtons: Dialog.Ok
+    }
+
+    Dialog {
         id: aboutDialog
 
         anchors.centerIn: parent
@@ -357,6 +387,20 @@ ApplicationWindow {
             }
             
             Item { Layout.fillWidth: true }
+            
+            Label {
+                id: languageButton
+                text: `🌐 ${qsTr("Language")}`
+                font.pixelSize: 12
+                TapHandler {
+                    onTapped: {
+                        languageDialog.open()
+                    }
+                }
+                HoverHandler {
+                    cursorShape: Qt.PointingHandCursor
+                }
+            }
             
             Label {
                 visible: videoExporter && videoExporter.isExporting

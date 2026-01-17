@@ -1226,42 +1226,48 @@ Deze actie is onomkeerbaar.</translation>
         <translation>Er wordt een video geëxporteerd. Weet je zeker dat je wilt afsluiten?</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="298"/>
+        <location filename="../qml/main.qml" line="299"/>
+        <location filename="../qml/main.qml" line="393"/>
+        <source>Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="328"/>
         <source>About</source>
         <translation>Over</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="317"/>
+        <location filename="../qml/main.qml" line="347"/>
         <source>Donate</source>
         <translation>Doneren</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="338"/>
+        <location filename="../qml/main.qml" line="368"/>
         <source>System Check</source>
         <translation>Systeemcontrole</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="340"/>
+        <location filename="../qml/main.qml" line="370"/>
         <source>Recording List</source>
         <translation>Opnamelijst</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="343"/>
+        <location filename="../qml/main.qml" line="373"/>
         <source>Clip Selection</source>
         <translation>Clipkeuze</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="345"/>
+        <location filename="../qml/main.qml" line="375"/>
         <source>Preview &amp; Export</source>
         <translation>Voorvertonen en exporteren</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="347"/>
+        <location filename="../qml/main.qml" line="377"/>
         <source>Exported Videos</source>
         <translation>Geëxporteerde video&apos;s</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="350"/>
+        <location filename="../qml/main.qml" line="380"/>
         <source>Video Preview</source>
         <translation>Videovoorvertoning</translation>
     </message>

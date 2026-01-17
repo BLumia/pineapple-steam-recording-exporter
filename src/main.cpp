@@ -18,6 +18,7 @@
 #include "recordingclip.h"
 #include "exportedvideomanager.h"
 #include "httpserver.h"
+#include "languagemanager.h"
 
 int main(int argc, char *argv[])
 {
@@ -34,11 +35,7 @@ int main(int argc, char *argv[])
     // Set application icon
     app.setWindowIcon(QIcon(":/qml/app_icon.png"));
 
-    // Load translations
-    QTranslator translator;
-    if (translator.load(QLocale(), "PineappleSteamRecordingExporter", "_", ":/i18n/")) {
-        app.installTranslator(&translator);
-    }
+
 
     // Use Material Design style
     QQuickStyle::setStyle("Material");
@@ -55,6 +52,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<ExportedVideoManager>("net.blumia.pineapple.streamrecordingexporter", 1, 0, "ExportedVideoManager");
     qmlRegisterType<ExportedVideo>("net.blumia.pineapple.streamrecordingexporter", 1, 0, "ExportedVideo");
     qmlRegisterType<HttpServer>("net.blumia.pineapple.streamrecordingexporter", 1, 0, "HttpServer");
+    qmlRegisterType<LanguageManager>("net.blumia.pineapple.streamrecordingexporter", 1, 0, "LanguageManager");
 
     // Create and expose global instances to QML
     SystemChecker systemChecker;
@@ -62,12 +60,18 @@ int main(int argc, char *argv[])
     VideoExporter videoExporter;
     ExportedVideoManager exportedVideoManager;
     HttpServer httpServer;
+    LanguageManager languageManager;
 
     engine.rootContext()->setContextProperty("systemChecker", &systemChecker);
     engine.rootContext()->setContextProperty("recordingManager", &recordingManager);
     engine.rootContext()->setContextProperty("videoExporter", &videoExporter);
     engine.rootContext()->setContextProperty("exportedVideoManager", &exportedVideoManager);
     engine.rootContext()->setContextProperty("httpServer", &httpServer);
+    engine.rootContext()->setContextProperty("languageManager", &languageManager);
+
+    QObject::connect(&languageManager, &LanguageManager::currentLanguageChanged, &engine, [&engine](){
+        engine.retranslate();
+    });
 
     // Connect HTTP server to video manager
     httpServer.setExportedVideoManager(&exportedVideoManager);

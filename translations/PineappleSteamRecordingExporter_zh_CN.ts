@@ -193,12 +193,12 @@
     <message>
         <location filename="../qml/ExportedVideosPage.qml" line="120"/>
         <source>Videos</source>
-        <translation type="unfinished"></translation>
+        <translation>视频数</translation>
     </message>
     <message>
         <location filename="../qml/ExportedVideosPage.qml" line="150"/>
         <source>Total Size</source>
-        <translation type="unfinished"></translation>
+        <translation>总大小</translation>
     </message>
     <message>
         <location filename="../qml/ExportedVideosPage.qml" line="190"/>
@@ -1176,42 +1176,48 @@ This action cannot be undone.</source>
         <translation>一项导出操作尚在进行中，真的要退出吗？</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="298"/>
+        <location filename="../qml/main.qml" line="299"/>
+        <location filename="../qml/main.qml" line="393"/>
+        <source>Language</source>
+        <translation>语言</translation>
+    </message>
+    <message>
+        <location filename="../qml/main.qml" line="328"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="317"/>
+        <location filename="../qml/main.qml" line="347"/>
         <source>Donate</source>
         <translation>捐款</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="338"/>
+        <location filename="../qml/main.qml" line="368"/>
         <source>System Check</source>
         <translation>系统环境检查</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="340"/>
+        <location filename="../qml/main.qml" line="370"/>
         <source>Recording List</source>
         <translation>游戏录制列表</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="343"/>
+        <location filename="../qml/main.qml" line="373"/>
         <source>Clip Selection</source>
         <translation>片段选择</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="345"/>
+        <location filename="../qml/main.qml" line="375"/>
         <source>Preview &amp; Export</source>
         <translation>预览和导出</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="347"/>
+        <location filename="../qml/main.qml" line="377"/>
         <source>Exported Videos</source>
         <translation>已导出的视频</translation>
     </message>
     <message>
-        <location filename="../qml/main.qml" line="350"/>
+        <location filename="../qml/main.qml" line="380"/>
         <source>Video Preview</source>
         <translation>视频预览</translation>
     </message>
