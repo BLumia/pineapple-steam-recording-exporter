@@ -1229,7 +1229,7 @@ Diese Aktion kann nicht rückgängig gemacht werden.</translation>
         <location filename="../qml/main.qml" line="299"/>
         <location filename="../qml/main.qml" line="393"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprache</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="328"/>

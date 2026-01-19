@@ -1229,7 +1229,7 @@ Deze actie is onomkeerbaar.</translation>
         <location filename="../qml/main.qml" line="299"/>
         <location filename="../qml/main.qml" line="393"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>Taal</translation>
     </message>
     <message>
         <location filename="../qml/main.qml" line="328"/>
