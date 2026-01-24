@@ -84,6 +84,25 @@
     <keyword xml:lang="zh-CN">游戏</keyword>
   </keywords>
   <releases>
+    <release type="stable" version="0.5.0" date="2026-01-24T00:00:00Z">
+      <description>
+        <p>This release adds the following feature:</p>
+        <ul>
+          <li>Support switching UI language within the application</li>
+        </ul>
+        <p>This release fixes the following bug:</p>
+        <ul>
+          <li>Not load game titles properly from non-default libraries</li>
+        </ul>
+        <p>This release includes the following changes:</p>
+        <ul>
+          <li>metadata: Add vcs-browser and remove categories field for AppStream</li>
+          <li>Update translations</li>
+        </ul>
+        <p>With contributions from:</p>
+        <p>Atalanttore, Vistaus</p>
+      </description>
+    </release>
     <release type="stable" version="0.4.0" date="2026-01-01T00:00:00Z">
       <description>
         <p>This release adds the following feature:</p>

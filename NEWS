@@ -1,3 +1,20 @@
+Version 0.5.0
+~~~~~~~~~~~~~
+Released: 2026-01-24
+
+Features:
+ * Support switching UI language within the application
+
+Bugfixes:
+ * Not load game titles properly from non-default libraries
+
+Miscellaneous:
+ * metadata: Add vcs-browser and remove categories field for AppStream
+ * Update translations
+
+Contributors:
+ Atalanttore, Vistaus
+
 Version 0.4.0
 ~~~~~~~~~~~~~
 Released: 2026-01-01
