@@ -246,32 +246,30 @@ QString GameInfo::findAcfFilePath(const QString &appId, const QString &steamPath
     // Prefer reading libraryfolders.vdf to enumerate all Steam libraries
     const QString libraryFoldersPath = steamPath + "/config/libraryfolders.vdf";
     QVdfParser parser;
-    auto root = parser.parseFile(libraryFoldersPath);
+    auto libraries = parser.parseFile(libraryFoldersPath);
 
     const QString acfFileName = QString("appmanifest_%1.acf").arg(appId);
 
-    if (root) {
-        if (auto libraries = root->child("libraryfolders")) {
-            const auto libraryEntries = libraries->children();
-            for (const auto *entry : libraryEntries) {
-                if (!entry) continue;
-                const QString libraryPath = entry->stringAttribute("path");
-                if (libraryPath.isEmpty()) continue;
+    if (libraries && libraries->name() == QLatin1String("libraryfolders")) {
+        const auto libraryEntries = libraries->children();
+        for (const auto *entry : libraryEntries) {
+            if (!entry) continue;
+            const QString libraryPath = entry->stringAttribute("path");
+            if (libraryPath.isEmpty()) continue;
 
-                const QString normalizedLibraryPath = QDir::fromNativeSeparators(libraryPath);
-                QDir steamAppsDir(normalizedLibraryPath + "/steamapps");
-                const QString acfFilePath = steamAppsDir.absoluteFilePath(acfFileName);
+            const QString normalizedLibraryPath = QDir::fromNativeSeparators(libraryPath);
+            QDir steamAppsDir(normalizedLibraryPath + "/steamapps");
+            const QString acfFilePath = steamAppsDir.absoluteFilePath(acfFileName);
 
-                if (QFileInfo::exists(acfFilePath)) {
-                    return acfFilePath;
-                }
+            if (QFileInfo::exists(acfFilePath)) {
+                return acfFilePath;
+            }
 
-                // Optional: if apps list indicates presence, still try path
-                if (auto apps = entry->child("apps")) {
-                    if (apps->hasAttribute(appId)) {
-                        if (QFileInfo::exists(acfFilePath)) {
-                            return acfFilePath;
-                        }
+            // Optional: if apps list indicates presence, still try path
+            if (auto apps = entry->child("apps")) {
+                if (apps->hasAttribute(appId)) {
+                    if (QFileInfo::exists(acfFilePath)) {
+                        return acfFilePath;
                     }
                 }
             }
