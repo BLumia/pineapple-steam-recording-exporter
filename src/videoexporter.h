@@ -83,14 +83,17 @@ private:
     QStringList buildFfmpegArguments(const QString &inputMpdPath, const QString &outputPath) const;
     
     // Progress parsing
-    void parseProgressFromOutput(const QString &output);
-    int extractProgressPercentage(const QString &line) const;
+    void handleProcessOutput(const QString &output);
+    bool parseProgressLine(const QString &line);
+    void updateProgressFromElapsedTime(qint64 elapsedMs);
+    qint64 parseTimeStringToMs(const QString &timeStr) const;
     
     // Validation and helpers
     bool validateInputFile(const QString &mpdPath) const;
     bool validateFfmpegExecutable() const;
     QString ensureOutputDirectory(const QString &outputPath) const;
     void addToLog(const QString &message);
+    void flushPendingLog();
     void setCurrentOperation(const QString &operation);
     void setProgress(int progress);
     void setIsExporting(bool exporting);
@@ -103,6 +106,7 @@ private:
     QString m_currentOperation;
     int m_progress;
     QString m_exportLog;
+    QStringList m_pendingLogLines;
     QString m_lastError;
     QString m_defaultExportPath;
     QString m_ffmpegPath;
@@ -115,8 +119,11 @@ private:
     
     // Progress tracking
     qint64 m_startTime;
+    qint64 m_lastOutTimeMs;
+    qint64 m_totalDurationMs;
     int m_lastProgress;
     QString m_progressBuffer;
+    bool m_isCancelling;
 };
 
 #endif // VIDEOEXPORTER_H
