@@ -84,6 +84,18 @@
     <keyword xml:lang="zh-CN">游戏</keyword>
   </keywords>
   <releases>
+    <release type="stable" version="0.5.1" date="2026-09-26T00:00:00Z">
+      <description>
+        <p>This release fixes the following bug:</p>
+        <ul>
+          <li>Export progress might not shown correctly</li>
+        </ul>
+        <p>This release includes the following change:</p>
+        <ul>
+          <li>Bump flatpak build runtime version</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="0.5.0" date="2026-01-24T00:00:00Z">
       <description>
         <p>This release adds the following feature:</p>

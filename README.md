@@ -51,12 +51,12 @@ Beside feedback and code contribution, other contributions are also welcome!
 ```
 By sending patches in GitHub Pull Request, Issues, email patch 
 set, or any other form to this project, it is assumed that you
-are offering the Pineapple Tracker Player project and the original
-project author (Gary Wang) unlimited, non-exclusive right to
-reuse, modify, and relicense the code.
+are offering the Pineapple Steam Recording Exporter project and
+the original project author (Gary Wang) unlimited, non-exclusive
+right to reuse, modify, and relicense the code.
 ```
 
-This is important because the inability to relicense code has caused devastating problems for other Free Software projects (such as KDE and NASM). Pineapple Tracker Player will always be available in an OSI approved, DFSG-compatible license. If you wish to specify special license conditions of your contributions, just say so when you send them.
+This is important because the inability to relicense code has caused devastating problems for other Free Software projects (such as KDE and NASM). Pineapple Steam Recording Exporter will always be available in an OSI approved, DFSG-compatible license. If you wish to specify special license conditions of your contributions, just say so when you send them.
 
 ## License
 

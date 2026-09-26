@@ -1,3 +1,13 @@
+Version 0.5.1
+~~~~~~~~~~~~~
+Released: 2026-09-26
+
+Bugfixes:
+ * Export progress might not shown correctly
+
+Miscellaneous:
+ * Bump flatpak build runtime version
+
 Version 0.5.0
 ~~~~~~~~~~~~~
 Released: 2026-01-24
