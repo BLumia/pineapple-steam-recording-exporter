@@ -516,10 +516,13 @@ QString SteamRecordingManager::findGameRecordingsPathForUser(const QString &stea
         if (localConfigRoot) {
             // Check if they have a custom recording location set in localconfig.vdf
             // It can be empty or the key might not exist at all, if that's the case, use default, otherwise use the custom path
-            QString gameRecordingsPathNode = localConfigRoot->childByPath("GameRecording")->stringAttribute("BackgroundRecordPath");
-            if (!gameRecordingsPathNode.isEmpty() && QFileInfo::exists(gameRecordingsPathNode)) {
-                qDebug() << "Using user's custom BackgroundRecordPath" << gameRecordingsPathNode;
-                gameRecordingsPath = gameRecordingsPathNode;
+            QVdfParser::VdfObject *gameRecordingNode = localConfigRoot->childByPath("GameRecording");
+            if (gameRecordingNode) {
+                QString gameRecordingsPathNode = gameRecordingNode->stringAttribute("BackgroundRecordPath");
+                if (!gameRecordingsPathNode.isEmpty() && QFileInfo::exists(gameRecordingsPathNode)) {
+                    qDebug() << "Using user's custom BackgroundRecordPath" << gameRecordingsPathNode;
+                    gameRecordingsPath = gameRecordingsPathNode;
+                }
             }
         }
     }
@@ -671,8 +674,10 @@ QList<SteamUser> SteamRecordingManager::parseSteamUsers(const QString &steamPath
         auto localConfigRoot = parser.parseFile(localConfigPath);
         
         if (localConfigRoot) {
-            // Get PersonaName from friends section at root level
-            user.personaName = localConfigRoot->childByPath("friends")->stringAttribute("PersonaName");
+            // Get PersonaName from friends section at root level (may not exist)
+            if (auto friendsNode = localConfigRoot->childByPath("friends")) {
+                user.personaName = friendsNode->stringAttribute("PersonaName");
+            }
             
             // Try to get AccountName from UserLocalConfigStore
             if (auto userLocalConfigStore = localConfigRoot->child("UserLocalConfigStore")) {
