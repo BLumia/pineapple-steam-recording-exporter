@@ -9,14 +9,14 @@ on:
   workflow_dispatch:
 
 env:
-  QT_VERSION: '6.10.1'
+  QT_VERSION: '6.11.2'
 
 jobs:
   build-appimage:
     runs-on: ubuntu-22.04  # Use older Ubuntu for better compatibility
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         submodules: recursive
 
@@ -52,12 +52,12 @@ jobs:
   build-flatpak:
     runs-on: ubuntu-24.04
     container:
-      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.8
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.11
       options: --privileged
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         submodules: recursive
 
