@@ -244,7 +244,7 @@ QString VideoExporter::sanitizeFilename(const QString &filename)
     sanitized.replace(invalidChars, "_");
     
     // Remove control characters
-    sanitized.remove(QRegularExpression("[\x00-\x1F\x7F]"));
+    sanitized.remove(QRegularExpression("[\\x00-\\x1F\\x7F]"));
     
     // Trim whitespace
     sanitized = sanitized.trimmed();

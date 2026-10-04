@@ -26,6 +26,7 @@ signals:
 
 private:
     bool loadLanguage(const QString &languageCode);
+    QString steamLangCode2QtLangCode(const QString & steamApiLanguageCode);
     
     QTranslator *m_translator;
     QString m_currentLanguageCode;

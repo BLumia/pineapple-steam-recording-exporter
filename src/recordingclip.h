@@ -91,6 +91,14 @@ private:
     QDateTime parseRecordingDateTime(const QString &dateStr, const QString &timeStr) const;
 
     QString formatDuration(int seconds) const;
+
+    // MPD manifest normalization helpers (see ensureStaticMpd)
+    QString ensureStaticMpd(const QString &mpdPath) const;
+    double usableMpdDurationSeconds(const QString &mpdContent, const QString &segmentDir) const;
+    double estimateMpdDurationSeconds(const QString &mpdContent, const QString &segmentDir) const;
+    int countMediaChunks(const QString &segmentDir) const;
+    static QString xmlAttributeValue(const QString &tagText, const QString &name);
+    static double parsePtDurationSeconds(const QString &ptValue);
     
     // Member variables
     QString m_appId;

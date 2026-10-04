@@ -75,3 +75,18 @@ bool LanguageManager::loadLanguage(const QString &languageCode)
         return false;
     }
 }
+
+QString LanguageManager::steamLangCode2QtLangCode(const QString &steamApiLanguageCode)
+{
+    // https://partner.steamgames.com/doc/store/localization/languages
+    const QHash<QString, QString> steamLang2QtLang {
+        {"dutch", "nl"},
+        {"german", "de"},
+        {"english", "en"},
+        {"polish", "pl"},
+        {"turkish", "tr"},
+        {"schinese", "zh_CN"},
+        {"tchinese", "zh_TW"},
+    };
+    return steamLang2QtLang.value(steamApiLanguageCode, "en");
+}
