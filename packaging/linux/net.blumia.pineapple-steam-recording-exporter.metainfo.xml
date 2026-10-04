@@ -84,6 +84,22 @@
     <keyword xml:lang="zh-CN">游戏</keyword>
   </keywords>
   <releases>
+    <release type="stable" version="0.6.0" date="2026-10-04T00:00:00Z">
+      <description>
+        <p>This release adds the following feature:</p>
+        <ul>
+          <li>Support viewing and exporting edited background recording clips</li>
+        </ul>
+        <p>This release fixes the following bug:</p>
+        <ul>
+          <li>Don't assume every existing Steam users have GameRecording config node</li>
+        </ul>
+        <p>This release includes the following change:</p>
+        <ul>
+          <li>Bump CI action version</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="0.5.1" date="2026-09-26T00:00:00Z">
       <description>
         <p>This release fixes the following bug:</p>

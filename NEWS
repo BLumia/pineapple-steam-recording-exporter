@@ -1,3 +1,16 @@
+Version 0.6.0
+~~~~~~~~~~~~~
+Released: 2026-10-04
+
+Features:
+ * Support viewing and exporting edited background recording clips
+
+Bugfixes:
+ * Don't assume every existing Steam users have GameRecording config node
+
+Miscellaneous:
+ * Bump CI action version
+
 Version 0.5.1
 ~~~~~~~~~~~~~
 Released: 2026-09-26
