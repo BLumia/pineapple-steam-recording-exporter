@@ -167,6 +167,14 @@ QString RecordingClip::ensureStaticMpd(const QString &mpdPath) const
     const QString periodTag = periodTagEnd > periodTagStart
         ? content.mid(periodTagStart, periodTagEnd - periodTagStart) : QString();
 
+    // Some (beta era) manifests written by Steam carry garbage after the
+    // closing </MPD> tag. FFmpeg's XML parser rejects the whole document
+    // ("Extra content at the end of the document"), so preview and export
+    // fail to open such a manifest at all.
+    const int docEnd = content.lastIndexOf(QLatin1String("</MPD>"));
+    const bool hasTrailingGarbage = docEnd >= 0
+        && content.mid(docEnd + 6).contains(QRegularExpression(QStringLiteral("\\S")));
+
     // Only rewrite when the manifest is not usable by FFmpeg as-is
     static const QRegularExpression typeRe(
         QStringLiteral("[\\s\"]type=\"([^\"]*)\""));
@@ -176,7 +184,7 @@ QString RecordingClip::ensureStaticMpd(const QString &mpdPath) const
         xmlAttributeValue(mpdTag, QStringLiteral("mediaPresentationDuration")));
     const double periodStart = parsePtDurationSeconds(
         xmlAttributeValue(periodTag, QStringLiteral("start")));
-    if (isStatic && manifestDuration > 0.0 && periodStart <= 0.0) {
+    if (isStatic && manifestDuration > 0.0 && periodStart <= 0.0 && !hasTrailingGarbage) {
         return mpdPath;
     }
 
@@ -269,6 +277,12 @@ QString RecordingClip::ensureStaticMpd(const QString &mpdPath) const
             rebuilt += fixedContent.mid(lastPos);
             fixedContent = rebuilt;
         }
+    }
+
+    // Drop any garbage after the closing </MPD> tag (see hasTrailingGarbage)
+    const int fixedDocEnd = fixedContent.lastIndexOf(QLatin1String("</MPD>"));
+    if (fixedDocEnd >= 0) {
+        fixedContent = fixedContent.left(fixedDocEnd + 6) + QLatin1Char('\n');
     }
 
     const QFileInfo info(mpdPath);
