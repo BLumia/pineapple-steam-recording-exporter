@@ -329,34 +329,23 @@ void HttpServer::setupRoutes()
 
 QHttpServerResponse HttpServer::handleRootRequest()
 {
-    // Try to serve from resources
+    // The page always comes from the compiled-in resource; there is no
+    // generated fallback.
     QFile resourceFile(":/web/index.html");
-    if (resourceFile.open(QIODevice::ReadOnly)) {
-        QByteArray content = resourceFile.readAll();
-        QHttpServerResponse response(content);
-        
-        // Set content type header
-        QHttpHeaders headers = response.headers();
-        headers.append(QHttpHeaders::WellKnownHeader::ContentType, "text/html; charset=utf-8");
-        response.setHeaders(std::move(headers));
-        
-        return response;
-    }
-    
-    // Fallback to generated HTML if static file not found
-    if (!m_videoManager) {
-        return QHttpServerResponse(generateErrorHtml("Video manager not available").toUtf8(),
+    if (!resourceFile.open(QIODevice::ReadOnly)) {
+        qWarning() << "Failed to open :/web/index.html from resources";
+        return QHttpServerResponse(generateErrorHtml("Web page resource is not available").toUtf8(),
                                  QHttpServerResponse::StatusCode::InternalServerError);
     }
-    
-    QString html = generateVideoListHtml();
-    QHttpServerResponse response(html.toUtf8());
-    
-    // Set content type header using Qt 6.8+ API
+
+    QByteArray content = resourceFile.readAll();
+    QHttpServerResponse response(content);
+
+    // Set content type header
     QHttpHeaders headers = response.headers();
     headers.append(QHttpHeaders::WellKnownHeader::ContentType, "text/html; charset=utf-8");
     response.setHeaders(std::move(headers));
-    
+
     return response;
 }
 
@@ -383,7 +372,9 @@ QHttpServerResponse HttpServer::handleVideoListApi()
             videoObj["fileName"] = video->fileName();
             videoObj["displayName"] = video->displayName();
             videoObj["fileSize"] = video->fileSizeString();
+            videoObj["fileSizeBytes"] = video->fileSize();
             videoObj["creationTime"] = video->creationTimeString();
+            videoObj["creationTimeMs"] = video->creationTime().toMSecsSinceEpoch();
             videoObj["downloadUrl"] = QString("/download/%1").arg(video->fileName());
             videos.append(videoObj);
         }
@@ -503,297 +494,6 @@ QHttpServerResponse HttpServer::handleStaticFiles(const QString &path)
     Q_UNUSED(path)
     return QHttpServerResponse(generateNotFoundHtml().toUtf8(),
                              QHttpServerResponse::StatusCode::NotFound);
-}
-
-QString HttpServer::generateVideoListHtml()
-{
-    QString html = R"html(
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pineapple Steam Recording Exports</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-            color: #333;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            font-weight: 300;
-        }
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 20px;
-        }
-        .stat {
-            text-align: center;
-        }
-        .stat-value {
-            font-size: 1.5em;
-            font-weight: bold;
-        }
-        .stat-label {
-            opacity: 0.9;
-            font-size: 0.9em;
-        }
-        .content {
-            padding: 30px;
-        }
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .video-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .video-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        .video-info {
-            padding: 20px;
-        }
-        .video-title {
-            font-size: 1.2em;
-            font-weight: 600;
-            margin: 0 0 10px 0;
-            color: #333;
-        }
-        .video-details {
-            color: #666;
-            font-size: 0.9em;
-            margin: 5px 0;
-        }
-        .video-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        .btn {
-            display: inline-block;
-            color: white;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            transition: opacity 0.2s;
-            font-weight: 500;
-            text-align: center;
-            flex: 1;
-            cursor: pointer;
-            border: none;
-        }
-        .download-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .preview-btn {
-            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-        }
-        .btn:hover {
-            opacity: 0.9;
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-        }
-        .modal-content {
-            position: relative;
-            margin: 50px auto;
-            width: 90%;
-            max-width: 800px;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .modal-header {
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .modal-header h2 {
-            margin: 0;
-        }
-        .close {
-            color: white;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            line-height: 1;
-        }
-        .close:hover {
-            opacity: 0.7;
-        }
-        .modal-body {
-            padding: 0;
-        }
-        .modal video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #666;
-        }
-        .empty-icon {
-            font-size: 4em;
-            margin-bottom: 20px;
-            opacity: 0.3;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>🍍 Steam Recording Exports</h1>
-            <div class="stats">
-                <div class="stat">
-                    <div class="stat-value">%1</div>
-                    <div class="stat-label">Videos</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">%2</div>
-                    <div class="stat-label">Total Size</div>
-                </div>
-            </div>
-        </div>
-        <div class="content">
-            %3
-        </div>
-    </div>
-    
-    <!-- Video Preview Modal -->
-    <div id="videoModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="modalTitle">Video Preview</h2>
-                <span class="close" onclick="closeModal()">&times;</span>
-            </div>
-            <div class="modal-body">
-                <video id="modalVideo" controls>
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-    </div>
-    
-    <script>
-        function openPreview(filename, title) {
-            const modal = document.getElementById('videoModal');
-            const video = document.getElementById('modalVideo');
-            const modalTitle = document.getElementById('modalTitle');
-            
-            modalTitle.textContent = title;
-            video.src = '/download/' + filename;
-            modal.style.display = 'block';
-        }
-        
-        function closeModal() {
-            const modal = document.getElementById('videoModal');
-            const video = document.getElementById('modalVideo');
-            
-            video.pause();
-            video.src = '';
-            modal.style.display = 'none';
-        }
-        
-        // Close modal when clicking outside of it
-        window.onclick = function(event) {
-            const modal = document.getElementById('videoModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-        
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
-    </script>
-</body>
-</html>
-)html";
-
-    if (!m_videoManager || m_videoManager->videoCount() == 0) {
-        QString emptyContent = R"(
-            <div class="empty-state">
-                <div class="empty-icon">📹</div>
-                <h2>No Videos Available</h2>
-                <p>No exported videos found. Export some recordings first!</p>
-            </div>
-        )";
-        return html.arg("0").arg("0 B").arg(emptyContent);
-    }
-
-    QString videoCards = "<div class=\"video-grid\">";
-    for (int i = 0; i < m_videoManager->videoCount(); ++i) {
-        ExportedVideo *video = m_videoManager->getVideo(i);
-        if (video) {
-            QString card = R"html(
-                <div class="video-card">
-                    <div class="video-info">
-                        <h3 class="video-title">%1</h3>
-                        <div class="video-details">📁 %2</div>
-                        <div class="video-details">📏 %3</div>
-                        <div class="video-details">📅 %4</div>
-                        <div class="video-actions">
-                            <button class="btn preview-btn" onclick="openPreview('%5', '%6')">👁️ Preview</button>
-                            <a href="/download/%5" class="btn download-btn">⬇️ Download</a>
-                        </div>
-                    </div>
-                </div>
-            )html";
-            videoCards += card.arg(video->displayName())
-                             .arg(video->fileName())
-                             .arg(video->fileSizeString())
-                             .arg(video->creationTimeString())
-                             .arg(video->fileName())
-                             .arg(video->displayName().replace("'", "\\'"));
-        }
-    }
-    videoCards += "</div>";
-
-    return html.arg(QString::number(m_videoManager->videoCount()))
-               .arg(m_videoManager->totalSizeString())
-               .arg(videoCards);
 }
 
 QString HttpServer::generateNotFoundHtml()

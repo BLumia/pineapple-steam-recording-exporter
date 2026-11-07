@@ -68,8 +68,7 @@ private:
     void handleVideoDownload(const QString &fileName, const QHttpServerRequest &request,
                              QHttpServerResponder &&responder);
     QHttpServerResponse handleStaticFiles(const QString &path);
-    
-    QString generateVideoListHtml();
+
     QString generateNotFoundHtml();
     QString generateErrorHtml(const QString &error);
     QString getContentType(const QString &filePath);
