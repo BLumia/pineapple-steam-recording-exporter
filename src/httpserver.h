@@ -5,6 +5,7 @@
 #include <QHttpServer>
 #include <QHttpServerResponse>
 #include <QHttpServerRequest>
+#include <QHttpServerResponder>
 #include <QString>
 #include <QJsonObject>
 #include <QJsonArray>
@@ -64,7 +65,8 @@ private:
     void setupRoutes();
     QHttpServerResponse handleRootRequest();
     QHttpServerResponse handleVideoListApi();
-    QHttpServerResponse handleVideoDownload(const QString &fileName, const QHttpServerRequest &request);
+    void handleVideoDownload(const QString &fileName, const QHttpServerRequest &request,
+                             QHttpServerResponder &&responder);
     QHttpServerResponse handleStaticFiles(const QString &path);
     
     QString generateVideoListHtml();
