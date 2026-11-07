@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Find required Qt6 components
-find_package(Qt6 6.8 REQUIRED COMPONENTS Core Widgets Quick QuickControls2 Multimedia HttpServer LinguistTools)
+find_package(Qt6 6.11 REQUIRED COMPONENTS Core Widgets Quick QuickControls2 Multimedia HttpServer LinguistTools)
 find_package(KF6IconThemes)
 
 include(GNUInstallDirs)
