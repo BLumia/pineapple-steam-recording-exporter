@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(PineappleSteamRecordingExporter VERSION 0.6.0 LANGUAGES CXX)
+project(PineappleSteamRecordingExporter VERSION 0.7.0 LANGUAGES CXX)
 
 # Include GNUInstallDirs for standard installation directories
 include(GNUInstallDirs)
@@ -84,8 +84,11 @@ qt_add_resources(PineappleSteamRecordingExporter "icons"
 )
 
 # Add web resources
+# NOTE: the file's path is appended to PREFIX, so "web/index.html" with PREFIX
+# "/" registers the file as ":/web/index.html". Do not set PREFIX to "/web"
+# here, that would register ":/web/web/index.html" instead.
 qt_add_resources(PineappleSteamRecordingExporter "web"
-    PREFIX "/web"
+    PREFIX "/"
     FILES
         web/index.html
 )

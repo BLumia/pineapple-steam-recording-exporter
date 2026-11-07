@@ -1,3 +1,17 @@
+Version 0.7.0
+~~~~~~~~~~~~~
+Released: 2026-11-07
+
+Features:
+ * Reworked looking for server web page
+
+Bugfixes:
+ * Add compat support for beta era game record exporting
+ * Should stream video downloads instead of buffering whole files
+
+Miscellaneous:
+ * Bump CI action version
+
 Version 0.6.0
 ~~~~~~~~~~~~~
 Released: 2026-10-04

@@ -8,15 +8,10 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0</project_license>
   <description>
-    <p>
-      Pineapple Steam Recording Exporter is a Qt6-based application that helps you automatically
-      identify and export Steam game recordings to MP4 video files. It provides a user-friendly
-      interface to browse, preview, and convert your Steam game clips without quality loss.
-    </p>
-    <p xml:lang="zh-CN">
-      菠萝Steam录制导出工具是一个基于Qt6的应用程序，可以帮助您自动识别和导出Steam游戏录制为MP4视频文件。
-      它提供了一个用户友好的界面来浏览、预览和无损转换您的Steam游戏片段。
-    </p>
+    <p>Pineapple Steam Recording Exporter is a Qt6-based application that helps you automatically identify
+    and export Steam game recordings to MP4 video files. It provides a user-friendly interface to browse,
+    preview, and convert your Steam game clips without quality loss.</p>
+    <p xml:lang="zh-CN">菠萝Steam录制导出工具是一个基于Qt6的应用程序，可以帮助您自动识别和导出Steam游戏录制为MP4视频文件。 它提供了一个用户友好的界面来浏览、预览和无损转换您的Steam游戏片段。</p>
     <p>Key features:</p>
     <p xml:lang="zh-CN">主要功能：</p>
     <ul>
@@ -84,17 +79,34 @@
     <keyword xml:lang="zh-CN">游戏</keyword>
   </keywords>
   <releases>
+    <release type="stable" version="0.7.0" date="2026-11-07T00:00:00Z">
+      <description>
+        <heading>Features</heading>
+        <ul>
+          <li>Reworked looking for server web page</li>
+        </ul>
+        <heading>Bugfixes</heading>
+        <ul>
+          <li>Add compat support for beta era game record exporting</li>
+          <li>Should stream video downloads instead of buffering whole files</li>
+        </ul>
+        <heading>Miscellaneous</heading>
+        <ul>
+          <li>Bump CI action version</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="0.6.0" date="2026-10-04T00:00:00Z">
       <description>
-        <p>This release adds the following feature:</p>
+        <heading>Features</heading>
         <ul>
           <li>Support viewing and exporting edited background recording clips</li>
         </ul>
-        <p>This release fixes the following bug:</p>
+        <heading>Bugfixes</heading>
         <ul>
           <li>Don't assume every existing Steam users have GameRecording config node</li>
         </ul>
-        <p>This release includes the following change:</p>
+        <heading>Miscellaneous</heading>
         <ul>
           <li>Bump CI action version</li>
         </ul>
@@ -102,11 +114,11 @@
     </release>
     <release type="stable" version="0.5.1" date="2026-09-26T00:00:00Z">
       <description>
-        <p>This release fixes the following bug:</p>
+        <heading>Bugfixes</heading>
         <ul>
           <li>Export progress might not shown correctly</li>
         </ul>
-        <p>This release includes the following change:</p>
+        <heading>Miscellaneous</heading>
         <ul>
           <li>Bump flatpak build runtime version</li>
         </ul>
@@ -114,76 +126,77 @@
     </release>
     <release type="stable" version="0.5.0" date="2026-01-24T00:00:00Z">
       <description>
-        <p>This release adds the following feature:</p>
+        <heading>Features</heading>
         <ul>
           <li>Support switching UI language within the application</li>
         </ul>
-        <p>This release fixes the following bug:</p>
+        <heading>Bugfixes</heading>
         <ul>
           <li>Not load game titles properly from non-default libraries</li>
         </ul>
-        <p>This release includes the following changes:</p>
+        <heading>Miscellaneous</heading>
         <ul>
           <li>metadata: Add vcs-browser and remove categories field for AppStream</li>
           <li>Update translations</li>
         </ul>
-        <p>With contributions from:</p>
+        <heading>Contributors</heading>
         <p>Atalanttore, Vistaus</p>
       </description>
     </release>
     <release type="stable" version="0.4.0" date="2026-01-01T00:00:00Z">
       <description>
-        <p>This release adds the following feature:</p>
+        <heading>Features</heading>
         <ul>
           <li>Support custom steam gamerecordings location</li>
         </ul>
-        <p>This release fixes the following bug:</p>
+        <heading>Bugfixes</heading>
         <ul>
           <li>Not load game titles from non-default libraries (GitHub: BLumia/pineapple-steam-recording-exporter#2)</li>
         </ul>
-        <p>This release includes the following changes:</p>
+        <heading>Miscellaneous</heading>
         <ul>
           <li>Adds an About dialog</li>
           <li>Tweak Windows CI build to use newer Qt and avoid shipping OpenGL SW runtime</li>
           <li>Update translations</li>
         </ul>
-        <p>With contributions from:</p>
+        <heading>Contributors</heading>
         <p>Vistaus</p>
       </description>
     </release>
     <release type="stable" version="0.3.0" date="2025-11-30T00:00:00Z">
       <description>
-        <p>This release fixes the following bug:</p>
+        <heading>Bugfixes</heading>
         <ul>
           <li>Background recordings show 00:00 and 0 bytes (GitHub: BLumia/pineapple-steam-recording-exporter#1)</li>
         </ul>
-        <p>This release includes the following changes:</p>
+        <heading>Miscellaneous</heading>
         <ul>
           <li>Tweak preview and thumbnail size</li>
           <li>Introduce QVdfParser for better Vdf parsing</li>
           <li>Update translations</li>
         </ul>
-        <p>With contributions from:</p>
+        <heading>Contributors</heading>
         <p>Atalanttore, Dirk, Vistaus, Trent McPheron</p>
       </description>
     </release>
     <release type="stable" version="0.2.0" date="2025-10-12T00:00:00Z">
       <description>
-        <p>This release adds the following features:</p>
+        <heading>Features</heading>
         <ul>
           <li>Ensure having icons under SteamOS game mode</li>
           <li>Add a Quit button for running in game mode</li>
           <li>Local HTTP server for sharing exported videos now support preview as well</li>
           <li>Update translations</li>
         </ul>
-        <p>With contributions from:</p>
+        <heading>Contributors</heading>
         <p>Vistaus</p>
       </description>
     </release>
     <release type="stable" version="0.1.0" date="2025-10-06T00:00:00Z">
       <description>
+        <heading>Note</heading>
         <p>Initial release with core functionality</p>
-        <p>This release adds the following features:</p>
+        <heading>Features</heading>
         <ul>
           <li>Steam recording detection and export</li>
           <li>Video preview and management</li>
